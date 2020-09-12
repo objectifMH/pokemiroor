@@ -7,10 +7,11 @@
     justify-content: space-between;
     align-items: center;
 
-    color:white;
+    color: $color;
     background: $back;
     
-    position:fixed;
+    position: fixed;
+    z-index: 1000;
 
     .head_left {
         flex-grow: 1;
@@ -37,6 +38,7 @@
 
 section {
     padding-top: 70px;
+    padding-bottom: 70px;
     min-height: 100%;
 }
 
@@ -84,7 +86,7 @@ section {
                 .logo_bottom_b {
     
                     text-shadow: $shadow 1px 1px;
-                    color: #feca1b;
+                    color: $color;
                     font-size: large;
 
                     position: relative;
@@ -100,7 +102,17 @@ section {
                 width: 120px;
             }
 
-            .reseaux {
+            .about_bottom {
+                text-shadow: $shadow 1px 1px;
+                color: #375e9f;
+                font-weight: bolder;
+                font-size: large;
+            }
+
+            .reseaux_bottom {
+                position: relative;
+                top: -6px;
+
                  .ng-fa-icon {
                     font-size: 24px;
                     padding: 5px;
@@ -108,7 +120,7 @@ section {
                     transition: all .2s ease-in-out;
                 
                     &:hover {
-                        color: red;
+                        color: #375e9f;
                         transform: scale(1.29);
                         text-shadow: $shadow 1px 1px;                
                     }
@@ -127,10 +139,6 @@ section {
         justify-content: center;
         align-items: center;
         color: $color;
-    }
-
-    .cd-show, .cd-fade {
-        display: flex;
     }
 
 }

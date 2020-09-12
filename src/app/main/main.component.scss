@@ -1,3 +1,81 @@
+@import '../../styles.scss';
+
 section {
     //min-height: 100%;
+    //background: turquoise;
+
+    .container-fluid.first {
+        margin-top: 30px;
+
+        .affiche_top {
+            
+            flex-direction: column;
+
+            .img_top {
+                display: flex;
+                justify-content: center;
+                img {
+                    width: 70%;
+                }
+            }
+
+            .btn_text {
+                display: flex;
+                justify-content: center;
+                .btn {
+                    width: 170px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .container {
+        color: $color;
+        margin-top: 50px;
+
+        .thumbnail {
+
+            display: flex;
+            padding: 20px 10px;
+            color: $back;
+
+            .img_left {
+                img {
+                    width: 450px;
+                }
+            }
+
+            .text_right {
+                display: flex;
+                flex-direction: column;
+
+                position: relative; 
+
+                background: $color;
+                color: purple;
+                font-weight: bold;
+                padding: 10px 10px;
+
+                .text_title {
+                    font-size: x-large;
+                }
+
+                p {
+                    padding: 10px 0px;
+                }
+
+                .btn {
+                    position: absolute;
+                    right: 20px;
+                    bottom: 20px;
+                    font-weight: bold;
+                }
+                
+                
+            }
+
+        }
+        
+    }
 }
