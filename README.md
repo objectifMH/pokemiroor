@@ -1,6 +1,6 @@
 deploy : ng build --prod --output-path docs --base-href /pokemirroor/
 
-déployé sur : https://objectifmh.github.io.pokemirroor
+déployé sur : https://objectifmh.github.io/pokemirroor/
 
 # Pokemirroor
 
