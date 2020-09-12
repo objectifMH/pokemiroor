@@ -1,0 +1,136 @@
+@import '../styles.scss';
+
+
+.head_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    color:white;
+    background: $back;
+    
+    position:fixed;
+
+    .head_left {
+        flex-grow: 1;
+
+        display: flex;
+        align-items: center;
+
+        .head_logo {
+            text-shadow: $shadow 1px 1px;
+            color: $color;
+            font-weight: bolder;
+            font-size: x-large;
+        }
+    }
+
+    .head_middle {
+        flex-grow: 4;
+    }
+
+    .head_right {
+        flex-grow: 2;
+    }
+}
+
+section {
+    padding-top: 70px;
+    min-height: 100%;
+}
+
+.footer {
+    height: 100px;
+    background: $back;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        flex: 1;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 !important;
+        margin: 0 !important;
+
+
+
+        li {
+            padding: 15px;
+            color: $color;
+            font-size: normal;
+
+            
+            .container_logo_bottom {
+                display: flex;
+                flex-direction: column;
+
+                .logo_bottom_t {
+
+                    text-shadow: $shadow 1px 1px;
+                    color: #375e9f;
+                    font-weight: bolder;
+                    font-size: x-large;
+                }
+    
+                .logo_bottom_b {
+    
+                    text-shadow: $shadow 1px 1px;
+                    color: #feca1b;
+                    font-size: large;
+
+                    position: relative;
+                    top: -12px;
+                }
+
+            }
+            
+
+
+
+            img {
+                width: 120px;
+            }
+
+            .reseaux {
+                 .ng-fa-icon {
+                    font-size: 24px;
+                    padding: 5px;
+                    color: $color;
+                    transition: all .2s ease-in-out;
+                
+                    &:hover {
+                        color: red;
+                        transform: scale(1.29);
+                        text-shadow: $shadow 1px 1px;                
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .footer_bottom {
+        font-size: small;
+        bottom: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color;
+    }
+
+    .cd-show, .cd-fade {
+        display: flex;
+    }
+
+}
