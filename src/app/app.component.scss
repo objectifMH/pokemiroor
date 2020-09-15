@@ -63,20 +63,16 @@ section {
         padding: 0 !important;
         margin: 0 !important;
 
-
-
         li {
             padding: 15px;
             color: $color;
             font-size: normal;
-
-            
+        
             .container_logo_bottom {
                 display: flex;
                 flex-direction: column;
 
                 .logo_bottom_t {
-
                     text-shadow: $shadow 1px 1px;
                     color: #375e9f;
                     font-weight: bolder;
@@ -84,7 +80,6 @@ section {
                 }
     
                 .logo_bottom_b {
-    
                     text-shadow: $shadow 1px 1px;
                     color: $color;
                     font-size: large;
@@ -92,11 +87,8 @@ section {
                     position: relative;
                     top: -12px;
                 }
-
             }
             
-
-
 
             img {
                 width: 120px;
