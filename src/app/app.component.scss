@@ -134,3 +134,27 @@ section {
     }
 
 }
+
+@media (max-width: 480px) {
+
+    .footer {
+
+        height: 100%;
+        ul {
+            flex-direction: column;
+            padding: 0;
+        }
+    }
+
+    .logo-gd {
+        color: white;
+    }
+
+    .cd-show {
+        display: flex !important;
+    }
+
+    .cd-fade {
+        display: none !important;
+    }
+}
