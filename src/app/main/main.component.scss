@@ -239,6 +239,9 @@ section {
             .img_left {
                 display: flex;
                 justify-content: center;
+                img {
+                    min-width: 100%;
+                }
             }
 
             .text_right p {
