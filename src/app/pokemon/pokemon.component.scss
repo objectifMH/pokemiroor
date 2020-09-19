@@ -1,0 +1,47 @@
+@import '../../styles.scss';
+
+.container {
+    display: flex;
+    float: row;
+    flex-wrap: wrap ;
+}
+
+.pokemon_container {
+    border-radius: 25px;
+    //background-color: aqua;
+    width: 300px;
+
+    margin: 9px;
+    margin-right: 90px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .pokemon_settings {
+        position: relative;
+        top: -20px;
+        right: -20px;
+
+        .badge {
+            margin: 3px;
+            padding: 10px 20px;
+            background: #7cbeb3;
+            color: white;
+
+            //box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+        }
+    }
+
+    h3 {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    img {
+        padding: 25px;
+        max-width: 230px;
+    }
+    
+}

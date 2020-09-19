@@ -1,0 +1,20 @@
+<div class="container" *ngIf="pokemon">
+    
+<div class="pokemon_container" style="background: {{background_pokemon}};">
+        <div class="pokemon_settings">
+            <h3>{{pokemon.species.name}}</h3>
+            <div>
+                <div class="badge badge-light" style="background: {{color_abilities}};">
+                    {{pokemon.abilities[0].ability.name}}
+                </div>
+                <div class="badge badge-light" style="background: {{color_abilities}};">
+                    {{pokemon.abilities[1].ability.name}}
+                </div>
+            </div>
+
+        </div>
+        <img src={{pokemon.sprites.other.dream_world.front_default}} >
+
+    </div>
+
+</div>

@@ -5,6 +5,9 @@ section {
     .container-fluid.pokemon {
         margin-top: 30px;
 
+        display: flex;
+        flex-direction: row;
+
         .affiche_top {
             flex-direction: column;
 
