@@ -31,6 +31,13 @@ section {
                 margin-top: 15px;
                 padding: 0px 10px;
 
+                span {
+                    color: $color;
+                    font-size: 1.3em;
+                    letter-spacing: -3px;
+                    text-shadow: 3px 0 0 $border, 3px 3px 0 $border, 0 3px 0 $border, -3px 3px 0 $border, -3px 0 0 $border, -3px -3px 0 $border, 0 -3px 0 $border, 3px -3px 0 $border;
+                }
+
             }
 
             h3 {
