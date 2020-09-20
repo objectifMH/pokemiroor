@@ -17,7 +17,7 @@ export class ListPokemonComponent implements OnInit {
   }
 
   getAllPokemons(){
-    this.pokeService.getPokemonsByPage("120","10").subscribe(
+    this.pokeService.getPokemonsByPage("120","12").subscribe(
       data => {
          this.pokemons = data['results'];
          console.log(this.pokemons);

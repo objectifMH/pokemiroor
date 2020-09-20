@@ -3,25 +3,28 @@
 .container {
     display: flex;
     float: row;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .pokemon_container {
     border-radius: 25px;
-    //background-color: aqua;
-    width: 300px;
-
-    margin: 9px;
-    margin-right: 90px;
-
     display: flex;
-    flex-direction: row;
     align-items: center;
+    padding: 8px 5px 2px;
+
+
+    
 
     .pokemon_settings {
         position: relative;
         top: -20px;
         right: -20px;
+
+        .pokemon_abilities {
+            display: flex;
+            flex-direction: column;
+        }
 
         .badge {
             margin: 3px;
@@ -36,12 +39,17 @@
 
     h3 {
         color: white;
-        margin-bottom: 20px;
+        margin-top: 20px;
+        text-transform: capitalize;
     }
 
     img {
-        padding: 25px;
-        max-width: 230px;
+        padding: 10px 15px;
+        margin: 5px 8px;
+        max-height: 120px;
+        margin: 5px 0px 5px 20px;
+
+        
     }
     
 }
