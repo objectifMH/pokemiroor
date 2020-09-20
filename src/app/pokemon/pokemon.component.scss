@@ -13,9 +13,6 @@
     align-items: center;
     padding: 8px 5px 2px;
 
-
-    
-
     .pokemon_settings {
         position: relative;
         top: -20px;
@@ -41,12 +38,14 @@
         color: white;
         margin-top: 20px;
         text-transform: capitalize;
+        font-weight: bold;
     }
 
     img {
         padding: 10px 15px;
         margin: 5px 8px;
         max-height: 120px;
+        max-width: 120px;
         margin: 5px 0px 5px 20px;
 
         
