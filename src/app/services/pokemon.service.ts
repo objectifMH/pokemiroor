@@ -14,6 +14,8 @@ export class PokemonService {
     return this.url_base;
   }
 
+  //pokemon : 
+
   public getPokemonsByPage(offset: string, limit: string) {
     const url = ''.concat(this.url_base, "pokemon/?offset="+offset+"&limit="+limit);
     return this.httpClient.get(url);
@@ -24,6 +26,18 @@ export class PokemonService {
   }
 
   public getPokemonsSpecies(url: string) {
+    return this.httpClient.get(url);
+  }
+
+  // types :
+
+  public getTypes() {
+    const url = ''.concat(this.url_base, "type/");
+    return this.httpClient.get(url);
+  }
+
+  public getPokemonByTypes(id: string) {
+    const url = ''.concat(this.url_base, "type/",id);
     return this.httpClient.get(url);
   }
 }

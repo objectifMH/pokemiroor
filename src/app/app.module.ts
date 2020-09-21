@@ -8,13 +8,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { ListPokemonComponent } from './list-pokemon/list-pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListPokemonTypeComponent } from './list-pokemon-type/list-pokemon-type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     PokemonComponent,
-    ListPokemonComponent
+    ListPokemonComponent,
+    ListPokemonTypeComponent
   ],
   imports: [
     BrowserModule,
