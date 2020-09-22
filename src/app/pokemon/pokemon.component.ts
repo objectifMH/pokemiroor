@@ -20,11 +20,16 @@ export class PokemonComponent implements OnInit {
   @Input()
   height_img_pokemon: string;
 
+  @Input()
+  show_abilities: boolean;
+
   pokemon: any;
   species: any;
   color_background: any;
   color_abilities_array: any;
   color_abilities: any;
+
+  
 
 
   constructor(private pokeService: PokemonService, private utilService: UtilService) { }

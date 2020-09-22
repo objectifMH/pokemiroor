@@ -2,7 +2,7 @@
     <h4>{{poke.type}} ></h4>
     <div class="container pokemons_by_type">
         <div  *ngFor="let pokemon of poke.list_pokemons; let i = index">
-            <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" ></app-pokemon>
+            <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true"></app-pokemon>
         </div>
         <div class="plus_pokemons_type">
             <div class="btn btn-primary"> ...</div>

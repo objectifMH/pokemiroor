@@ -3,7 +3,7 @@
     <div class="pokemon_container" style="background: {{color_background}}; border: 2px solid {{color_abilities}};">
             <div class="pokemon_settings">
                 <h3 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemon.species.name}}</h3>
-                <div class="pokemon_abilities" *ngIf="pokemon.abilities">
+                <div class="pokemon_abilities" *ngIf="pokemon.abilities && show_abilities">
                     <div class="badge badge-light" style="background: {{color_abilities}};" >
                         {{pokemon.abilities[0].ability.name}}
                     </div>
