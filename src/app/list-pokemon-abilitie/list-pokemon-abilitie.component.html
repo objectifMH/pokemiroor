@@ -1,7 +1,7 @@
 <div class="container abilities">
     <span class="badge badge-success"> Abilities :</span>
     <span class="badge badge-warning" *ngFor="let ability of this.abilities; let i = index">
-        <a [routerLink] = "['/ability']"  fragment="{{ability.name}}" (click)="onAbility(poke)">{{ability.name}}</a>
+        <a [routerLink] = "['/ability']"  fragment="{{ability.name}}" (click)="onAbility(ability)">{{ability.name}}</a>
     </span>
     
 </div>
