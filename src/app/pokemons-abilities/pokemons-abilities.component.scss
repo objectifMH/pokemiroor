@@ -1,0 +1,47 @@
+@import '../../styles.scss';
+
+section {
+    margin-top: 40px;
+}
+
+h4 {
+    color: white;
+    text-transform: capitalize;
+    font-size: 2em;
+    font-weight: bolder;
+    position: relative;
+    margin-bottom: 30px;
+
+    .span_grey {
+        color: grey;
+        font-size: 0.8em;
+    }
+
+    .chevron_right {
+        font-weight: bolder;;
+    }
+
+    .back {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: 0.42em;
+        font-weight: bolder;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .undo {
+            font-size: 1.4em;
+        }
+    }
+}
+
+.all_pokemons_ability {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    
+}

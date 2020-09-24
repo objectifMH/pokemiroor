@@ -45,4 +45,22 @@ export class PokemonService {
     const url = ''.concat(this.url_base, "type/",type);
     return this.httpClient.get(url);
   }
+
+  // abilities :
+
+  public getAbilities() {
+    const url = ''.concat(this.url_base, "ability/");
+    return this.httpClient.get(url);
+  }
+
+  public getPokemonByAbility(id: string) {
+    const url = ''.concat(this.url_base, "ability/",id);
+    return this.httpClient.get(url);
+  }
+
+  
+  public getAllPokemonByAbilities(ability: string) {
+    const url = ''.concat(this.url_base, "ability/",ability);
+    return this.httpClient.get(url);
+  }
 }

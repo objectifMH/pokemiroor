@@ -1,0 +1,33 @@
+<div class="container abilities">
+    <span class="badge badge-success"> Abilities :</span>
+    <span class="badge badge-warning" *ngFor="let ability of this.abilities; let i = index">
+        <a [routerLink] = "['/ability']"  fragment="{{ability.name}}" (click)="onAbility(poke)">{{ability.name}}</a>
+    </span>
+    
+</div>
+    
+
+<div   class="container" *ngFor="let poke of this.pokemons_abilities; let i = index" >
+    <div id="{{poke.ability}}" class="container_ability">
+        <h4>{{poke.ability}} 
+            <span class="material-icons chevron_right">
+                chevron_right
+            </span>
+        </h4>
+        <div class="container pokemons_by_ability">
+            <div  *ngFor="let pokemon of poke.list_pokemons; let i = index">
+                <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true"></app-pokemon>
+            </div>
+            <div class="plus_pokemons_ability">
+                    <a routerLink = "/pokemons-ability/{{poke.ability}}" >
+                        <span class="material-icons arrow_forward_ios">
+                            arrow_forward_ios
+                        </span>
+                    </a>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+</div>
+

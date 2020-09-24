@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { PokemonsTypesComponent } from './pokemons-types/pokemons-types.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
+import { PokemonsAbilitiesComponent } from './pokemons-abilities/pokemons-abilities.component';
+import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokemon-abilitie.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     ListPokemonTypeComponent,
     PokemonsTypesComponent,
     PokemonComponent,
-    PokemonDetailsComponent
+    PokemonDetailsComponent,
+    PokemonsAbilitiesComponent,
+    ListPokemonAbilitieComponent
   ],
   imports: [
     BrowserModule,

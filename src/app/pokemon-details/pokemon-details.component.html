@@ -5,11 +5,7 @@
         <div class="top">
             <h2 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemons_details.species.name}}</h2>
 
-            <img  
-            src="{{pokemons_details.sprites.other.dream_world.front_default 
-                ? pokemons_details.sprites.other.dream_world.front_default
-                : 'assets/img/no_image.png'}}"
-            >
+            
         </div>
         
         <div class="pokemon_settings middle">
@@ -32,7 +28,10 @@
                         class="badge" 
                         [ngStyle]="{'background' : color_abilities}"
                         >
-                    {{type.type.name}}
+                    
+                    <a routerLink = "/pokemons-types/{{type.type.name}}" >
+                        {{type.type.name}}
+                    </a>
                 </div>
             </div>  
             <div class="pokemon_abilities" >
@@ -41,16 +40,29 @@
                         class="badge" 
                         [ngStyle]="{'background' : color_abilities}"
                         >
-                    {{abilitie.ability.name}}
+                        {{abilitie.ability.name}}
                 </div>
             </div>  
+            <img  
+            src="{{pokemons_details.sprites.other.dream_world.front_default 
+                ? pokemons_details.sprites.other.dream_world.front_default
+                : 'assets/img/no_image.png'}}"
+            >
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
                 <div    *ngFor="let stat of this.pokemons_details.stats"
-                        class="badge" 
-                        [ngStyle]="{'background' : color_abilities}"
+                        class="badge stats" 
+                        [ngStyle]="{'background' : color_background}"
                         >
-                    {{stat.stat.name}} : {{stat.base_stat}}
+                    
+                    <div class="stat_name">{{stat.stat.name}}: {{stat.base_stat}} </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': stat.base_stat+'%'}" aria-valuenow="{stat.base_stat}" aria-valuemin="0" aria-valuemax="100">
+                            <span class="span_progress">
+                                 
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>  
             
