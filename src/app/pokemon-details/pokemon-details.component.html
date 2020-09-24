@@ -1,0 +1,28 @@
+
+<div class="container" *ngIf="pokemons_details">
+
+    <div class="pokemon_container" style="background: {{color_background}}; border: 3px solid {{color_abilities}};">
+        <div class="pokemon_settings">
+            <h3 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemons_details.species.name}}</h3>
+            <div class="pokemon_abilities" >
+                <div    *ngFor="let abilitie of this.pokemons_details.abilities"
+                        class="badge" 
+                        [ngStyle]="{'background' : color_abilities}"
+                        >
+                    {{abilitie.ability.name}}
+                </div>
+                
+            </div>  
+
+        </div> 
+            <img  
+                src="{{pokemons_details.sprites.other.dream_world.front_default 
+                    ? pokemons_details.sprites.other.dream_world.front_default
+                    : 'assets/img/no_image.png'}}"
+            >
+        
+    </div>
+    <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
+        {{pokemons_details.id}}
+    </span>
+</div>

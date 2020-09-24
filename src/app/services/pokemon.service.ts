@@ -40,4 +40,9 @@ export class PokemonService {
     const url = ''.concat(this.url_base, "type/",id);
     return this.httpClient.get(url);
   }
+
+  public getAllPokemonByTypes(type: string) {
+    const url = ''.concat(this.url_base, "type/",type);
+    return this.httpClient.get(url);
+  }
 }

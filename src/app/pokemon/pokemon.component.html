@@ -1,20 +1,33 @@
 <div class="container" *ngIf="pokemon">
-    
-    <div class="pokemon_container" style="background: {{color_background}}; border: 2px solid {{color_abilities}};">
-            <div class="pokemon_settings">
-                <h3 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemon.species.name}}</h3>
-                <div class="pokemon_abilities" *ngIf="pokemon.abilities && show_abilities">
-                    <div class="badge badge-light" style="background: {{color_abilities}};" >
-                        {{pokemon.abilities[0].ability.name}}
-                    </div>
-                    <div class="badge badge-light" style="background: {{color_abilities}};" *ngIf="pokemon.abilities[1]">
-                        {{pokemon.abilities[1].ability.name}}
-                    </div>
+
+    <div class="pokemon_container" style="background: {{color_background}}; border: 3px solid {{color_abilities}};">
+        <div class="pokemon_settings">
+            <h3 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemon.species.name}}</h3>
+            <div class="pokemon_abilities" *ngIf="pokemon.abilities && show_abilities">
+                <div    class="badge badge-light" 
+                        [ngStyle]="{'background' : color_abilities}"
+                        *ngIf="pokemon.abilities[0]">
+                    {{pokemon.abilities[0].ability.name}}
                 </div>
-    
-            </div>
-        <img src={{pokemon.sprites.other.dream_world.front_default}}  style="max-width: {{width_img_pokemon}}px ; max-height: {{height_img_pokemon}}px;">
-    
-        </div>
-    
+                <div    class="badge badge-light" 
+                        [ngStyle]="{'background' : color_abilities}" 
+                        *ngIf="pokemon.abilities[1]">
+                    {{pokemon.abilities[1].ability.name}}
+                </div>
+            </div>  
+
+        </div> 
+        <a routerLink="/pokemons-details/{{pokemon.species.name}}" title="{{pokemon.species.name | titlecase }}">
+            <img  
+                src="{{pokemon.sprites.other.dream_world.front_default 
+                    ? pokemon.sprites.other.dream_world.front_default
+                    : 'assets/img/no_image.png'}}"
+                [ngStyle]="{'width.px' : pokemon.sprites.other.dream_world.front_default  ? width_img_pokemon : '100px' , 'height.px' : height_img_pokemon }"
+            >
+        </a>
+        
     </div>
+    <span class="badge number" *ngIf="badge" [ngStyle]="{'background' : color_abilities}" >
+        {{badge}}
+    </span>
+</div>

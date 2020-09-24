@@ -23,6 +23,9 @@ export class PokemonComponent implements OnInit {
   @Input()
   show_abilities: boolean;
 
+  @Input()
+  badge: string;
+
   pokemon: any;
   species: any;
   color_background: any;
@@ -35,10 +38,6 @@ export class PokemonComponent implements OnInit {
   constructor(private pokeService: PokemonService, private utilService: UtilService) { }
 
   ngOnInit(): void {
-
-    //console.log(this.input_pokemon);
-
-    //console.log("dans pokemon", this.input_pokemon, this.input_pokemon.url, this.pokemon);
     this.getPokemon();
   }
 
@@ -46,7 +45,7 @@ export class PokemonComponent implements OnInit {
     this.pokeService.getPokemon(this.input_pokemon.url).subscribe(
       data => {
         this.pokemon = data;
-        console.log(this.pokemon);
+        //console.log(this.pokemon);
         this.getPokemonSpecies(this.pokemon.species.url)
       },
       err => {
@@ -59,7 +58,7 @@ export class PokemonComponent implements OnInit {
       data => {
         this.species = data;
         this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
-        console.log(" couleurs > " ,this.color_background, this.species.color.name, this.utilService.getColourNameToHex(this.species.color.name), this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
+        //console.log(" couleurs > " ,this.color_background, this.species.color.name, this.utilService.getColourNameToHex(this.species.color.name), this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.colorAbilities(this.color_abilities_array);
       },
@@ -78,10 +77,12 @@ export class PokemonComponent implements OnInit {
 
   colorBackground(rgb) {
     let r = rgb[0]+80 < 255 ? rgb[1]+80 : 255 ; 
-    let g = rgb[1]+30 < 255 ? rgb[1]+30 : 255 ;
-    let b = rgb[2]+10 < 255 ? rgb[2]+10 : 255 ;
+    let g = rgb[1]+60 < 255 ? rgb[1]+60 : 255 ;
+    let b = rgb[2]+50 < 255 ? rgb[2]+50 : 255 ;
 
-    this.color_background = "rgb("+r+","+g+","+b+")";
+    //linear-gradient(to bottom,#5a135a 0,#5a135a 100%);
+    this.color_background = "linear-gradient(to bottom, rgb("+r+","+g+","+b+") 10%, rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+") 100%)";
+    //"rgb("+r+","+g+","+b+")";
   }
 
 

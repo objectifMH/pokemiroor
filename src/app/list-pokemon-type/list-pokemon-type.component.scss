@@ -3,16 +3,42 @@
 h4 {
     color: white;
     text-transform: capitalize;
+    font-size: 2em;
+    font-weight: bolder;
 }
 
-.container {
-    margin-top: 40px;
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.container_type {
+    margin-bottom: 20px;
+
+}
+
+.types {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    margin-top: 20px;
+    .badge {
+        margin: 4px !important;
+        padding: 5px 10px !important;
+        font-size: larger;
+        color: white;
+    }
+}
+
+.chevron_right {
+    font-weight: bolder;;
 }
 
 .container.pokemons_by_type {
     display: flex;
     flex-direction: row;
-    //overflow-x: scroll;
     flex-wrap: wrap; 
 }
 
@@ -21,5 +47,15 @@ h4 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .material-icons.arrow_forward_ios {
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+        font-size: 2em;
+
+        &:hover {
+            transform: scale(1.22);
+        }
+    }
 }
 

@@ -36,6 +36,27 @@ a {
 
     .head_right {
         flex-grow: 2;
+        ul {
+            text-decoration: none;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:0;
+
+            a {
+                color: $color;
+                font-size: 1.2em;
+                font-weight: bolder;
+
+                transition: all .2s ease-in-out;
+        
+                &:hover {
+                    transform: scale(1.22);
+                    text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
+                }
+            }
+        }
     }
 }
 

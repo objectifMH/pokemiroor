@@ -40,8 +40,8 @@ export class ListPokemonComponent implements OnInit {
           else {
             poke.show = random_5 === 4 ? true : false;
             if (poke.show === false) {
-              poke.width = 100;
-              poke.height = 100;
+              poke.width = 110;
+              poke.height = 110;
             }
           }
         })

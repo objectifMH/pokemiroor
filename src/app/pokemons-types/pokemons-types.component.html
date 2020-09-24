@@ -1,0 +1,22 @@
+  
+<section class="container">
+    <h4>{{type}} 
+        <span  class="span_grey" *ngIf="this.pokemons_types">
+            ({{this.pokemons_types.length}})
+        </span>
+        <span class="material-icons chevron_right">
+            chevron_right
+        </span>
+        <a [routerLink] = "['/types']" >
+            <span class="btn btn-primary back"> Back Types
+                <span class="material-icons undo">
+                    undo
+                </span>
+            </span>
+            
+        </a>
+    </h4>
+    <div class="all_pokemons_type">
+        <app-pokemon *ngFor="let poke of this.pokemons_types; let i = index" [input_pokemon]="poke.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true" [badge]="i+1"></app-pokemon>
+    </div>
+</section>

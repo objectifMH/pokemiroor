@@ -2,11 +2,12 @@
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     padding: 5px;
 
     position: relative;
+    margin-top: 30px;
 }
 
 .number {
@@ -63,12 +64,7 @@
         margin: 5px 8px;
         margin: 5px 0px 5px 20px;
 
-        transition: all .2s ease-in-out;
-        cursor: pointer;
-
-        &:hover {
-            transform: scale(1.4);
-        }
+        
     }
     
 }

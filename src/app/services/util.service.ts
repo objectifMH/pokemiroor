@@ -43,7 +43,7 @@ export class UtilService {
   hexToRgb(hex) {
 
     hex = hex.substr(1, hex.length);
-    console.log(hex);
+    //console.log(hex);
     var aRgbHex = hex.match(/.{1,2}/g);
     var aRgb = [
         parseInt(aRgbHex[0], 16),
