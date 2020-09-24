@@ -29,15 +29,25 @@
 .pokemon_container {
     border-radius: 25px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 8px 5px 2px;
 
-    .pokemon_settings {
-        position: relative;
-        top: -20px;
-        right: -20px;
+    .pokemon_settings.middle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
 
-        .pokemon_abilities {
+        h5 {
+            color: white;
+            text-transform: capitalize;
+            font-weight: bold;
+            text-align: center;
+
+            text-shadow: 1px 1px 2px grey;
+        }
+
+        .pokemon_abilities, .pokemon_types, .pokemon_stats, .pokemon_spec {
             display: flex;
             flex-direction: column;
         }
@@ -46,18 +56,29 @@
             margin: 3px;
             padding: 10px 20px;
             color: white;
+            text-shadow: 1px 1px 2px black;
 
             //box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
         }
     }
 
-    h3 {
+    h2 {
+        color: white;
+        margin-top: 20px;
+        text-transform: capitalize;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h4 {
         color: white;
         margin-top: 20px;
         text-transform: capitalize;
         font-weight: bold;
     }
+
+
 
     img {
         padding: 10px 15px;

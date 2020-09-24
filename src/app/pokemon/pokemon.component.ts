@@ -23,8 +23,8 @@ export class PokemonComponent implements OnInit {
   @Input()
   show_abilities: boolean;
 
-  @Input()
-  badge: string;
+  // @Input()
+  // badge: string;
 
   pokemon: any;
   species: any;
@@ -45,7 +45,7 @@ export class PokemonComponent implements OnInit {
     this.pokeService.getPokemon(this.input_pokemon.url).subscribe(
       data => {
         this.pokemon = data;
-        //console.log(this.pokemon);
+        console.log(this.pokemon);
         this.getPokemonSpecies(this.pokemon.species.url)
       },
       err => {
