@@ -11,7 +11,7 @@ import { UtilService } from '../services/util.service';
 export class PokemonDetailsComponent implements OnInit {
 
   pokemons_details: any;
-  name: string;
+  id: string;
   url = 'https://pokeapi.co/api/v2/pokemon/';
 
 
@@ -23,8 +23,8 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) { }
 
   ngOnInit(): void {
-    this.name = this.route.snapshot.paramMap.get('name');
-    let url_pokemon = ''.concat(this.url, this.name);
+    this.id = this.route.snapshot.paramMap.get('id');
+    let url_pokemon = ''.concat(this.url, this.id);
     this.getPokemonDetails(url_pokemon);
   }
 

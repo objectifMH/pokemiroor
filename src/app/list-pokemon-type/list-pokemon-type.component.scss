@@ -5,6 +5,16 @@ h4 {
     text-transform: capitalize;
     font-size: 2em;
     font-weight: bolder;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .span_total {
+        color: grey;
+        font-size: 0.6em;
+        margin-left: 10px;
+    }
 }
 
 a {

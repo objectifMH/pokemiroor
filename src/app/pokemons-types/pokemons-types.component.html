@@ -2,7 +2,7 @@
 <section class="container">
     <span class="badge badge-success"> Types :</span>
     <h4>{{type}} 
-        <span  class="span_grey" *ngIf="this.pokemons_types">
+        <span  class="span_total" *ngIf="this.pokemons_types">
             ({{this.pokemons_types_aux.length}})  
         </span>
         <span class="material-icons chevron_right">
@@ -13,8 +13,7 @@
                 <span class="material-icons undo">
                     undo
                 </span>
-            </span>
-            
+            </span> 
         </a>
     </h4>
     <div class="all_pokemons_type">

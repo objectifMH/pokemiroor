@@ -18,6 +18,9 @@
 <div   class="container" *ngFor="let poke of this.pokemons_abilities; let i = index" >
     <div id="{{poke.ability}}" class="container_ability">
         <h4> {{poke.ability}} 
+            <span class="span_total">
+                ({{poke.total}})
+            </span>
             <span class="material-icons chevron_right">
                 chevron_right
             </span>

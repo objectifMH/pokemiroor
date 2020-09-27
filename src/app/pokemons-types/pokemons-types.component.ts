@@ -53,7 +53,6 @@ export class PokemonsTypesComponent implements OnInit {
       else {
         this.pokemons_types = this.pokemons_types_aux;
         console.log(this.pokemons_types);
-
       }
     }
   }

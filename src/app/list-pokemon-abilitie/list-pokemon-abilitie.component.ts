@@ -77,7 +77,7 @@ export class ListPokemonAbilitieComponent implements OnInit {
   getPokemonsByAbility(name: string) {
     this.pokeService.getPokemonByAbility(name).subscribe(
       data => {
-        this.pokemons_abilities_aux = [...this.pokemons_abilities_aux, { 'ability': name, 'list_pokemons': data['pokemon'].slice(0, 8) }];
+        this.pokemons_abilities_aux = [...this.pokemons_abilities_aux, { 'ability': name, 'list_pokemons': data['pokemon'].slice(0, 8), 'total': data['pokemon'].length }];
       },
       err => {
         console.log(err);

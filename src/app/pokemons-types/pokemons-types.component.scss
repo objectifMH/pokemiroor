@@ -20,9 +20,15 @@ h4 {
     position: relative;
     margin-bottom: 30px;
 
-    .span_grey {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .span_total {
         color: grey;
-        font-size: 0.8em;
+        font-size: 0.6em;
+
+        margin-left: 10px;
     }
 
     .chevron_right {

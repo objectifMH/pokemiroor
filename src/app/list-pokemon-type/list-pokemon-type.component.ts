@@ -38,7 +38,7 @@ export class ListPokemonTypeComponent implements OnInit {
   getPokemonsByType(name: string) {
     this.pokeService.getPokemonByTypes(name).subscribe(
       data => {
-        this.pokemons_types_aux = [...this.pokemons_types_aux, { 'type': name, 'list_pokemons': data['pokemon'].slice(0, 8) }];
+        this.pokemons_types_aux = [...this.pokemons_types_aux, { 'type': name, 'list_pokemons': data['pokemon'].slice(0, 8), 'total': data['pokemon'].length }];
       },
       err => {
         console.log(err);
@@ -49,28 +49,4 @@ export class ListPokemonTypeComponent implements OnInit {
       }
     );
   }
-
-  
-
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll($event: Event): void {
-  //   //console.log("On Scroll");
-  //   //Logic To Check whether we are bottom of the page
-  //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-  //     //console.log("On Scroll Down", this.nbr_scroll);
-  //     //Write logic here for loading new content.
-  //     if (this.nbr_scroll <= this.pokemons_types_aux.length) {
-  //       this.pokemons_types = this.pokemons_types_aux.slice(0, this.nbr_scroll);
-  //       this.nbr_scroll = this.nbr_scroll + 0.1;
-  //     }
-  //   }
-  // }
-
-
-  redirectTypeFragment(type) {
-    setTimeout(() => {
-      this.router.navigate(['/types'], { fragment: type });
-    }, 1500);
-  }
-
 }
