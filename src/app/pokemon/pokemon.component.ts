@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 import { UtilService } from '../services/util.service';
 
@@ -35,7 +36,9 @@ export class PokemonComponent implements OnInit {
   
 
 
-  constructor(private pokeService: PokemonService, private utilService: UtilService) { }
+  constructor(  private pokeService: PokemonService,
+                private utilService: UtilService, 
+                private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -45,7 +48,7 @@ export class PokemonComponent implements OnInit {
     this.pokeService.getPokemon(this.input_pokemon.url).subscribe(
       data => {
         this.pokemon = data;
-        console.log(this.pokemon);
+        //console.log(this.pokemon);
         this.getPokemonSpecies(this.pokemon.species.url)
       },
       err => {

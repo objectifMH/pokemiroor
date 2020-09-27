@@ -4,15 +4,24 @@
         <div class="pokemon_settings">
             <h3 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemon.species.name}}</h3>
             <div class="pokemon_abilities" *ngIf="pokemon.abilities && show_abilities">
-                <div    class="badge badge-light" 
+                <div    class="badge badge-light badge_abilities" 
                         [ngStyle]="{'background' : color_abilities}"
                         *ngIf="pokemon.abilities[0]">
-                    {{pokemon.abilities[0].ability.name}}
+                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[0].ability.name}}"  
+                        
+                        class=""
+                        title="{{pokemon.abilities[0].ability.name | titlecase }}">
+                        {{pokemon.abilities[0].ability.name}}
+                    </a>
                 </div>
-                <div    class="badge badge-light" 
+                <div    class="badge badge-light badge_abilities" 
                         [ngStyle]="{'background' : color_abilities}" 
                         *ngIf="pokemon.abilities[1]">
-                    {{pokemon.abilities[1].ability.name}}
+                    
+                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[1].ability.name}}" 
+                        title="{{pokemon.abilities[1].ability.name | titlecase }}">
+                        {{pokemon.abilities[1].ability.name}}
+                    </a>
                 </div>
             </div>  
 
@@ -31,3 +40,4 @@
         {{pokemon.id}} 
     </span>
 </div>
+<div class="spinner-grow text-dark" *ngIf="!pokemon"></div>

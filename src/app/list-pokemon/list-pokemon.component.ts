@@ -25,7 +25,7 @@ export class ListPokemonComponent implements OnInit {
     this.pokeService.getPokemonsByPage(this.getRandomInt(200).toString(), "12").subscribe(
       data => {
         this.pokemons = data['results'];
-        console.log(this.pokemons);
+        //console.log(this.pokemons);
       },
       err => {
         console.log(err);

@@ -1,7 +1,7 @@
 <div class="container types">
     <span class="badge badge-success"> Types :</span>
     <span class="badge badge-warning" *ngFor="let poke of this.pokemons_types_aux; let i = index">
-        <a [routerLink] = "['/types']"  fragment="{{poke.type}}" (click)="onType(poke)">{{poke.type}}</a>
+        <a [routerLink] = "['/types']"  fragment="{{poke.type}}" >{{poke.type}}</a>
     </span>
     
 </div>
@@ -29,5 +29,13 @@
     </div>
     
     <hr>
+</div>
+
+<div class="container-fluid vertical_align_top">
+    <a [routerLink] = "['/abilities']"  fragment="abilities" class="">
+        <span class="material-icons">
+            vertical_align_top
+        </span>
+    </a>
 </div>
 

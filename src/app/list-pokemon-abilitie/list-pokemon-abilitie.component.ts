@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
 
 @Component({
@@ -13,25 +13,62 @@ export class ListPokemonAbilitieComponent implements OnInit {
   abilities: string[];
   pokemons_abilities = [];
   pokemons_abilities_aux = [];
+  next: string;
+  previous: string;
+  offset_next: string;
+  limit_next: string;
+  offset_previous: string;
+  limit_previous: string;
 
-  nbr_scroll = 2;
+  constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router) { 
+    
+    let url ="";
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        const url_val = val.url;
 
-  constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router) { }
+        //decoupage 
+        let suffixe = url_val.split('/');
+        url = ''.concat(this.pokeService.url_base+'ability?offset=', suffixe[2], '&limit=', suffixe[3]);
+        this.getAbilitiesPokemon(url);
+      }
+    });
 
-  ngOnInit(): void {
-    this.getAbilitiesPokemon();
   }
 
-  getAbilitiesPokemon() {
-    this.pokeService.getAbilities().subscribe(
+  ngOnInit(): void { }
+
+  getAbilitiesPokemon(url) {
+    this.pokeService.getAbilities(url).subscribe(
       data => {
+        
         this.abilities = data['results'];
-        console.log(this.abilities);
+        this.next = data['next'];
+        this.previous = data['previous'];
+
+        //decoupage next : 
+        if ( this.next){
+          
+          let inter = this.next.split('?')[1].split('&')
+          this.offset_next = inter[0].split('=')[1];
+          this.limit_next = inter[1].split('=')[1];
+          console.log("Decoupage next" , this.offset_next, this.limit_next, this.next, this.previous);
+        }
+
+        //previous :
+        if ( this.previous){
+          let inter = this.previous.split('?')[1].split('&')
+          this.offset_previous = inter[0].split('=')[1];
+          this.limit_previous = inter[1].split('=')[1];
+        }
+
       },
       err => {
         console.log(err);
       },
       () => {
+
+        this.pokemons_abilities_aux = [];
         this.abilities.map(ability => this.getPokemonsByAbility(ability['name']))
       }
     );
@@ -46,37 +83,10 @@ export class ListPokemonAbilitieComponent implements OnInit {
         console.log(err);
       },
       () => {
-        this.pokemons_abilities = this.pokemons_abilities_aux.slice(0, this.nbr_scroll);
+        console.log(this.abilities, this.pokemons_abilities_aux);
+        this.pokemons_abilities = this.pokemons_abilities_aux;
       }
     );
-  }
-
-  
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll($event: Event): void {
-    //console.log("On Scroll");
-    //Logic To Check whether we are bottom of the page
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      //console.log("On Scroll Down", this.nbr_scroll);
-      //Write logic here for loading new content.
-      if (this.nbr_scroll <= this.pokemons_abilities_aux.length) {
-        this.pokemons_abilities = this.pokemons_abilities_aux.slice(0, this.nbr_scroll);
-        this.nbr_scroll = this.nbr_scroll + 0.1;
-      }
-    }
-  }
-
-  onAbility(pokemon) {
-    this.pokemons_abilities = this.pokemons_abilities_aux;
-    console.log(this.pokemons_abilities_aux);
-  }
-
-
-  redirectAbilityFragment(ability) {
-    setTimeout(() => {
-      this.router.navigate(['/ability'], { fragment: ability });
-    }, 1500);
   }
 
 }

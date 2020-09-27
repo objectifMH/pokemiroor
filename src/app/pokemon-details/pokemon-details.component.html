@@ -11,13 +11,15 @@
         <div class="pokemon_settings middle">
             <div class="pokemon_spec" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Specification</H5>
-                <div    [ngStyle]="{'background' : species.color.name}"
-                        class="badge" 
+                <div    [ngStyle]="{'background' : species.color.name}" 
+                        class="badge " 
+                        *ngIf="species"
                         >
                     Height : {{this.pokemons_details.height}}dm
                 </div>
                 <div    [ngStyle]="{'background' : species.color.name}"
                         class="badge" 
+                        *ngIf="species"
                         >
                     Weight : {{this.pokemons_details.weight}}hg
                 </div>
@@ -25,7 +27,7 @@
             <div class="pokemon_types" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Types</H5>
                 <div    *ngFor="let type of this.pokemons_details.types"
-                        class="badge" 
+                        class="badge badge_types" 
                         [ngStyle]="{'background' : color_abilities}"
                         >
                     
@@ -37,10 +39,12 @@
             <div class="pokemon_abilities" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Abilities</H5>
                 <div    *ngFor="let abilitie of this.pokemons_details.abilities"
-                        class="badge" 
-                        [ngStyle]="{'background' : color_abilities}"
-                        >
-                        {{abilitie.ability.name}}
+                        class="badge badge_abilities" 
+                        [ngStyle]="{'background' : color_abilities}">
+                        <a  routerLink="/pokemons-ability/{{abilitie.ability.name}}" 
+                            title="{{abilitie.ability.name | titlecase }}">
+                            {{abilitie.ability.name}}
+                        </a>
                 </div>
             </div>  
             <img  

@@ -46,6 +46,7 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokeService.getPokemonsSpecies(url_species).subscribe(
       data => {
         this.species = data;
+        console.log(this.species);
         this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.colorAbilities(this.color_abilities_array);

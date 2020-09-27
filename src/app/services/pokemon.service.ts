@@ -48,8 +48,7 @@ export class PokemonService {
 
   // abilities :
 
-  public getAbilities() {
-    const url = ''.concat(this.url_base, "ability/");
+  public getAbilities(url: string) {
     return this.httpClient.get(url);
   }
 

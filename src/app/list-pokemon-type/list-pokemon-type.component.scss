@@ -17,6 +17,33 @@ a {
 
 }
 
+.vertical_align_top {
+    background: grey;
+    a {
+        position: absolute;
+        right: 15px;
+
+        span {
+            color:white;
+            font-size: 1.5em;
+            font-weight: bolder;
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 3px;
+
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.2);
+                box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+
+                background:  $border;
+
+            }
+        }
+    }
+}
+
 .types {
     display: flex;
     justify-content: center;
@@ -66,6 +93,10 @@ a {
 
         &:hover {
             transform: scale(1.22);
+
+            background: $border;
+            border-radius: 5px;
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
         }
     }
 }

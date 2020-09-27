@@ -15,17 +15,20 @@ const routes: Routes = [
   {path: 'pokemon', component: PokemonComponent},
   {path: 'list', component: ListPokemonComponent},
   {path: 'types', component: ListPokemonTypeComponent},
+  {path: 'abilities/:offset/:limit', component: ListPokemonAbilitieComponent},
   {path: 'abilities', component: ListPokemonAbilitieComponent},
-  {path: 'pokemons-types/:type', component: PokemonsTypesComponent},
-  {path: 'pokemons-details/:name', component: PokemonDetailsComponent},
-  {path: 'pokemons-ability/:ability', component: PokemonsAbilitiesComponent},
+  {path: 'pokemons-types/:type', component: PokemonsTypesComponent, runGuardsAndResolvers: 'always'},
+  {path: 'pokemons-details/:name', component: PokemonDetailsComponent, runGuardsAndResolvers: 'always'},
+  {path: 'pokemons-ability/:ability', component: PokemonsAbilitiesComponent, runGuardsAndResolvers: 'always'},
   {path: '**', redirectTo: '/main' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{
-    anchorScrolling: 'enabled'
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: 'reload'
   })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
