@@ -17,8 +17,9 @@ export class PokemonsTypesComponent implements OnInit {
   constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router, ) { }
 
   ngOnInit(): void {
-     this.type = this.route.snapshot.paramMap.get('type');
+    this.type = this.route.snapshot.paramMap.get('type');
     this.getAllPokemonsByType(this.type);
+
   }
 
   getAllPokemonsByType(type: string) {
@@ -45,14 +46,17 @@ export class PokemonsTypesComponent implements OnInit {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       console.log("On Scroll Down", this.nbr_scroll);
       //Write logic here for loading new content.
-      if (this.nbr_scroll <= this.pokemons_types_aux.length) {
-        this.pokemons_types = this.pokemons_types_aux.slice(0, this.nbr_scroll);
-        this.nbr_scroll = this.nbr_scroll + 10;
-        console.log(this.pokemons_types);
-      }
-      else {
-        this.pokemons_types = this.pokemons_types_aux;
-        console.log(this.pokemons_types);
+      if ( this.pokemons_types_aux )
+      {
+        if (this.nbr_scroll <= this.pokemons_types_aux.length) {
+          this.pokemons_types = this.pokemons_types_aux.slice(0, this.nbr_scroll);
+          this.nbr_scroll = this.nbr_scroll + 10;
+          console.log(this.pokemons_types);
+        }
+        else {
+          this.pokemons_types = this.pokemons_types_aux;
+          console.log(this.pokemons_types);
+        }
       }
     }
   }

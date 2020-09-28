@@ -1,6 +1,6 @@
   
-<section class="container">
-    <span class="badge badge-success"> Types :</span>
+<section class="container" >
+    <span class="badge badge-success" id="container_top"> Types :</span>
     <h4>{{type}} 
         <span  class="span_total" *ngIf="this.pokemons_types">
             ({{this.pokemons_types_aux.length}})  
@@ -18,5 +18,13 @@
     </h4>
     <div class="all_pokemons_type">
         <app-pokemon *ngFor="let poke of this.pokemons_types; let i = index" [input_pokemon]="poke.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true" ></app-pokemon>
+    </div>
+    
+    <div class="container-fluid vertical_align_top">
+        <a [routerLink] = "['/pokemons-types', type]" fragment="container_top">
+            <span class="material-icons">
+                vertical_align_top
+            </span>
+        </a>
     </div>
 </section>

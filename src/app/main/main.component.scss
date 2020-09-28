@@ -10,7 +10,6 @@ section {
         background: linear-gradient(to bottom, #5b145b 60%, #43478e 100%);
         padding-bottom: 125px;
 
-
         .affiche_top {
             flex-direction: column;
             padding: 2px 25px 0px 10px;
@@ -37,7 +36,6 @@ section {
                     letter-spacing: -3px;
                     text-shadow: 3px 0 0 $border, 3px 3px 0 $border, 0 3px 0 $border, -3px 3px 0 $border, -3px 0 0 $border, -3px -3px 0 $border, 0 -3px 0 $border, 3px -3px 0 $border;
                 }
-
             }
 
             h3 {
@@ -64,8 +62,6 @@ section {
         display: flex;
         flex-direction: row;
         padding: 20px 15px;
-
-        
         background: linear-gradient(to bottom, #3761a8 -49%, #5a135a 100%);
 
         .movies_left {
@@ -122,7 +118,6 @@ section {
 
                 img {
                     max-width: 170px;
-                    
                 }
 
                 a {
@@ -130,7 +125,6 @@ section {
                 }
             }
         }
-
     }
 
     .container {
@@ -178,14 +172,10 @@ section {
                         color: white;
                         text-decoration: none;
                     }
-                }    
-                
+                }      
             }
-
         }
-        
     }
-
 
     .container-fluid.pokemon_go{
 
@@ -230,18 +220,18 @@ section {
                     font-weight: bold;
                 }
             }
-        
-        }
-       
+        }  
     }
 
-    }
+}
     
+/**  Responsive **/
 
 @media (max-width: 768px) {
 
     section {
-            
+        background: green;
+
         .container-fluid.pokemon {
             flex-direction: column;
             align-items: center;
@@ -256,8 +246,6 @@ section {
                 position: static;
             }
         }
-
-        
 
         .movies {
             flex-direction: column;
@@ -286,4 +274,9 @@ section {
     }
 }
 
+@media (max-width: 425px) {
+    section { 
+        background: red;
+    }
+}
 

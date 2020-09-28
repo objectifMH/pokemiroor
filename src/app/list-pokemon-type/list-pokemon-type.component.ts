@@ -38,7 +38,7 @@ export class ListPokemonTypeComponent implements OnInit {
   getPokemonsByType(name: string) {
     this.pokeService.getPokemonByTypes(name).subscribe(
       data => {
-        this.pokemons_types_aux = [...this.pokemons_types_aux, { 'type': name, 'list_pokemons': data['pokemon'].slice(0, 8), 'total': data['pokemon'].length }];
+        this.pokemons_types_aux = [...this.pokemons_types_aux, { 'type': name, 'list_pokemons': data['pokemon'].slice(0, 6), 'total': data['pokemon'].length }];
       },
       err => {
         console.log(err);

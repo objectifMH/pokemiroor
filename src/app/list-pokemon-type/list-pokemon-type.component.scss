@@ -24,7 +24,6 @@ a {
 
 .container_type {
     margin-bottom: 20px;
-
 }
 
 .vertical_align_top {
@@ -88,24 +87,23 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
+    justify-content: space-evenly;
 }
 
 .plus_pokemons_type {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+     display: flex;
+     align-items: center;
+    justify-content: flex-end;
 
-    .material-icons.arrow_forward_ios {
+    .material-icons.add_circle_outline {
         transition: all .2s ease-in-out;
         cursor: pointer;
         font-size: 2em;
+        border-radius: 50%;
 
         &:hover {
-            transform: scale(1.22);
-
+            transform: scale(1.20);
             background: $border;
-            border-radius: 5px;
             box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
         }
     }

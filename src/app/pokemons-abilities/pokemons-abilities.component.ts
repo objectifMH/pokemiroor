@@ -58,5 +58,4 @@ export class PokemonsAbilitiesComponent implements OnInit {
       }
     }
   }
-
 }
