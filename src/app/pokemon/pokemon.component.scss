@@ -77,3 +77,11 @@
     }
     
 }
+
+/** Responsive **/
+
+@media (max-width: 425px) {
+    img { 
+        max-width: 240px !important;
+    }
+}

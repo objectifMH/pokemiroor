@@ -118,11 +118,11 @@
 
 /**  Responsive **/
 
-@media (max-width: 768px) {
-    .pokemon_settings.middle {
-        width: 80%;
-    }
-}
+// @media (max-width: 768px) {
+//     .pokemon_settings.middle {
+//         width: 80%;
+//     }
+// }
 
 @media (max-width: 768px) {
     .pokemon_settings.middle {
@@ -142,6 +142,15 @@
 
         .pokemon_stats {
             order: 3;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .pokemon_settings.middle {
+
+        img { 
+            max-width: 300px !important;
         }
     }
 }
