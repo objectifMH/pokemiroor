@@ -5,50 +5,51 @@
             <h2 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemons_details.species.name}}</h2>
         </div>
         <div class="pokemon_settings middle">
-            <div class="pokemon_spec" >
-                <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Specification</H5>
-                <div    [ngStyle]="{'background' : species.color.name}" 
-                        class="badge " 
-                        *ngIf="species"
-                        >
-                    Height : {{this.pokemons_details.height}}dm
-                </div>
-                <div    [ngStyle]="{'background' : species.color.name}"
-                        class="badge" 
-                        *ngIf="species"
-                        >
-                    Weight : {{this.pokemons_details.weight}}hg
-                </div>
-            </div>  
-            <div class="pokemon_types" >
-                <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Types</H5>
-                <div    *ngFor="let type of this.pokemons_details.types"
-                        class="badge badge_types" 
-                        [ngStyle]="{'background' : color_abilities}"
-                        >
-                    <a routerLink = "/pokemons-types/{{type.type.name}}" >
-                        {{type.type.name}}
-                    </a>
-                </div>
-            </div>  
-            <div class="pokemon_abilities" >
-                <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Abilities</H5>
-                <div    *ngFor="let abilitie of this.pokemons_details.abilities"
-                        class="badge badge_abilities" 
-                        [ngStyle]="{'background' : color_abilities}">
-                        <a  routerLink="/pokemons-ability/{{abilitie.ability.name}}" 
-                            title="{{abilitie.ability.name | titlecase }}">
-                            {{abilitie.ability.name}}
+            <div class="pokemon_spec_types_abilities">
+                <div class="pokemon_spec" >
+                    <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Specification</H5>
+                    <div    [ngStyle]="{'background' : species.color.name}" 
+                            class="badge " 
+                            *ngIf="species"
+                            >
+                        Height : {{this.pokemons_details.height}}dm
+                    </div>
+                    <div    [ngStyle]="{'background' : species.color.name}"
+                            class="badge" 
+                            *ngIf="species"
+                            >
+                        Weight : {{this.pokemons_details.weight}}hg
+                    </div>
+                </div>  
+                <div class="pokemon_types" >
+                    <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Types</H5>
+                    <div    *ngFor="let type of this.pokemons_details.types"
+                            class="badge badge_types" 
+                            [ngStyle]="{'background' : color_abilities}"
+                            >
+                        <a routerLink = "/pokemons-types/{{type.type.name}}" >
+                            {{type.type.name}}
                         </a>
-                </div>
-            </div>  
+                    </div>
+                </div>  
+                <div class="pokemon_abilities" >
+                    <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Abilities</H5>
+                    <div    *ngFor="let abilitie of this.pokemons_details.abilities"
+                            class="badge badge_abilities" 
+                            [ngStyle]="{'background' : color_abilities}">
+                            <a  routerLink="/pokemons-ability/{{abilitie.ability.name}}" 
+                                title="{{abilitie.ability.name | titlecase }}">
+                                {{abilitie.ability.name}}
+                            </a>
+                    </div>
+                </div> 
+            </div>
+             
             <img  
                 src="{{pokemons_details.sprites.other.dream_world.front_default 
                     ? pokemons_details.sprites.other.dream_world.front_default
                     : 'assets/img/no_image.png'}}"
-                [ngStyle]="{'max-width' : '400px'}"
-
-            >
+                [ngStyle]="{'max-width' : '400px'}" >
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
                 <div    *ngFor="let stat of this.pokemons_details.stats"

@@ -44,9 +44,12 @@
             text-transform: capitalize;
             font-weight: bold;
             text-align: center;
-
         }
 
+        .pokemon_spec_types_abilities {
+            display: flex;
+            flex-direction: row;
+        }
         .pokemon_abilities, .pokemon_types, .pokemon_stats, .pokemon_spec {
             display: flex;
             flex-direction: column;
@@ -104,14 +107,41 @@
         font-weight: bold;
     }
 
-
-
     img {
         padding: 10px 15px;
         margin: 5px 8px;
         margin: 5px 0px 5px 20px;
 
-        
     }
-    
+}
+
+
+/**  Responsive **/
+
+@media (max-width: 768px) {
+    .pokemon_settings.middle {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .pokemon_settings.middle {
+        flex-direction: column !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        img { 
+            order: 1;
+            margin-bottom: 30px;
+        }
+
+        .pokemon_spec_types_abilities {
+            order: 2;
+        }
+
+        .pokemon_stats {
+            order: 3;
+        }
+    }
 }
