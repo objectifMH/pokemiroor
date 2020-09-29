@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'abilities', component: ListPokemonAbilitieComponent},
   {path: 'pokemons-types/:type', component: PokemonsTypesComponent},
   {path: 'pokemons-details/:id', component: PokemonDetailsComponent},
-  {path: 'pokemons-ability/:ability', component: PokemonsAbilitiesComponent},
+  {path: 'pokemons-ability/:ability/:offset/:limit', component: PokemonsAbilitiesComponent},
   {path: '**', redirectTo: '/main' },
 ];
 

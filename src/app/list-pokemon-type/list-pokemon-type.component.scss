@@ -87,24 +87,29 @@ a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
-    justify-content: space-evenly;
+    //justify-content: space-evenly;
 }
 
 .plus_pokemons_type {
-     display: flex;
-     align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
 
-    .material-icons.add_circle_outline {
+    color: white;
+    margin-top: 15px;
+    a {
+        display: flex;
+        align-items: center;
         transition: all .2s ease-in-out;
         cursor: pointer;
-        font-size: 2em;
-        border-radius: 50%;
 
         &:hover {
-            transform: scale(1.20);
-            background: $border;
+            transform: scale(1.12);
             box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .more {
+            font-size: 1.12em;
         }
     }
 }

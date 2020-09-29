@@ -108,21 +108,24 @@ a {
 
 .plus_pokemons_ability {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
-    .material-icons.arrow_forward_ios {
+    color: white;
+    margin-top: 15px;
+    a {
+        display: flex;
+        align-items: center;
         transition: all .2s ease-in-out;
         cursor: pointer;
-        font-size: 2em;
 
         &:hover {
-            transform: scale(1.22);
-            
-            background: $border;
-            border-radius: 5px;
+            transform: scale(1.12);
             box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .more {
+            font-size: 1.12em;
         }
     }
 }

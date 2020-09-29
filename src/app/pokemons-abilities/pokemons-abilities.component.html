@@ -7,8 +7,8 @@
         <span class="material-icons chevron_right">
             chevron_right
         </span>
-        <a [routerLink] = "['/abilities']" >
-            <span class="btn btn-primary back"> Back abilities
+        <a [routerLink] = "['/abilities', offset, limit]" fragment="{{ability}}">
+            <span class="btn btn-primary back"> Back abilities {{ability}}
                 <span class="material-icons undo">
                     undo
                 </span>

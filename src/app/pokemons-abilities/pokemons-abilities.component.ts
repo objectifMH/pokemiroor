@@ -12,6 +12,8 @@ export class PokemonsAbilitiesComponent implements OnInit {
   pokemons_abilities: any;
   pokemons_abilities_aux: any;
   ability: string;
+  offset: string;
+  limit: string;
   nbr_scroll = 20;
 
   constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router, ) {
@@ -28,6 +30,8 @@ export class PokemonsAbilitiesComponent implements OnInit {
 
   ngOnInit(): void {
      this.ability = this.route.snapshot.paramMap.get('ability');
+     this.offset = this.route.snapshot.paramMap.get('offset');
+     this.limit = this.route.snapshot.paramMap.get('limit');
     this.getAllPokemonsByAbility(this.ability);
   }
 

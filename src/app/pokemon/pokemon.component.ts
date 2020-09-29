@@ -48,7 +48,6 @@ export class PokemonComponent implements OnInit {
     this.pokeService.getPokemon(this.input_pokemon.url).subscribe(
       data => {
         this.pokemon = data;
-        console.log("pokemon >>" ,this.pokemon);
         this.getPokemonSpecies(this.pokemon.species.url)
       },
       err => {

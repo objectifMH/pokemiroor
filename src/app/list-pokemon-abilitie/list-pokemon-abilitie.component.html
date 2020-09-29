@@ -6,7 +6,9 @@
     </a>
     <span class="badge badge-success"> Abilities :</span>
     <span class="badge badge-warning" *ngFor="let ability of this.abilities; let i = index">
-        <a [routerLink] = "['/abilities']"  fragment="{{ability.name}}" >{{ability.name}}</a>
+        <!-- <a [routerLink] = "['/abilities', offset, limit]"  fragment={{ability.name}} >{{ability.name}}</a>
+        routerLink = "/pokemons-ability/{{poke.ability}}" -->
+        <a routerLink = "/abilities/{{offset}}/{{limit}}"  fragment={{ability.name}} >{{ability.name}}</a>
     </span>
     <a routerLink = "/abilities/{{offset_next}}/{{limit_next}}" *ngIf="next">
         <span class="material-icons chevron_right" *ngIf="next" >
@@ -28,19 +30,23 @@
             <div  *ngFor="let pokemon of poke.list_pokemons; let i = index">
                 <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true"></app-pokemon>
             </div>
-            <div class="plus_pokemons_ability">
-                    <a routerLink = "/pokemons-ability/{{poke.ability}}" >
-                        <span class="material-icons arrow_forward_ios">
-                            arrow_forward_ios
-                        </span>
-                    </a>
-            </div>
+        </div>
+        <div class="plus_pokemons_ability">
+            <a routerLink = "/pokemons-ability/{{poke.ability}}/{{offset}}/{{limit}}" class="btn btn-primary">
+            <!-- <a [routerLink] = "['/pokemons-ability',poke.ability, offset, limit]" class="btn btn-primary"> -->
+                <span class="more">
+                    more
+                </span>
+                <span class="material-icons arrow_forward_ios">
+                    arrow_forward_ios
+                </span>
+            </a>
         </div>
     </div>
     <hr>
 </div>
 <div class="container-fluid vertical_align_top">
-    <a [routerLink] = "['/abilities']"  fragment="abilities" class="">
+    <a [routerLink] = "['/abilities', offset, limit]"  fragment="abilities" class="">
         <span class="material-icons">
             vertical_align_top
         </span>

@@ -15,12 +15,14 @@
             <div  *ngFor="let pokemon of poke.list_pokemons; let i = index">
                 <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true"></app-pokemon>
             </div>
-            
         </div>
         <div class="plus_pokemons_type">
-            <a routerLink = "/pokemons-types/{{poke.type}}" >
-                <span class="material-icons add_circle_outline">
-                    add_circle_outline
+            <a routerLink = "/pokemons-types/{{poke.type}}" class="btn btn-primary">
+                <span class="more">
+                    more
+                </span>
+                <span class="material-icons arrow_forward_ios">
+                    arrow_forward_ios
                 </span>
             </a>
         </div>
