@@ -68,7 +68,7 @@
                 </div>
             </div>  
         </div> 
-        <div class="bottom">
+        <div class="bottom" *ngIf='evolution_bool'>
             <h4>Evolution</h4>
             <div class="container_evolution">
                 <div class="pokemon_baby">
@@ -102,7 +102,9 @@
                     </app-pokemon>
                 </div>
             </div>
+            <div class="spinner-grow text-warning" *ngIf="!evolution_bool"></div>
         </div>
+        
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
         {{pokemons_details.id}}

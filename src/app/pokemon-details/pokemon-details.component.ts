@@ -26,6 +26,8 @@ export class PokemonDetailsComponent implements OnInit {
   evolve_pokemon: any;
   super_evolve_pokemon: any;
 
+  evolution_bool: boolean;
+
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
     let url = "";
     this.router.events.subscribe((val) => {
@@ -64,6 +66,9 @@ export class PokemonDetailsComponent implements OnInit {
         this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.colorAbilities(this.color_abilities_array);
+
+        this.evolution_bool = data['evolution_chain'] ? true : false;
+        if( data['evolution_chain'])
         this.getEvolutionChain(data['evolution_chain'].url);
       },
       err => {
