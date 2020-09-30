@@ -7,7 +7,7 @@
                 <div    class="badge badge-light badge_abilities" 
                         [ngStyle]="{'background' : color_abilities}"
                         *ngIf="pokemon.abilities[0]">
-                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[0].ability.name}}"  
+                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[0].ability.name}}/0/20"  
                         
                         class=""
                         title="{{pokemon.abilities[0].ability.name | titlecase }}">
@@ -18,7 +18,7 @@
                         [ngStyle]="{'background' : color_abilities}" 
                         *ngIf="pokemon.abilities[1]">
                     
-                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[1].ability.name}}" 
+                    <a  routerLink="/pokemons-ability/{{pokemon.abilities[1].ability.name}}/0/20" 
                         title="{{pokemon.abilities[1].ability.name | titlecase }}">
                         {{pokemon.abilities[1].ability.name}}
                     </a>
@@ -40,4 +40,4 @@
         {{pokemon.id}} 
     </span>
 </div>
-<div class="spinner-grow text-dark" *ngIf="!pokemon"></div>
+<div class="spinner-grow text-warning" *ngIf="!pokemon"></div>

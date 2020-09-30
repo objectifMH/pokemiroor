@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { PokemonService } from '../services/pokemon.service';
 import { UtilService } from '../services/util.service';
 
@@ -16,23 +17,36 @@ export class PokemonDetailsComponent implements OnInit {
 
 
   species: any;
+  evolution: any;
   color_background: any;
   color_abilities_array: any;
   color_abilities: any;
 
-  constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) { }
+  baby_pokemon: any;
+  evolve_pokemon: any;
+  super_evolve_pokemon: any;
+
+  constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
+    let url = "";
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        const url_val = val.url;
+        
+        this.id = this.route.snapshot.paramMap.get('id');
+        let url_pokemon = ''.concat(this.url, this.id);
+        this.getPokemonDetails(url_pokemon);
+      }
+    });
+   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    let url_pokemon = ''.concat(this.url, this.id);
-    this.getPokemonDetails(url_pokemon);
   }
 
   getPokemonDetails(url: string) {
     this.pokeService.getPokemon(url).subscribe(
       data => {
         this.pokemons_details = data;
-        console.log(this.pokemons_details);
+        console.log("getPokemon > ", this.pokemons_details);
         this.getPokemonSpecies(this.pokemons_details.species.url)
       },
       err => {
@@ -46,14 +60,57 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokeService.getPokemonsSpecies(url_species).subscribe(
       data => {
         this.species = data;
-        console.log(this.species);
+        console.log("getPokemonsSpecies > ", this.species);
         this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.colorAbilities(this.color_abilities_array);
+        this.getEvolutionChain(data['evolution_chain'].url);
       },
       err => {
         console.log(err);
       });
+  }
+
+  getEvolutionChain(url_evolution) {
+    this.pokeService.getPokemonsEvolutionChain(url_evolution).subscribe(
+      data => {
+        this.evolution = data;
+        console.log("getPokemonsEvolutionChain > ", data);
+        //console.log("Baby > ", data['chain']['species']);
+        
+        // Baby : 
+        if ( data['chain']['species'] )
+        {
+          let tab_url_baby = data['chain']['species'].url.split('/');
+          let id_baby = tab_url_baby[(tab_url_baby.length)-2];
+          this.baby_pokemon = {"name": data['chain']['species'], "url": this.url+id_baby };
+        }
+
+        
+        if ( data['chain']['evolves_to'][0]["species"] )
+        {
+          let tab_url_evolves = data['chain']['evolves_to'][0]["species"].url.split('/');
+          let id_evolve = tab_url_evolves[(tab_url_evolves.length)-2];
+          this.evolve_pokemon = {"name": data['chain']['evolves_to'][0]["species"], "url": this.url+id_evolve };
+        }
+
+        if ( data['chain']['evolves_to'][0]['evolves_to'][0] )
+        {
+          let tab_url_super_evolves = data['chain']['evolves_to'][0]['evolves_to'][0]['species'].url.split('/');
+          let id_super_evolve = tab_url_super_evolves[(tab_url_super_evolves.length)-2];
+          this.super_evolve_pokemon = {"name": data['chain']['evolves_to'][0]['evolves_to'][0]['species'], "url": this.url+id_super_evolve };
+        }
+
+
+
+
+      },
+      err => {
+        console.log(err);
+      },
+      () => {
+      }
+    );
   }
 
   colorAbilities(rgb) {

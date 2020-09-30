@@ -113,6 +113,47 @@
         margin: 5px 0px 5px 20px;
 
     }
+
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 50px;
+
+        .container_evolution {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 50px;
+
+            .pokemon_baby {
+
+                h5 {
+                    color: white;
+                    margin-top: 20px;
+                    text-transform: capitalize;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                img {
+                    border-radius: 15px;
+                    max-width: 280px;
+                }
+            }
+
+            .arrow_forward_ios:before {
+                color:white;
+                font-size: 2em;
+                content: 'arrow_forward_ios';
+                
+            }
+        }
+    }
 }
 
 
@@ -151,6 +192,19 @@
 
         img { 
             max-width: 300px !important;
+        }
+    }
+
+    .bottom {
+        .container_evolution {
+            flex-direction: column !important;
+
+            
+            .arrow_forward_ios:before {
+                font-size: 2em;
+                content: 'keyboard_arrow_down' !important;
+                
+            }
         }
     }
 }

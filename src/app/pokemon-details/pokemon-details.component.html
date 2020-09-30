@@ -37,7 +37,7 @@
                     <div    *ngFor="let abilitie of this.pokemons_details.abilities"
                             class="badge badge_abilities" 
                             [ngStyle]="{'background' : color_abilities}">
-                            <a  routerLink="/pokemons-ability/{{abilitie.ability.name}}" 
+                            <a  routerLink="/pokemons-ability/{{abilitie.ability.name}}/0/30" 
                                 title="{{abilitie.ability.name | titlecase }}">
                                 {{abilitie.ability.name}}
                             </a>
@@ -69,7 +69,39 @@
             </div>  
         </div> 
         <div class="bottom">
-            <h4>Details</h4>
+            <h4>Evolution</h4>
+            <div class="container_evolution">
+                <div class="pokemon_baby">
+                    <app-pokemon    *ngIf="baby_pokemon"  
+                                    [input_pokemon]="baby_pokemon" 
+                                    [width_img_pokemon]="100" 
+                                    [height_img_pokemon]="100" 
+                                    [show_abilities]="true">        
+                    </app-pokemon>
+                </div>
+                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="evolve_pokemon"> 
+                    
+                </span>
+                <div class="pokemon_baby">
+                    <app-pokemon    *ngIf="evolve_pokemon"
+                                    [input_pokemon]="evolve_pokemon" 
+                                    [width_img_pokemon]="120" 
+                                    [height_img_pokemon]="120" 
+                                    [show_abilities]="true">        
+                    </app-pokemon>
+                </div> 
+                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="super_evolve_pokemon">
+                    
+                </span>
+                <div class="pokemon_baby">
+                    <app-pokemon    *ngIf="super_evolve_pokemon" 
+                                    [input_pokemon]="super_evolve_pokemon" 
+                                    [width_img_pokemon]="140" 
+                                    [height_img_pokemon]="140" 
+                                    [show_abilities]="true">        
+                    </app-pokemon>
+                </div>
+            </div>
         </div>
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >

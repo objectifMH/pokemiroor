@@ -29,6 +29,10 @@ export class PokemonService {
     return this.httpClient.get(url);
   }
 
+  public getPokemonsEvolutionChain(url: string) {
+    return this.httpClient.get(url);
+  }
+
   // types :
 
   public getTypes() {

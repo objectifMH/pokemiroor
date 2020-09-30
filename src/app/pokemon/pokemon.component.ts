@@ -33,9 +33,6 @@ export class PokemonComponent implements OnInit {
   color_abilities_array: any;
   color_abilities: any;
 
-  
-
-
   constructor(  private pokeService: PokemonService,
                 private utilService: UtilService, 
                 private router: Router) { }
@@ -60,7 +57,6 @@ export class PokemonComponent implements OnInit {
       data => {
         this.species = data;
         this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
-        //console.log(" couleurs > " ,this.color_background, this.species.color.name, this.utilService.getColourNameToHex(this.species.color.name), this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.colorAbilities(this.color_abilities_array);
       },
@@ -82,9 +78,7 @@ export class PokemonComponent implements OnInit {
     let g = rgb[1]+60 < 255 ? rgb[1]+60 : 255 ;
     let b = rgb[2]+50 < 255 ? rgb[2]+50 : 255 ;
 
-    //linear-gradient(to bottom,#5a135a 0,#5a135a 100%);
     this.color_background = "linear-gradient(to bottom, rgb("+r+","+g+","+b+") 10%, rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+") 100%)";
-    //"rgb("+r+","+g+","+b+")";
   }
 
 
