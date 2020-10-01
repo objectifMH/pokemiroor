@@ -183,6 +183,10 @@
         justify-content: center !important;
         align-items: center !important;
 
+        .pokemon_stats {
+            margin-top: 50px;
+        }
+
         img { 
             order: 1;
             margin-bottom: 30px;
@@ -210,7 +214,6 @@
         .container_evolution {
             flex-direction: column !important;
 
-            
             .arrow_forward_ios:before {
                 font-size: 2em;
                 content: 'keyboard_arrow_down' !important;
