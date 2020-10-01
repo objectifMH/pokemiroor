@@ -167,6 +167,15 @@
 //     }
 // }
 
+@media (max-width: 1024px) {
+    .pokemon_settings.middle {
+        img { 
+            max-width: 300px !important;
+            max-height: 300px !important;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .pokemon_settings.middle {
         flex-direction: column !important;

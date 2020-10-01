@@ -22,6 +22,19 @@
     align-items: center;
 }
 
+.number_prix {
+    background: white;
+    position: absolute;
+    bottom: 15px;
+    right: 22px;
+    border-radius: 2px;
+    padding: 1px 3px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pokemon_container {
     border-radius: 25px;
     display: flex;

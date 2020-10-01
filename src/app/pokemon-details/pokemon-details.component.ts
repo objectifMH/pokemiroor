@@ -89,6 +89,7 @@ export class PokemonDetailsComponent implements OnInit {
           let tab_url_baby = data['chain']['species'].url.split('/');
           let id_baby = tab_url_baby[(tab_url_baby.length)-2];
           this.baby_pokemon = {"name": data['chain']['species'], "url": this.url+id_baby };
+          console.log(this.baby_pokemon);
         }
 
         
@@ -97,6 +98,7 @@ export class PokemonDetailsComponent implements OnInit {
           let tab_url_evolves = data['chain']['evolves_to'][0]["species"].url.split('/');
           let id_evolve = tab_url_evolves[(tab_url_evolves.length)-2];
           this.evolve_pokemon = {"name": data['chain']['evolves_to'][0]["species"], "url": this.url+id_evolve };
+          console.log(this.evolve_pokemon);
         }
 
         if ( data['chain']['evolves_to'][0]['evolves_to'][0] )
@@ -104,14 +106,11 @@ export class PokemonDetailsComponent implements OnInit {
           let tab_url_super_evolves = data['chain']['evolves_to'][0]['evolves_to'][0]['species'].url.split('/');
           let id_super_evolve = tab_url_super_evolves[(tab_url_super_evolves.length)-2];
           this.super_evolve_pokemon = {"name": data['chain']['evolves_to'][0]['evolves_to'][0]['species'], "url": this.url+id_super_evolve };
+          console.log(this.super_evolve_pokemon);
         }
-
-
-
-
       },
       err => {
-        console.log(err);
+        console.log(err); this.evolution_bool = false;
       },
       () => {
       }

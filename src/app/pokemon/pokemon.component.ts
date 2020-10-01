@@ -24,18 +24,16 @@ export class PokemonComponent implements OnInit {
   @Input()
   show_abilities: boolean;
 
-  // @Input()
-  // badge: string;
-
   pokemon: any;
   species: any;
   color_background: any;
   color_abilities_array: any;
   color_abilities: any;
+  prix: string;
 
-  constructor(  private pokeService: PokemonService,
-                private utilService: UtilService, 
-                private router: Router) { }
+  constructor(private pokeService: PokemonService,
+    private utilService: UtilService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -46,9 +44,13 @@ export class PokemonComponent implements OnInit {
       data => {
         this.pokemon = data;
         this.getPokemonSpecies(this.pokemon.species.url)
+
       },
       err => {
         console.log(err);
+      },
+      () => {
+        this.prix = this.getPrix(this.pokemon.id);
       });
   }
 
@@ -66,20 +68,36 @@ export class PokemonComponent implements OnInit {
   }
 
   colorAbilities(rgb) {
-    let r = rgb[0]-120 > 0 ? rgb[0]-120 : 0 ; 
-    let g = rgb[1]-100 > 0 ? rgb[1]-100 : 0 ;
-    let b = rgb[2]-80 > 0 ? rgb[2]-80 : 0 ;
+    let r = rgb[0] - 120 > 0 ? rgb[0] - 120 : 0;
+    let g = rgb[1] - 100 > 0 ? rgb[1] - 100 : 0;
+    let b = rgb[2] - 80 > 0 ? rgb[2] - 80 : 0;
 
-    this.color_abilities = "rgb("+r+","+g+","+b+")";
+    this.color_abilities = "rgb(" + r + "," + g + "," + b + ")";
   }
 
   colorBackground(rgb) {
-    let r = rgb[0]+80 < 255 ? rgb[1]+80 : 255 ; 
-    let g = rgb[1]+60 < 255 ? rgb[1]+60 : 255 ;
-    let b = rgb[2]+50 < 255 ? rgb[2]+50 : 255 ;
+    let r = rgb[0] + 80 < 255 ? rgb[1] + 80 : 255;
+    let g = rgb[1] + 60 < 255 ? rgb[1] + 60 : 255;
+    let b = rgb[2] + 50 < 255 ? rgb[2] + 50 : 255;
 
-    this.color_background = "linear-gradient(to bottom, rgb("+r+","+g+","+b+") 10%, rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+") 100%)";
+    this.color_background = "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
   }
 
+  getPrix(id) {
+    if (id < 100)
+      return '9.90';
+
+    if (id >= 100 && id < 240)
+      return '15.90';
+
+    if (id >= 240 && id < 500)
+      return '19.90';
+
+    if (id >= 500 && id < 1000)
+      return '24.90';
+
+    if (id >= 1000)
+      return '50';
+  }
 
 }

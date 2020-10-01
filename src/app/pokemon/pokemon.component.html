@@ -39,5 +39,8 @@
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
         {{pokemon.id}} 
     </span>
+    <span class="badge number_prix"  [ngStyle]="{'color' : color_abilities}" >
+        {{prix}}$
+    </span>
 </div>
 <div class="spinner-grow text-warning" *ngIf="!pokemon"></div>
