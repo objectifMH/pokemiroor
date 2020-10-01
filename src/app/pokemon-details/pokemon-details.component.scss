@@ -148,6 +148,16 @@
                 }
             }
 
+            .evolve_pokemon {
+                display: flex;
+                flex-direction: column ;
+                align-items: center;
+                img {
+                    border-radius: 15px;
+                    max-width: 280px;
+                }
+            }
+
             .arrow_forward_ios:before {
                 color:white;
                 font-size: 2em;

@@ -79,27 +79,29 @@
                                     [show_abilities]="true">        
                     </app-pokemon>
                 </div>
-                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="evolve_pokemon"> 
+                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="evolve_pokemon.length > 0"> 
                     
                 </span>
-                <div class="pokemon_baby">
-                    <app-pokemon    *ngIf="evolve_pokemon"
-                                    [input_pokemon]="evolve_pokemon" 
-                                    [width_img_pokemon]="120" 
-                                    [height_img_pokemon]="120" 
-                                    [show_abilities]="true">        
-                    </app-pokemon>
-                </div> 
-                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="super_evolve_pokemon">
+                <div  class="evolve_pokemon">
+                    <div *ngFor="let pokemon of this.evolve_pokemon; let i = index">
+                        <app-pokemon    [input_pokemon]="pokemon" 
+                                [width_img_pokemon]="120" 
+                                [height_img_pokemon]="120" 
+                                [show_abilities]="true">
+                        </app-pokemon> 
+                    </div>
+                </div>
+                <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="super_evolve_pokemon.length > 0 ">
                     
                 </span>
-                <div class="pokemon_baby">
-                    <app-pokemon    *ngIf="super_evolve_pokemon" 
-                                    [input_pokemon]="super_evolve_pokemon" 
-                                    [width_img_pokemon]="140" 
-                                    [height_img_pokemon]="140" 
-                                    [show_abilities]="true">        
-                    </app-pokemon>
+                <div  class="evolve_pokemon">
+                    <div *ngFor="let pokemon of this.super_evolve_pokemon; let i = index">
+                        <app-pokemon    [input_pokemon]="pokemon" 
+                                [width_img_pokemon]="120" 
+                                [height_img_pokemon]="120" 
+                                [show_abilities]="true">
+                        </app-pokemon> 
+                    </div>
                 </div>
             </div>
             <div class="spinner-grow text-warning" *ngIf="!evolution_bool"></div>

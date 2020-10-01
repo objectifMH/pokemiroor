@@ -23,8 +23,8 @@ export class PokemonDetailsComponent implements OnInit {
   color_abilities: any;
 
   baby_pokemon: any;
-  evolve_pokemon: any;
-  super_evolve_pokemon: any;
+  evolve_pokemon = [];
+  super_evolve_pokemon = [];
 
   evolution_bool: boolean;
 
@@ -33,13 +33,13 @@ export class PokemonDetailsComponent implements OnInit {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         const url_val = val.url;
-        
+
         this.id = this.route.snapshot.paramMap.get('id');
         let url_pokemon = ''.concat(this.url, this.id);
         this.getPokemonDetails(url_pokemon);
       }
     });
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -68,8 +68,8 @@ export class PokemonDetailsComponent implements OnInit {
         this.colorAbilities(this.color_abilities_array);
 
         this.evolution_bool = data['evolution_chain'] ? true : false;
-        if( data['evolution_chain'])
-        this.getEvolutionChain(data['evolution_chain'].url);
+        if (data['evolution_chain'])
+          this.getEvolutionChain(data['evolution_chain'].url);
       },
       err => {
         console.log(err);
@@ -81,32 +81,38 @@ export class PokemonDetailsComponent implements OnInit {
       data => {
         this.evolution = data;
         console.log("getPokemonsEvolutionChain > ", data);
-        //console.log("Baby > ", data['chain']['species']);
-        
+
         // Baby : 
-        if ( data['chain']['species'] )
-        {
+        if (data['chain']['species']) {
           let tab_url_baby = data['chain']['species'].url.split('/');
-          let id_baby = tab_url_baby[(tab_url_baby.length)-2];
-          this.baby_pokemon = {"name": data['chain']['species'], "url": this.url+id_baby };
+          let id_baby = tab_url_baby[(tab_url_baby.length) - 2];
+          this.baby_pokemon = { "name": data['chain']['species'], "url": this.url + id_baby };
           console.log(this.baby_pokemon);
         }
 
-        
-        if ( data['chain']['evolves_to'][0]["species"] )
-        {
-          let tab_url_evolves = data['chain']['evolves_to'][0]["species"].url.split('/');
-          let id_evolve = tab_url_evolves[(tab_url_evolves.length)-2];
-          this.evolve_pokemon = {"name": data['chain']['evolves_to'][0]["species"], "url": this.url+id_evolve };
-          console.log(this.evolve_pokemon);
+
+        if (data['chain']['evolves_to']) {
+          this.evolve_pokemon = [];
+
+          data['chain']['evolves_to'].map(evolve => {
+            let tab_url_evolves = evolve.species.url.split('/');
+            let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
+            this.evolve_pokemon = [...this.evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
+          });
+          console.log("evolve_pokemon", this.evolve_pokemon);
         }
 
-        if ( data['chain']['evolves_to'][0]['evolves_to'][0] )
-        {
-          let tab_url_super_evolves = data['chain']['evolves_to'][0]['evolves_to'][0]['species'].url.split('/');
-          let id_super_evolve = tab_url_super_evolves[(tab_url_super_evolves.length)-2];
-          this.super_evolve_pokemon = {"name": data['chain']['evolves_to'][0]['evolves_to'][0]['species'], "url": this.url+id_super_evolve };
-          console.log(this.super_evolve_pokemon);
+        if (data['chain']['evolves_to'].length > 0)
+        if (data['chain']['evolves_to'][0]['evolves_to']) {
+
+          this.super_evolve_pokemon = [];
+
+          data['chain']['evolves_to'][0]['evolves_to'].map(evolve => {
+            let tab_url_evolves = evolve.species.url.split('/');
+            let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
+            this.super_evolve_pokemon = [...this.super_evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
+          });
+          console.log("super_evolve_pokemon" ,this.super_evolve_pokemon);
         }
       },
       err => {
