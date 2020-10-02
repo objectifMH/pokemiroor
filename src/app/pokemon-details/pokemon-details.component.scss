@@ -32,7 +32,6 @@
 
     top: 0px;
     right: -100px;
-    
 }
 
 .prix {
@@ -60,6 +59,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
+
+    .shopping_cart:before {
+        color: white ;
+        content: 'shopping_cart' !important;
+    }
+
+    .done:before {
+        color: white;
+        content: 'done' !important;
+    }
 }
 
 .pokemon_container {
@@ -76,6 +87,10 @@
         align-items: baseline;
 
         margin-bottom: 40px;
+
+        .shopping_cart_img {
+            box-shadow: 0px 5px 10px 20px white;
+        }
 
         h5 {
             color: white;

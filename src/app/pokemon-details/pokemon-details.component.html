@@ -50,15 +50,20 @@
                     ? pokemons_details.sprites.other.dream_world.front_default
                     : 'assets/img/no_image.png'}}"
                 [ngStyle]="{'max-width' : '400px'}" 
+                [ngClass]="{'shopping_cart_img' : !isOnCart }"
                 >
 
                 <div class="prix_cart">
                     <span class="badge prix"  [ngStyle]="{'background' : color_abilities}" >
                         {{prix}}$
                     </span>
-                    <span class="badge cart"  [ngStyle]="{'background' : this.species.color.name }" >
-                        <span class="material-icons">
-                            shopping_cart
+                    <span   class="badge cart"  
+                            [ngStyle]="{'background' : this.species.color.name }"
+                            (click)="toggleIsOnCart()"
+                            >
+                            
+                        <span class="material-icons" [ngClass]="{'shopping_cart' : isOnCart, 'done' : !isOnCart  }">
+                            
                         </span>
                     </span>
 

@@ -29,6 +29,7 @@ export class PokemonDetailsComponent implements OnInit {
   super_evolve_pokemon = [];
 
   evolution_bool: boolean;
+  isOnCart = false;
 
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
     let url = "";
@@ -125,4 +126,7 @@ export class PokemonDetailsComponent implements OnInit {
     );
   }
 
+  toggleIsOnCart(){
+    this.isOnCart = !this.isOnCart;
+  }
 }
