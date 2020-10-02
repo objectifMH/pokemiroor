@@ -23,8 +23,14 @@ export class ListPokemonTypeComponent implements OnInit {
     this.pokeService.getTypes().subscribe(
       data => {
         this.types = data['results'];
-        this.types.sort();
-        console.log(this.types);
+
+        this.types.sort(function compare(a, b) {
+          if (a['name'] < b['name'])
+             return -1;
+          if (a['name'] > b['name'])
+             return 1;
+          return 0;
+        });
       },
       err => {
         console.log(err);
@@ -45,7 +51,6 @@ export class ListPokemonTypeComponent implements OnInit {
       },
       () => {
         this.pokemons_types = this.pokemons_types_aux;
-        //console.log(this.pokemons_types);
       }
     );
   }

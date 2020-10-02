@@ -1,8 +1,14 @@
 
 <div class="container" *ngIf="pokemons_details">
     <div class="pokemon_container" style="background: {{color_background}}; border: 3px solid {{color_abilities}};">
-        <div class="top">
+        <div class="top position-relative">
+            
             <h2 style="text-shadow: {{color_abilities}} 2px 2px;">{{pokemons_details.species.name}}</h2>
+            <img  
+                        src='assets/img/pokeball.png'
+                        [ngStyle]="{'display': 'none'}" 
+                        [ngClass]="{'shopping_cart_img' : !isOnCart }"
+                >
         </div>
         <div class="pokemon_settings middle">
             <div class="pokemon_spec_types_abilities">
@@ -46,11 +52,10 @@
             </div>
              <div class="position-relative">
                 <img  
-                src="{{pokemons_details.sprites.other.dream_world.front_default 
-                    ? pokemons_details.sprites.other.dream_world.front_default
-                    : 'assets/img/no_image.png'}}"
-                [ngStyle]="{'max-width' : '400px'}" 
-                [ngClass]="{'shopping_cart_img' : !isOnCart }"
+                        src="{{pokemons_details.sprites.other.dream_world.front_default 
+                            ? pokemons_details.sprites.other.dream_world.front_default
+                            : 'assets/img/no_image.png'}}"
+                        [ngStyle]="{'max-width' : '400px'}" 
                 >
 
                 <div class="prix_cart">

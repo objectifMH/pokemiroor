@@ -80,6 +80,23 @@
     align-items: center;
     padding: 8px 5px 2px;
 
+    .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .shopping_cart_img {
+            //box-shadow: 0px 5px 10px 20px white;
+            display: block !important;
+            position: relative;
+            max-width: 50px;
+            padding: 0 !important;
+            margin: 0 !important;
+            margin-left: 10px !important;
+        }
+    }
+
     .pokemon_settings.middle {
         display: flex;
         flex-direction: row;
@@ -87,10 +104,6 @@
         align-items: baseline;
 
         margin-bottom: 40px;
-
-        .shopping_cart_img {
-            box-shadow: 0px 5px 10px 20px white;
-        }
 
         h5 {
             color: white;

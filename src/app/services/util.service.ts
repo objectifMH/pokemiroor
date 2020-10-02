@@ -34,6 +34,8 @@ export class UtilService {
 
   constructor() { }
 
+  /** Colors */
+
   getColourNameToHex(colour) {
     if (typeof this.colours[colour.toLowerCase()] != 'undefined')
       return this.colours[colour.toLowerCase()];
@@ -44,7 +46,6 @@ export class UtilService {
   hexToRgb(hex) {
 
     hex = hex.substr(1, hex.length);
-    //console.log(hex);
     var aRgbHex = hex.match(/.{1,2}/g);
     var aRgb = [
       parseInt(aRgbHex[0], 16),
@@ -53,6 +54,24 @@ export class UtilService {
     ];
     return aRgb;
   }
+
+  colorAbilities(rgb) {
+    let r = rgb[0] - 120 > 0 ? rgb[0] - 120 : 0;
+    let g = rgb[1] - 100 > 0 ? rgb[1] - 100 : 0;
+    let b = rgb[2] - 80 > 0 ? rgb[2] - 80 : 0;
+
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+
+  colorBackground(rgb) {
+    let r = rgb[0] + 80 < 255 ? rgb[1] + 80 : 255;
+    let g = rgb[1] + 60 < 255 ? rgb[1] + 60 : 255;
+    let b = rgb[2] + 50 < 255 ? rgb[2] + 50 : 255;
+
+     return "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
+  }
+
+  /** Math */
 
   getPrix(id) {
     if (id < 100)
@@ -71,19 +90,7 @@ export class UtilService {
       return '50';
   }
 
-  colorAbilities(rgb) {
-    let r = rgb[0] - 120 > 0 ? rgb[0] - 120 : 0;
-    let g = rgb[1] - 100 > 0 ? rgb[1] - 100 : 0;
-    let b = rgb[2] - 80 > 0 ? rgb[2] - 80 : 0;
-
-    return "rgb(" + r + "," + g + "," + b + ")";
-  }
-
-  colorBackground(rgb) {
-    let r = rgb[0] + 80 < 255 ? rgb[1] + 80 : 255;
-    let g = rgb[1] + 60 < 255 ? rgb[1] + 60 : 255;
-    let b = rgb[2] + 50 < 255 ? rgb[2] + 50 : 255;
-
-     return "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 }

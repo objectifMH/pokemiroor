@@ -28,7 +28,7 @@ export class ListPokemonAbilitieComponent implements OnInit {
       if (val instanceof NavigationEnd) {
         const url_val = val.url;
 
-        //decoupage 
+        // Split 
         let suffixe = url_val.split('/');
         this.offset = suffixe[2];
         this.limit = suffixe[3];
@@ -36,7 +36,6 @@ export class ListPokemonAbilitieComponent implements OnInit {
         if (this.offset && this.limit) {
           this.getAbilitiesPokemon(url);
         }
-
       }
     });
   }
@@ -49,37 +48,42 @@ export class ListPokemonAbilitieComponent implements OnInit {
 
         if (this.next !== data['next'] && this.previous !== data['previous']) {
           this.abilities = data['results'];
+          this.abilities.sort(function compare(a, b) {
+            if (a['name'] < b['name'])
+               return -1;
+            if (a['name'] > b['name'])
+               return 1;
+            return 0;
+          });
+          
           this.next = data['next'];
           this.previous = data['previous'];
 
-          //decoupage next : 
+          // Next : 
           if (this.next) {
             let inter = this.next.split('?')[1].split('&')
             this.offset_next = inter[0].split('=')[1];
             this.limit_next = inter[1].split('=')[1];
-            console.log("Decoupage next", this.offset_next, this.limit_next, this.next, this.previous);
           }
 
-          //previous :
+          // Previous :
           if (this.previous) {
             let inter = this.previous.split('?')[1].split('&')
             this.offset_previous = inter[0].split('=')[1];
             this.limit_previous = inter[1].split('=')[1];
           }
-          
+
           this.pokemons_abilities = [];
           this.abilities.map(ability => this.getPokemonsByAbility(ability['name']));
-
         }
-        else{
-          console.log("on y etait déja avant" , this.abilities, data['results']);
-        }
+              // else {
+              //   console.log("on y etait déja avant", this.abilities, data['results']);
+              // }
       },
       err => {
         console.log(err);
       },
-      () => {
-      }
+      () => {}
     );
   }
 
@@ -92,9 +96,14 @@ export class ListPokemonAbilitieComponent implements OnInit {
         console.log(err);
       },
       () => {
-        //console.log(this.abilities, this.pokemons_abilities);
+        this.pokemons_abilities.sort(function compare(a, b) {
+          if (a['ability'] < b['ability'])
+             return -1;
+          if (a['ability'] > b['ability'])
+             return 1;
+          return 0;
+        });
       }
     );
   }
-
 }

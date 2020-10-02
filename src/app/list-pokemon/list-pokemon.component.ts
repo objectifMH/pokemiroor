@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -11,18 +12,14 @@ export class ListPokemonComponent implements OnInit {
   pokemons: any;
   show_abilities: boolean = false;
 
-  constructor(private pokeService: PokemonService) { }
+  constructor(private pokeService: PokemonService, private utilService: UtilService) { }
 
   ngOnInit(): void {
     this.getAllPokemons();
   }
 
-  getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
   getAllPokemons() {
-    this.pokeService.getPokemonsByPage(this.getRandomInt(200).toString(), "12").subscribe(
+    this.pokeService.getPokemonsByPage(this.utilService.getRandomInt(200).toString(), "12").subscribe(
       data => {
         this.pokemons = data['results'];
       },
@@ -32,12 +29,12 @@ export class ListPokemonComponent implements OnInit {
       () => {
         this.show_abilities = true;
         this.pokemons.map(poke => {
-          let random_5 = this.getRandomInt(9);
+          let random_ = this.utilService.getRandomInt(9);
           if (poke.name === "mew") {
             poke.show = true;
           }
           else {
-            poke.show = random_5 === 4 ? true : false;
+            poke.show = random_ === 4 ? true : false;
             if (poke.show === false) {
               poke.width = 110;
               poke.height = 110;

@@ -13,7 +13,6 @@ h4 {
     .span_total {
         color: grey;
         font-size: 0.6em;
-
         margin-left: 10px;
     }
 }
@@ -64,7 +63,6 @@ a {
             &:hover {
                 transform: scale(1.2);
                 box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
-
                 background: $border;
             }
         }
@@ -78,6 +76,7 @@ a {
     flex-wrap: wrap;
     margin-bottom: 60px;
     margin-top: 20px;
+
     .badge {
         margin: 4px !important;
         padding: 5px 10px !important;
@@ -113,6 +112,7 @@ a {
 
     color: white;
     margin-top: 15px;
+    
     a {
         display: flex;
         align-items: center;
