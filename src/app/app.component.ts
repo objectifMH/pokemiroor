@@ -14,4 +14,5 @@ export class AppComponent {
   faLinkedinIn = faLinkedinIn;
   faGithub = faGithub;
   faUserCircle = faUserCircle;
+
 }

@@ -44,7 +44,20 @@ a {
             align-items: center;
             margin:0;
 
+            
+            
+            a.active {
+                text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8; 
+            }
+
             a {
+                display: flex;
+                align-items: center;
+
+                .material-icons {
+                    font-size: 26px;
+                }
+
                 color: $color;
                 font-size: 1.2em;
                 font-weight: bolder;
@@ -56,6 +69,8 @@ a {
                     text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
             }
+
+
         }
     }
 }

@@ -26,6 +26,42 @@
     align-items: center;
 }
 
+.prix_cart {
+    position: absolute;
+    display: flex;
+
+    top: 0px;
+    right: -100px;
+    
+}
+
+.prix {
+
+    width: 25px;
+    height: 25px;
+    padding: 10px 30px !important;
+
+    border-radius: 3px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart {
+
+    width: 25px;
+    height: 25px;
+    padding: 10px 30px !important;
+
+    border-radius: 3px;
+    padding: 10px 3px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pokemon_container {
     border-radius: 25px;
     display: flex;
@@ -218,7 +254,18 @@
         img { 
             max-width: 300px !important;
         }
+
+        .prix_cart {
+            position: absolute;
+            display: flex;
+            flex-direction: column !important;
+        
+            top: 25px !important;
+            right: -45px !important;      
+        }
     }
+
+
 
     .bottom {
         .container_evolution {

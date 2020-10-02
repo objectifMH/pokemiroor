@@ -22,6 +22,8 @@ export class PokemonDetailsComponent implements OnInit {
   color_abilities_array: any;
   color_abilities: any;
 
+  prix: string;
+
   baby_pokemon: any;
   evolve_pokemon = [];
   super_evolve_pokemon = [];
@@ -49,6 +51,7 @@ export class PokemonDetailsComponent implements OnInit {
       data => {
         this.pokemons_details = data;
         console.log("getPokemon > ", this.pokemons_details);
+        this.prix = this.utilService.getPrix(this.pokemons_details.id);
         this.getPokemonSpecies(this.pokemons_details.species.url)
       },
       err => {
@@ -63,10 +66,9 @@ export class PokemonDetailsComponent implements OnInit {
       data => {
         this.species = data;
         console.log("getPokemonsSpecies > ", this.species);
-        this.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
+        this.color_background = this.utilService.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
-        this.colorAbilities(this.color_abilities_array);
-
+        this.color_abilities = this.utilService.colorAbilities(this.color_abilities_array);
         this.evolution_bool = data['evolution_chain'] ? true : false;
         if (data['evolution_chain'])
           this.getEvolutionChain(data['evolution_chain'].url);
@@ -103,17 +105,17 @@ export class PokemonDetailsComponent implements OnInit {
         }
 
         if (data['chain']['evolves_to'].length > 0)
-        if (data['chain']['evolves_to'][0]['evolves_to']) {
+          if (data['chain']['evolves_to'][0]['evolves_to']) {
 
-          this.super_evolve_pokemon = [];
+            this.super_evolve_pokemon = [];
 
-          data['chain']['evolves_to'][0]['evolves_to'].map(evolve => {
-            let tab_url_evolves = evolve.species.url.split('/');
-            let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
-            this.super_evolve_pokemon = [...this.super_evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
-          });
-          console.log("super_evolve_pokemon" ,this.super_evolve_pokemon);
-        }
+            data['chain']['evolves_to'][0]['evolves_to'].map(evolve => {
+              let tab_url_evolves = evolve.species.url.split('/');
+              let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
+              this.super_evolve_pokemon = [...this.super_evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
+            });
+            console.log("super_evolve_pokemon", this.super_evolve_pokemon);
+          }
       },
       err => {
         console.log(err); this.evolution_bool = false;
@@ -123,20 +125,4 @@ export class PokemonDetailsComponent implements OnInit {
     );
   }
 
-  colorAbilities(rgb) {
-    let r = rgb[0] - 120 > 0 ? rgb[0] - 120 : 0;
-    let g = rgb[1] - 100 > 0 ? rgb[1] - 100 : 0;
-    let b = rgb[2] - 80 > 0 ? rgb[2] - 80 : 0;
-
-    this.color_abilities = "rgb(" + r + "," + g + "," + b + ")";
-  }
-
-  colorBackground(rgb) {
-    let r = rgb[0] + 80 < 255 ? rgb[1] + 80 : 255;
-    let g = rgb[1] + 60 < 255 ? rgb[1] + 60 : 255;
-    let b = rgb[2] + 50 < 255 ? rgb[2] + 50 : 255;
-
-    this.color_background = "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
-
-  }
 }

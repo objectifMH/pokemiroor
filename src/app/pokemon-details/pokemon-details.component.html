@@ -44,12 +44,27 @@
                     </div>
                 </div> 
             </div>
-             
-            <img  
+             <div class="position-relative">
+                <img  
                 src="{{pokemons_details.sprites.other.dream_world.front_default 
                     ? pokemons_details.sprites.other.dream_world.front_default
                     : 'assets/img/no_image.png'}}"
-                [ngStyle]="{'max-width' : '400px'}" >
+                [ngStyle]="{'max-width' : '400px'}" 
+                >
+
+                <div class="prix_cart">
+                    <span class="badge prix"  [ngStyle]="{'background' : color_abilities}" >
+                        {{prix}}$
+                    </span>
+                    <span class="badge cart"  [ngStyle]="{'background' : this.species.color.name }" >
+                        <span class="material-icons">
+                            shopping_cart
+                        </span>
+                    </span>
+
+                </div>
+             </div>
+            
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
                 <div    *ngFor="let stat of this.pokemons_details.stats"
