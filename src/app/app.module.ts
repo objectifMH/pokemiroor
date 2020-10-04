@@ -14,6 +14,9 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonsAbilitiesComponent } from './pokemons-abilities/pokemons-abilities.component';
 import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokemon-abilitie.component';
+import { SearchComponent } from './search/search.component';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokem
     PokemonComponent,
     PokemonDetailsComponent,
     PokemonsAbilitiesComponent,
-    ListPokemonAbilitieComponent
+    ListPokemonAbilitieComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokem
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

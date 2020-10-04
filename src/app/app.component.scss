@@ -31,7 +31,7 @@ a {
     }
 
     .head_middle {
-        flex-grow: 4;
+        flex-grow: 2;
     }
 
     .head_right {
@@ -43,8 +43,6 @@ a {
             justify-content: center;
             align-items: center;
             margin:0;
-
-            
             
             a.active {
                 text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8; 
@@ -53,6 +51,7 @@ a {
             a {
                 display: flex;
                 align-items: center;
+                flex: row;
 
                 .material-icons {
                     font-size: 26px;
@@ -62,15 +61,76 @@ a {
                 font-size: 1.2em;
                 font-weight: bolder;
 
+                .form_search {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+                
+            }
+
+            a.a_transition {
                 transition: all .2s ease-in-out;
-        
                 &:hover {
                     transform: scale(1.22);
                     text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
+            }    
+
+            .a_search {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .form_search {
+
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    position: relative;
+                    .search_input {
+                        background: $back-main;
+                        margin: 0;
+                        color: $color;
+                        border: 2px solid $color;
+
+                        &.fade {
+                            transition: opacity .15s linear;
+                        }
+                        
+                        &.show {
+                            transition: opacity .35s linear;
+                        }
+
+                        &::placeholder {
+                            color: $color; 
+                            opacity: 0.4;
+                        }       
+                    }
+
+                    input.ng-touched.ng-valid + .i_close:before {
+                            content:'close';
+                            color: $border;
+                            right: 28px !important;
+                            top: 7px;
+                            position: absolute;
+                    }
+
+                    .search_material {
+                        cursor: pointer;
+                    }
+                }
+
+                &:hover {
+                    .search_material {
+                        text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
+
+                    }
+                }
             }
-
-
         }
     }
 }
@@ -79,6 +139,53 @@ section {
     padding-top: 70px;
     padding-bottom: 70px;
     min-height: 100%;
+    position: relative;
+
+    .search_container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-top: 10px;
+        padding: 45px;
+
+        h5 {
+            color: white;
+            font-size: 2em;
+            font-weight: bolder;
+            position: relative;
+
+            .close_results_search {
+                color: red;
+                font-size: 1em;
+                position: absolute;
+                 right: 5px;
+                 cursor: pointer;
+
+                transition: all .2s ease-in-out;
+                &:hover {
+                    transform: scale(1.2);                }
+            }
+        }
+
+        .search_result {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            flex-wrap: wrap;
+            padding: 30px 15px;  
+        }
+    }
+
+    .search_container.fade {
+        display: none;
+        transition: opacity 1.4s ease-in-out;
+    }
+    .search_container.show {
+        transition: opacity .85s linear;
+        background: $border;
+    }
+    
 }
 
 .footer {
@@ -157,8 +264,6 @@ section {
                     }
                 }
             }
-
-
         }
     }
 

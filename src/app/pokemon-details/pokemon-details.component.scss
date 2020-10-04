@@ -54,7 +54,6 @@
     padding: 10px 30px !important;
 
     border-radius: 3px;
-    padding: 10px 3px;
     
     display: flex;
     justify-content: center;
@@ -68,8 +67,10 @@
     }
 
     .done:before {
+        font-weight: bolder;
         color: white;
-        content: 'done' !important;
+        content: "done" !important;
+        font-size: xx-large;
     }
 }
 
@@ -87,13 +88,19 @@
         align-items: center;
 
         .shopping_cart_img {
-            //box-shadow: 0px 5px 10px 20px white;
             display: block !important;
             position: relative;
             max-width: 50px;
             padding: 0 !important;
             margin: 0 !important;
             margin-left: 10px !important;
+
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.2) rotate(360deg);
+            }     
         }
     }
 
@@ -128,8 +135,7 @@
             text-shadow: 1px 1px 2px black;
             text-transform: capitalize;
 
-            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
-            
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);        
         }
 
         .badge_abilities, .badge_types {
@@ -148,7 +154,6 @@
 
         .span_progress {
             text-align: center;
-
         }
 
         .stat_name {
@@ -177,7 +182,6 @@
         padding: 10px 15px;
         margin: 5px 8px;
         margin: 5px 0px 5px 20px;
-
     }
 
     .bottom {
@@ -193,7 +197,6 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-
             margin-bottom: 50px;
 
             .pokemon_baby {
@@ -225,8 +228,7 @@
             .arrow_forward_ios:before {
                 color:white;
                 font-size: 2em;
-                content: 'arrow_forward_ios';
-                
+                content: 'arrow_forward_ios';                
             }
         }
     }
@@ -302,7 +304,6 @@
             .arrow_forward_ios:before {
                 font-size: 2em;
                 content: 'keyboard_arrow_down' !important;
-                
             }
         }
     }

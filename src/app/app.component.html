@@ -5,24 +5,40 @@
                 <span class="head_logo">PokéMirr∞r</span>
             </a>
         </div>
-        <div class="head_middle p-3"> Millieu</div>
+        <div class="head_middle p-3"> 
+            <!-- Millieu -->
+        </div>
         <div class="head_right p-3">
             <ul class="">
-                <li class="nav-item">
-                    <a class="nav-link link-logo" routerLink='/types' title="Search" routerLinkActive="active">
-                        <span class="material-icons">
-                            find_in_page
-
-                        </span>
-                    </a>
+                <li class="nav-item" >
+                    <div    class="nav-link link-logo a_search" 
+                            title="Search"
+                    >
+                        <form [formGroup]="monForm" class="form_search" > 
+                                <input  type="text" placeholder="Search a pokemon ..." 
+                                        formControlName="search" 
+                                        class=" form-control search_input" 
+                                        id="id_search_input"
+                                        [ngClass]="{'show': isInputSearch, 'fade': !isInputSearch }"
+                                        (keyup)="inputSearchChange()"
+                        >
+                                <i  class="material-icons i_close" 
+                                    [ngClass]="{'show': isInputSearch, 'fade': !isInputSearch }"
+                                    (click)="allClear()"
+                                    ></i>
+                                <span class="material-icons search_material" (click)="toggleSearch()" >
+                                    find_in_page
+                                </span>
+                        </form>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-logo" routerLink='/types' title="Types" routerLinkActive="active">
+                    <a class="nav-link link-logo a_transition" routerLink='/types' title="Types" routerLinkActive="active">
                         Types
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-logo" routerLink='/abilities/0/20' title="Abilities"
+                    <a class="nav-link link-logo a_transition" routerLink='/abilities/0/20' title="Abilities"
                         routerLinkActive="active">
                         Abilities
                     </a>
@@ -46,7 +62,27 @@
 
 </header>
 
+
+
 <section class="router_content">
+    <div class="search_container" [ngClass]="{'show': isShowSearch, 'fade': !isShowSearch}">
+        <h5> "{{this.input_search}}"" : {{this.search_pokemons.length}} {{this.search_pokemons.length > 1 ? "founds" : "found"}}
+            <span class="material-icons close_results_search" (click)="allClear()" >
+                close
+            </span>
+        </h5>
+        <div class='search_result' >
+             <div *ngFor="let pokemon of this.search_pokemons; let i = index">
+                <app-pokemon    [input_pokemon]="pokemon" 
+                        [width_img_pokemon]="120" 
+                        [height_img_pokemon]="120" 
+                        [show_abilities]="true">
+                </app-pokemon> 
+            </div>
+
+    </div>
+    
+    </div>
     <router-outlet></router-outlet>
 </section>
 

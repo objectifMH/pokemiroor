@@ -1,0 +1,10 @@
+<h4>Search </h4>
+<section >
+    <div *ngFor="let pokemon of this.pokemons; let i = index">
+        <app-pokemon    [input_pokemon]="pokemon" 
+                [width_img_pokemon]="120" 
+                [height_img_pokemon]="120" 
+                [show_abilities]="true">
+        </app-pokemon> 
+    </div>
+</section>

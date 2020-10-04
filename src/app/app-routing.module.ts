@@ -8,6 +8,7 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonsAbilitiesComponent } from './pokemons-abilities/pokemons-abilities.component';
 import { PokemonsTypesComponent } from './pokemons-types/pokemons-types.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'pokemons-types/:type', component: PokemonsTypesComponent},
   {path: 'pokemons-details/:id', component: PokemonDetailsComponent},
   {path: 'pokemons-ability/:ability/:offset/:limit', component: PokemonsAbilitiesComponent},
+  {path: 'search', component: SearchComponent},
   {path: '**', redirectTo: '/main' },
 ];
 
