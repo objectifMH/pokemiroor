@@ -11,15 +11,12 @@
 }
 
 .number {
-    background: greenyellow;
     color: white;
-    width: 25px;
-    height: 25px;
     position: absolute;
     top: 15px;
     right: 22px;
     border-radius: 50%;
-    
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +25,8 @@
 .prix_cart {
     position: absolute;
     display: flex;
-    top: 0px;
-    right: -100px;
+    top: 110px ;
+    right: 22px ;
 }
 
 .prix {
@@ -128,7 +125,6 @@
             color: white;
             text-shadow: 1px 1px 2px black;
             text-transform: capitalize;
-
             box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);        
         }
 
@@ -227,14 +223,7 @@
     }
 }
 
-
-/**  Responsive **/
-
-// @media (max-width: 768px) {
-//     .pokemon_settings.middle {
-//         width: 80%;
-//     }
-// }
+/** Responsive */
 
 @media (max-width: 1024px) {
     .pokemon_settings.middle {
@@ -243,6 +232,8 @@
             max-height: 300px !important;
         }
     }
+
+    
 }
 
 @media (max-width: 768px) {
@@ -269,6 +260,17 @@
             order: 3;
         }
     }
+
+    .bottom {
+        .container_evolution {
+            flex-direction: column !important;
+
+            .arrow_forward_ios:before {
+                font-size: 2em;
+                content: 'keyboard_arrow_down' !important;
+            }
+        }
+    }
 }
 
 @media (max-width: 425px) {
@@ -283,21 +285,29 @@
             display: flex;
             flex-direction: column !important;
         
-            top: 25px !important;
-            right: -45px !important;      
+            top: 110px ;
+            right: 22px ;      
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .pokemon_spec_types_abilities {
+        flex-direction: column !important;
+    }
+
+    .badge.stats {
+        max-width: 250px !important;
+    }
+
+    .prix_cart {
+        right: 22px !important;      
+    }
+
+    .pokemon_settings.middle {
+        img {
+            max-width: 250px !important;
         }
     }
 
-
-
-    .bottom {
-        .container_evolution {
-            flex-direction: column !important;
-
-            .arrow_forward_ios:before {
-                font-size: 2em;
-                content: 'keyboard_arrow_down' !important;
-            }
-        }
-    }
 }

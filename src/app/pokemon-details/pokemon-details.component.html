@@ -50,29 +50,15 @@
                     </div>
                 </div> 
             </div>
-             <div class="position-relative">
+            <div class="position-relative">
                 <img  
                         src="{{pokemons_details.sprites.other.dream_world.front_default 
                             ? pokemons_details.sprites.other.dream_world.front_default
                             : 'assets/img/no_image.png'}}"
                         [ngStyle]="{'max-width' : '400px'}" 
                 >
-
-                <div class="prix_cart">
-                    <span class="badge prix"  [ngStyle]="{'background' : color_abilities}" >
-                        {{prix}}$
-                    </span>
-                    <span   class="badge cart"  
-                            [ngStyle]="{'background' : this.species.color.name }"
-                            (click)="toggleIsOnCart()"
-                            >
-                        <span class="material-icons" [ngClass]="{'shopping_cart' : isOnCart, 'done' : !isOnCart  }">
-                            
-                        </span>
-                    </span>
-
-                </div>
-             </div>
+                
+            </div>
             
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
@@ -90,18 +76,34 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
+            <div class="prix_cart">
+                <span class="badge prix"  [ngStyle]="{'background' : color_abilities}" >
+                    {{prix}}$
+                </span>
+                <span   class="badge cart"  
+                        [ngStyle]="{'background' : this.species_color }"
+                        (click)="toggleIsOnCart()"
+                        > 
+                    <span class="material-icons" [ngClass]="{'shopping_cart' : isOnCart, 'done' : !isOnCart  }">
+                        
+                    </span>
+                </span>
+
+            </div>
         </div> 
         <div class="bottom" *ngIf='evolution_bool'>
             <h4>Evolution</h4>
             <div class="container_evolution">
                 <div class="pokemon_baby">
-                    <app-pokemon    *ngIf="baby_pokemon"  
-                                    [input_pokemon]="baby_pokemon" 
-                                    [width_img_pokemon]="100" 
-                                    [height_img_pokemon]="100" 
-                                    [show_abilities]="true">        
-                    </app-pokemon>
+                    <div *ngFor="let pokemon of this.baby_pokemon; let i = index">
+                        <app-pokemon    
+                                        [input_pokemon]="pokemon" 
+                                        [width_img_pokemon]="110" 
+                                        [height_img_pokemon]="110" 
+                                        [show_abilities]="true">        
+                        </app-pokemon>
+                    </div>
                 </div>
                 <span class="material-icons arrow_forward_ios" style="text-shadow: {{color_abilities}} 2px 2px;" *ngIf="evolve_pokemon.length > 0"> 
                     
@@ -109,8 +111,8 @@
                 <div  class="evolve_pokemon">
                     <div *ngFor="let pokemon of this.evolve_pokemon; let i = index">
                         <app-pokemon    [input_pokemon]="pokemon" 
-                                [width_img_pokemon]="120" 
-                                [height_img_pokemon]="120" 
+                                [width_img_pokemon]="110" 
+                                [height_img_pokemon]="110" 
                                 [show_abilities]="true">
                         </app-pokemon> 
                     </div>
@@ -121,16 +123,15 @@
                 <div  class="evolve_pokemon">
                     <div *ngFor="let pokemon of this.super_evolve_pokemon; let i = index">
                         <app-pokemon    [input_pokemon]="pokemon" 
-                                [width_img_pokemon]="120" 
-                                [height_img_pokemon]="120" 
+                                [width_img_pokemon]="110" 
+                                [height_img_pokemon]="110" 
                                 [show_abilities]="true">
                         </app-pokemon> 
                     </div>
                 </div>
             </div>
             <div class="spinner-grow text-warning" *ngIf="!evolution_bool"></div>
-        </div>
-        
+        </div>     
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
         {{pokemons_details.id}}

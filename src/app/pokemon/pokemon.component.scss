@@ -92,8 +92,24 @@
 
 /** Responsive **/
 
+
+@media (max-width: 1024px) {  
+    h3 {
+        font-size: 1.45rem;
+    }
+
+}
+
 @media (max-width: 425px) {
     img { 
-        max-width: 240px !important;
+        max-width: 240px;
     }
 }
+
+@media (max-width: 320px) {
+    img { 
+        max-width: 150px !important;
+    }
+}
+
+

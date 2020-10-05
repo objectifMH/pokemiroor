@@ -22,7 +22,7 @@ export class AppComponent {
   monForm: FormGroup;
   isInputSearch = false;
   isShowSearch = false;
-  isShowMenu = false;
+  isShowMenu = true;
   input_search = "";
   pokemons = [];
   search_pokemons = [];

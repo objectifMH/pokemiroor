@@ -21,10 +21,11 @@ export class PokemonDetailsComponent implements OnInit {
   color_background: any;
   color_abilities_array: any;
   color_abilities: any;
+  species_color = '';
 
   prix: string;
 
-  baby_pokemon: any;
+  baby_pokemon = [];
   evolve_pokemon = [];
   super_evolve_pokemon = [];
 
@@ -66,6 +67,7 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokeService.getPokemonsSpecies(url_species).subscribe(
       data => {
         this.species = data;
+        this.species_color = this.species.color.name;
         console.log("getPokemonsSpecies > ", this.species);
         this.color_background = this.utilService.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
@@ -86,10 +88,13 @@ export class PokemonDetailsComponent implements OnInit {
         console.log("getPokemonsEvolutionChain > ", data);
 
         // Baby : 
+
         if (data['chain']['species']) {
+          this.baby_pokemon = [];
+
           let tab_url_baby = data['chain']['species'].url.split('/');
           let id_baby = tab_url_baby[(tab_url_baby.length) - 2];
-          this.baby_pokemon = { "name": data['chain']['species'], "url": this.url + id_baby };
+          this.baby_pokemon = [...this.baby_pokemon, { "name": data['chain']['species']['name'], "url": this.url + id_baby }];
           console.log(this.baby_pokemon);
         }
 
@@ -122,6 +127,7 @@ export class PokemonDetailsComponent implements OnInit {
         console.log(err); this.evolution_bool = false;
       },
       () => {
+        console.log(" les Evolutions : ", this.baby_pokemon.length, this.evolve_pokemon.length, this.super_evolve_pokemon.length);
       }
     );
   }
