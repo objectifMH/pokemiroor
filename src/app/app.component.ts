@@ -22,6 +22,7 @@ export class AppComponent {
   monForm: FormGroup;
   isInputSearch = false;
   isShowSearch = false;
+  isShowMenu = false;
   input_search = "";
   pokemons = [];
   search_pokemons = [];
@@ -64,7 +65,7 @@ export class AppComponent {
     {
       this.isShowSearch = true;
       this.input_search = search;
-      this.search_pokemons = this.pokemons.filter(pokemon => pokemon.name.slice(0, search_length) === search.slice(0, search_length));
+      this.search_pokemons = this.pokemons.filter(pokemon => pokemon.name.slice(0, search_length).toLowerCase() === search.slice(0, search_length).toLowerCase());
     }
     else{
       this.search_pokemons = [];
@@ -83,5 +84,10 @@ export class AppComponent {
       () => {
         console.log(this.pokemons);
       });
+  }
+
+  // Menu mobile 
+  toggleMenu() {
+    this.isShowMenu = !this.isShowMenu;
   }
 }

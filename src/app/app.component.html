@@ -9,7 +9,7 @@
             <!-- Millieu -->
         </div>
         <div class="head_right p-3">
-            <ul class="">
+            <ul class="ul_pc">
                 <li class="nav-item" >
                     <div    class="nav-link link-logo a_search" 
                             title="Search"
@@ -43,20 +43,68 @@
                         Abilities
                     </a>
                 </li>
-                <!--  
-                    <span class="material-icons">
-                        search
-                    </span>
-
-
-                <li #nav_attack class="nav-item" >
-                    <a class="nav-link link-logo" routerLink='/types' title="Attack" routerLinkActive="active">
-                        Attack
+                
+                <li class="nav-item">
+                    <a class="nav-link link-logo a_transition" routerLink='/search' title="Your pokedex"
+                        routerLinkActive="active">
+                        <img  
+                            src='assets/img/pokeball.png'
+                        >
                     </a>
-                </li> 
-                -->
+                </li>
             </ul>
-
+            <!-- Menu Mobile  -->
+            <span   class="material-icons menu_mobile"
+                    (click)="toggleMenu()"
+                    [ngClass]="{'menu_mob': isShowMenu, 'close_mob': !isShowMenu }"
+                    >
+            </span>
+        </div>
+    </div>
+    <!-- Menu Mobile -->
+    <div class="mobile_menu" [ngClass]="{'fade d-none': isShowMenu, 'show': !isShowMenu }">
+        <div class="head_right p-3">
+            <ul class="ul_pc">
+                <li class="nav-item" >
+                    <div    class="nav-link link-logo a_search" 
+                            title="Search"
+                    >
+                        <form [formGroup]="monForm" class="form_search" > 
+                                <input  type="text" placeholder="Search a pokemon ..." 
+                                        formControlName="search" 
+                                        class=" form-control search_input" 
+                                        id="id_search_input"
+                                        (keyup)="inputSearchChange()"
+                        >
+                                <i  class="material-icons i_close" 
+                                    (click)="allClear()"
+                                    ></i>
+                                <span class="material-icons search_material" (click)="toggleSearch()" >
+                                    search
+                                </span>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-logo a_transition" routerLink='/types' title="Types" routerLinkActive="active">
+                        Types
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-logo a_transition" routerLink='/abilities/0/20' title="Abilities"
+                        routerLinkActive="active">
+                        Abilities
+                    </a>
+                </li>     
+                <li class="nav-item">
+                    <a class="nav-link link-logo a_transition" routerLink='/search' title="Your pokedex"
+                        routerLinkActive="active">
+                        <img  
+                            src='assets/img/pokeball.png'
+                        >
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 

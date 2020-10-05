@@ -1,5 +1,10 @@
 @import '../styles.scss';
 
+
+.mobile_menu {
+    display: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -18,7 +23,6 @@ a {
 
     .head_left {
         flex-grow: 1;
-
         display: flex;
         align-items: center;
 
@@ -36,6 +40,7 @@ a {
 
     .head_right {
         flex-grow: 2;
+        position: relative;
         ul {
             text-decoration: none;
             list-style: none;
@@ -52,9 +57,15 @@ a {
                 display: flex;
                 align-items: center;
                 flex: row;
+                cursor: pointer;
 
                 .material-icons {
                     font-size: 26px;
+                }
+
+                img {
+                    max-width: 30px;
+                    text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
 
                 color: $color;
@@ -67,7 +78,6 @@ a {
                     align-items: center;
                     justify-content: flex-end;
                 }
-                
             }
 
             a.a_transition {
@@ -113,7 +123,7 @@ a {
 
                     input.ng-touched.ng-valid + .i_close:before {
                             content:'close';
-                            color: $border;
+                            color: red;
                             right: 28px !important;
                             top: 7px;
                             position: absolute;
@@ -132,6 +142,19 @@ a {
                 }
             }
         }
+
+        .menu_mobile {
+            display: none;
+        }
+
+        .menu_mob:before {
+            content: 'menu';
+        }
+
+        .close_mob:before {
+            content: 'close';
+        }
+
     }
 }
 
@@ -185,7 +208,6 @@ section {
         transition: opacity .85s linear;
         background: $border;
     }
-    
 }
 
 .footer {
@@ -279,7 +301,182 @@ section {
 
 }
 
+@media (max-width: 768px) 
+    //and (min-width: 426px)  
+    {
+    .head_container {
+        .head_logo {
+            font-size: xx-large;
+        }
+        .head_right {
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;;
+            .ul_pc {
+                //flex-direction: column;
+                display: none;
+            }
+
+            .menu_mobile {
+                display: block;
+                font-size: 2.4em;
+            }
+        }
+    }
+
+    header {
+        .mobile_menu {
+            display: block;
+            .ul_pc {
+                text-decoration: none;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin:0;
+                margin-top: 60px;
+                li {
+
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 15px;
+
+                    width: 100%;
+                    text-align: center;
+                    //box-shadow: 4px 3px 2px -2px rgba(0, 0, 0, 0.75);
+                    box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);        
+                }
+
+                a.active {
+                    text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8; 
+                }
+
+                a {
+                    font-size: 1.8em;
+                    color: $color;
+                    font-weight: bolder;
+                    display: flex;
+                    align-items: center;
+                    flex: row;
+                    cursor: pointer;
+
+                    .material-icons {
+                        font-size: 26px;
+                        color: $color;
+                    }
+
+                    img {
+                        max-width: 40px;
+                        text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
+                    }
+
+                    .form_search {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-end;
+                    }
+                }
+
+                a.a_transition {
+                    transition: all .2s ease-in-out;
+                    &:hover {
+                        transform: scale(1.22);
+                        text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
+                    }
+                }    
+
+                .a_search {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+
+                    .form_search {
+
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        position: relative;
+
+                        .search_input {
+                            background: $back-main;
+                            margin: 0;
+                            color: $color;
+                            border: 2px solid $color;
+
+                            &.fade {
+                                transition: opacity .15s linear;
+                            }
+                            
+                            &.show {
+                                transition: opacity .35s linear;
+                            }
+
+                            &::placeholder {
+                                color: $color; 
+                                opacity: 0.4;
+                            }       
+                        }
+
+                        input.ng-touched.ng-valid + .i_close:before {
+                                content:'close';
+                                color: red;
+                                right: 30px !important;
+                                top: 7px;
+                                position: absolute;
+                        }
+
+                        .search_material {
+                            cursor: pointer;
+                            color: $color;
+                            font-size: 1.8em;
+                            margin-left: 5px;
+                        }
+                    }
+
+                    &:hover {
+                        .search_material {
+                            text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
+                        }
+                    }
+                }
+
+                /** */
+            }
+        }
+    }
+}
+
 @media (max-width: 480px) {
+
+    .head_container {
+        .head_right {
+            
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .ul_pc {
+                display: none;
+            }
+
+            .menu_mobile {
+                display: block;
+                font-size: 2.4em;
+
+            /** */
+
+            
+
+             /** */   
+            }
+        }
+    }
 
     .footer {
 

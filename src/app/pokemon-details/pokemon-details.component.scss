@@ -15,7 +15,6 @@
     color: white;
     width: 25px;
     height: 25px;
-
     position: absolute;
     top: 15px;
     right: 22px;
@@ -29,7 +28,6 @@
 .prix_cart {
     position: absolute;
     display: flex;
-
     top: 0px;
     right: -100px;
 }
@@ -39,9 +37,7 @@
     width: 25px;
     height: 25px;
     padding: 10px 30px !important;
-
-    border-radius: 3px;
-    
+    border-radius: 3px;  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +48,6 @@
     width: 25px;
     height: 25px;
     padding: 10px 30px !important;
-
     border-radius: 3px;
     
     display: flex;
@@ -109,7 +104,6 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: baseline;
-
         margin-bottom: 40px;
 
         h5 {
@@ -189,7 +183,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
         margin-top: 50px;
 
         .container_evolution {
