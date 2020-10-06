@@ -15,7 +15,7 @@ export class PokemonDetailsComponent implements OnInit {
   id: string;
   url = 'https://pokeapi.co/api/v2/pokemon/';
 
-
+  location = [];
   species: any;
   evolution: any;
   color_background: any;
@@ -31,6 +31,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   evolution_bool: boolean;
   isOnCart = false;
+  isLocationShow = true;
 
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
     let url = "";
@@ -40,6 +41,9 @@ export class PokemonDetailsComponent implements OnInit {
 
         this.id = this.route.snapshot.paramMap.get('id');
         let url_pokemon = ''.concat(this.url, this.id);
+        
+        this.location = [];
+        this.location = [...this.location, this.utilService.getRandomInt(24)];  
         this.getPokemonDetails(url_pokemon);
       }
     });
@@ -52,7 +56,7 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokeService.getPokemon(url).subscribe(
       data => {
         this.pokemons_details = data;
-        console.log("getPokemon > ", this.pokemons_details);
+        //console.log("getPokemon > ", this.pokemons_details);
         this.prix = this.utilService.getPrix(this.pokemons_details.id);
         this.getPokemonSpecies(this.pokemons_details.species.url)
       },
@@ -68,7 +72,7 @@ export class PokemonDetailsComponent implements OnInit {
       data => {
         this.species = data;
         this.species_color = this.species.color.name;
-        console.log("getPokemonsSpecies > ", this.species);
+        //console.log("getPokemonsSpecies > ", this.species);
         this.color_background = this.utilService.colorBackground(this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name)));
         this.color_abilities_array = this.utilService.hexToRgb(this.utilService.getColourNameToHex(this.species.color.name));
         this.color_abilities = this.utilService.colorAbilities(this.color_abilities_array);
@@ -85,7 +89,7 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokeService.getPokemonsEvolutionChain(url_evolution).subscribe(
       data => {
         this.evolution = data;
-        console.log("getPokemonsEvolutionChain > ", data);
+        //console.log("getPokemonsEvolutionChain > ", data);
 
         // Baby : 
 
@@ -95,7 +99,7 @@ export class PokemonDetailsComponent implements OnInit {
           let tab_url_baby = data['chain']['species'].url.split('/');
           let id_baby = tab_url_baby[(tab_url_baby.length) - 2];
           this.baby_pokemon = [...this.baby_pokemon, { "name": data['chain']['species']['name'], "url": this.url + id_baby }];
-          console.log(this.baby_pokemon);
+          //console.log(this.baby_pokemon);
         }
 
 
@@ -107,7 +111,7 @@ export class PokemonDetailsComponent implements OnInit {
             let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
             this.evolve_pokemon = [...this.evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
           });
-          console.log("evolve_pokemon", this.evolve_pokemon);
+          //console.log("evolve_pokemon", this.evolve_pokemon);
         }
 
         if (data['chain']['evolves_to'].length > 0)
@@ -120,19 +124,23 @@ export class PokemonDetailsComponent implements OnInit {
               let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
               this.super_evolve_pokemon = [...this.super_evolve_pokemon, { "name": evolve.species.name, "url": this.url + id_evolve }];
             });
-            console.log("super_evolve_pokemon", this.super_evolve_pokemon);
+            //console.log("super_evolve_pokemon", this.super_evolve_pokemon);
           }
       },
       err => {
         console.log(err); this.evolution_bool = false;
       },
       () => {
-        console.log(" les Evolutions : ", this.baby_pokemon.length, this.evolve_pokemon.length, this.super_evolve_pokemon.length);
+        //console.log(" les Evolutions : ", this.baby_pokemon.length, this.evolve_pokemon.length, this.super_evolve_pokemon.length);
       }
     );
   }
 
   toggleIsOnCart(){
     this.isOnCart = !this.isOnCart;
+  }
+
+  toggleLocastionShow(){
+    this.isLocationShow = !this.isLocationShow;
   }
 }

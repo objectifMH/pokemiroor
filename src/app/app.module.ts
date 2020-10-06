@@ -16,6 +16,7 @@ import { PokemonsAbilitiesComponent } from './pokemons-abilities/pokemons-abilit
 import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokemon-abilitie.component';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
     PokemonDetailsComponent,
     PokemonsAbilitiesComponent,
     ListPokemonAbilitieComponent,
-    SearchComponent
+    SearchComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

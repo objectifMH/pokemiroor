@@ -10,6 +10,12 @@
     margin-top: 30px;
 }
 
+h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .number {
     color: white;
     position: absolute;
@@ -221,6 +227,47 @@
             }
         }
     }
+
+    .location_container {
+        margin-bottom: 50px !important;
+        
+        .h4_container {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            .span_location {
+                font-size: 0.6em;
+                margin-left: 10px;
+            }
+    
+            h4 {
+                display: flex;
+                align-items: center;
+            }
+
+            .toggle_close:before {
+                content: 'close';
+                font-size: 1.3em;
+                font-weight: bolder;
+                cursor: pointer;
+                position: absolute;
+                right: 22px;
+            }
+
+            .toggle_add:before {
+                content: 'add';
+                font-size: 1.3em;
+                font-weight: bolder;
+                cursor: pointer;
+                position: absolute;
+                right: 22px;
+            }
+        }
+        .fade {
+           //margin-bottom: -400px;
+        }
+    }
 }
 
 /** Responsive */
@@ -235,7 +282,6 @@
 
     .badge.stats {
         max-width: 80% ;
-        background: turquoise ;
         margin: 5px auto !important;
     }
 

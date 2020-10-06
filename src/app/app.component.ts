@@ -82,7 +82,6 @@ export class AppComponent {
         console.log(err);
       },
       () => {
-        console.log(this.pokemons);
       });
   }
 

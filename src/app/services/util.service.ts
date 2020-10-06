@@ -90,7 +90,10 @@ export class UtilService {
       return '50';
   }
 
-  getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+  getRandomInt(max: number, min?: number) {
+    //return Math.floor(Math.random() * Math.floor(max));
+    if ( min === undefined)
+    min = 0; 
+    return Math.floor(Math.random() * (max - min) + min);
   }
 }

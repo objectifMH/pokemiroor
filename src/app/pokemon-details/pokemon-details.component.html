@@ -93,7 +93,10 @@
             </div>
         </div> 
         <div class="bottom" *ngIf='evolution_bool'>
-            <h4>Evolution</h4>
+            <h4> <span class="material-icons">
+                transform
+                </span>
+                Evolution</h4>
             <div class="container_evolution">
                 <div class="pokemon_baby">
                     <div *ngFor="let pokemon of this.baby_pokemon; let i = index">
@@ -131,7 +134,35 @@
                 </div>
             </div>
             <div class="spinner-grow text-warning" *ngIf="!evolution_bool"></div>
-        </div>     
+        </div>
+        <div class="location_container">
+            <div class="h4_container position-relative">
+                <h4 >
+                    <span class="material-icons">
+                        location_on
+                    </span>
+                    Location
+                    
+                    <span class="span_location" [ngStyle]="{'color' : color_abilities}">
+                        ({{location}})
+                    </span>
+                    
+                </h4>
+                <span   class="material-icons toggle_location" 
+                            [ngStyle]="{'color' : color_abilities}"
+                            (click)='toggleLocastionShow()'
+                            [ngClass]="{'toggle_close' : isLocationShow, 'toggle_add' : !isLocationShow  }"
+                            >  
+                </span>
+
+            </div>
+            
+            <div *ngFor="let loc of this.location; let i = index" 
+                    [ngClass]="{'show' : isLocationShow, 'fade' : !isLocationShow  }"
+                    >
+                <app-map [total]="loc"></app-map>
+            </div>
+        </div>  
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
         {{pokemons_details.id}}
