@@ -7,8 +7,21 @@ section {
         padding: 5px 10px !important;
         font-size: larger;
         color: white;
-
         margin-bottom: 40px;
+    }
+
+    .back_abilities {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 130px;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.12);
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+        }
     }
 }
 
@@ -27,28 +40,11 @@ h4 {
     .span_total {
         color: grey;
         font-size: 0.6em;
-
         margin-left: 10px;
     }
 
     .chevron_right {
         font-weight: bolder;;
-    }
-
-    .back {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        font-size: 0.42em;
-        font-weight: bolder;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .undo {
-            font-size: 1.4em;
-        }
     }
 }
 

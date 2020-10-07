@@ -7,8 +7,21 @@ section {
         padding: 5px 10px !important;
         font-size: larger;
         color: white;
-
         margin-bottom: 40px;
+    }
+
+    .back_types {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 110px;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.12);
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75);
+        }
     }
 }
 

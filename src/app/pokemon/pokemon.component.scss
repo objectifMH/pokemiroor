@@ -87,7 +87,6 @@
             transform: scale(1.4);
         }
     }
-    
 }
 
 .pokeball {
@@ -107,12 +106,10 @@
 
 /** Responsive **/
 
-
 @media (max-width: 1024px) {  
     h3 {
         font-size: 1.45rem;
     }
-
 }
 
 @media (max-width: 425px) {

@@ -42,5 +42,8 @@ export class MyPokedexComponent implements OnInit {
     this.poke.setMyPokedex(tab);
   }
 
+  clearAll() {
+    this.poke.setMyPokedex([]);
+  }
 
 }

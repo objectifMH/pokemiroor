@@ -35,9 +35,7 @@
                 width: 100%;
                 font-size: 1.2em;
 
-
                 .container_td_img {
-                    //background: rgba(238, 238, 238, 0.3);
                     border-radius: 50%;
                     width: 100px;
                     height: 100px;
@@ -96,6 +94,35 @@
                 .prix {
                     position: absolute;
                     right: 0;
+                }
+            }
+        }
+
+        .clear_all{
+            .btn-danger {
+                color: white;
+                font-size: 1.2em !important;
+                font-weight: bolder !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .container_table {
+        table {
+            width: 100%;
+            font-size: 0.8em !important;
+
+            .container_td_img {
+                border-radius: 50%;
+                width: 60px !important;
+                height: 60px !important;
+                margin: 8px auto !important;
+
+                img {
+                    max-width: 50px !important;
+                    max-height: 50px !important;
                 }
             }
         }
