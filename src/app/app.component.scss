@@ -64,7 +64,7 @@ a {
                 }
 
                 img {
-                    max-width: 30px;
+                    max-width: 40px;
                     text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
 
@@ -127,11 +127,13 @@ a {
                             right: 30px !important;
                             top: 7px;
                             position: absolute;
+                            cursor: pointer;
                     }
 
                     .search_material {
                         cursor: pointer;
                         margin-left: 5px;
+                        margin-top: 5px;
                     }
                 }
 
@@ -141,6 +143,16 @@ a {
 
                     }
                 }
+            }
+
+            .total_pokedex {
+                width: 25px;
+                height: 25px;
+                position: absolute !important;
+                top:-5px;
+                right: 5px;
+                font-size: 15px;
+                border-radius: 50%;
             }
         }
 
@@ -258,7 +270,6 @@ section {
                 }
             }
             
-
             img {
                 width: 120px;
             }
@@ -443,6 +454,16 @@ section {
                             text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                         }
                     }
+                }
+
+                .total_pokedex {
+                    width: 25px;
+                    height: 25px;
+                    position: relative;
+                    top: -20px;
+                    right: 30px;
+                    font-size: 15px;
+                    border-radius: 50%;
                 }
             }
         }

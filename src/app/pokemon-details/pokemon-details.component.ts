@@ -30,11 +30,16 @@ export class PokemonDetailsComponent implements OnInit {
   super_evolve_pokemon = [];
 
   evolution_bool: boolean;
-  isOnCart = false;
+  isOnCart: boolean ;
   isLocationShow = true;
+  isEvolutionShow = true;
+
+  my_pokedex = [];
 
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
     let url = "";
+
+    this.getMyPokedex();
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         const url_val = val.url;
@@ -43,13 +48,24 @@ export class PokemonDetailsComponent implements OnInit {
         let url_pokemon = ''.concat(this.url, this.id);
         
         this.location = [];
-        this.location = [...this.location, this.utilService.getRandomInt(24)];  
+        this.location = [...this.location, this.utilService.getRandomInt(8)];  
         this.getPokemonDetails(url_pokemon);
       }
     });
   }
 
   ngOnInit(): void {
+  }
+
+  getMyPokedex() {
+    this.pokeService.getMyPokedex().subscribe(
+      data => {
+        this.my_pokedex = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   getPokemonDetails(url: string) {
@@ -63,7 +79,9 @@ export class PokemonDetailsComponent implements OnInit {
       err => {
         console.log(err);
       },
-      () => { }
+      () => { 
+        this.verifPokemonOnCart();
+      }
     );
   }
 
@@ -91,8 +109,6 @@ export class PokemonDetailsComponent implements OnInit {
         this.evolution = data;
         //console.log("getPokemonsEvolutionChain > ", data);
 
-        // Baby : 
-
         if (data['chain']['species']) {
           this.baby_pokemon = [];
 
@@ -102,10 +118,8 @@ export class PokemonDetailsComponent implements OnInit {
           //console.log(this.baby_pokemon);
         }
 
-
         if (data['chain']['evolves_to']) {
           this.evolve_pokemon = [];
-
           data['chain']['evolves_to'].map(evolve => {
             let tab_url_evolves = evolve.species.url.split('/');
             let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
@@ -118,7 +132,6 @@ export class PokemonDetailsComponent implements OnInit {
           if (data['chain']['evolves_to'][0]['evolves_to']) {
 
             this.super_evolve_pokemon = [];
-
             data['chain']['evolves_to'][0]['evolves_to'].map(evolve => {
               let tab_url_evolves = evolve.species.url.split('/');
               let id_evolve = tab_url_evolves[(tab_url_evolves.length) - 2];
@@ -136,11 +149,44 @@ export class PokemonDetailsComponent implements OnInit {
     );
   }
 
-  toggleIsOnCart(){
+  verifPokemonOnCart() {
+    if (this.my_pokedex)
+    {
+      let aux = (this.my_pokedex.filter( poke => poke.id === this.pokemons_details.id).length > 0 ? true : false);
+      return this.isOnCart = aux;
+      }
+    else{
+      return this.isOnCart = true;
+    }
+  }
+
+  toggleOnCart(pokemon) {
+    if ( this.verifPokemonOnCart())
+    {
+      this.deletePkemonOnMyPokedex(this.pokemons_details);
+    }
+    else {
+      this.addPokemonOnMyPokedex(this.pokemons_details);
+    }
     this.isOnCart = !this.isOnCart;
   }
 
-  toggleLocastionShow(){
+  toggleLocastionShow() {
     this.isLocationShow = !this.isLocationShow;
+  }
+
+  toggleEvolutionShow() {
+    this.isEvolutionShow = !this.isEvolutionShow;
+  }
+
+  addPokemonOnMyPokedex(pokemon) {
+    let url = "https://pokeapi.co/api/v2/pokemon/"+pokemon.id;
+    this.my_pokedex = [...this.my_pokedex, {'id': pokemon.id, 'name': pokemon.name, 'url': url, 'pokemon': pokemon, 'prix': this.prix, 'color': this.color_abilities, 'background': this.color_background}];
+    this.pokeService.setMyPokedex(this.my_pokedex);
+  }
+
+  deletePkemonOnMyPokedex(pokemon) {
+    let tab_aux = this.my_pokedex.filter(poke => poke.id !== pokemon.id); 
+    this.pokeService.setMyPokedex(tab_aux);
   }
 }

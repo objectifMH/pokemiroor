@@ -5,6 +5,7 @@ import { ListPokemonTypeComponent } from './list-pokemon-type/list-pokemon-type.
 import { ListPokemonComponent } from './list-pokemon/list-pokemon.component';
 import { MainComponent } from './main/main.component';
 import { MapComponent } from './map/map.component';
+import { MyPokedexComponent } from './my-pokedex/my-pokedex.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonsAbilitiesComponent } from './pokemons-abilities/pokemons-abilities.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'pokemons-ability/:ability/:offset/:limit', component: PokemonsAbilitiesComponent},
   {path: 'search', component: SearchComponent},
   {path: 'map', component: MapComponent},
+  {path: 'pokedex', component: MyPokedexComponent},
   {path: '**', redirectTo: '/main' },
 ];
 

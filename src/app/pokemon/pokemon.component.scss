@@ -90,6 +90,21 @@
     
 }
 
+.pokeball {
+
+    position: relative;
+    width: 100%;
+
+    .shopping_cart_img {
+        display: block !important;
+        max-width: 40px !important;
+        position: absolute;
+        left: -18px;
+        top: -20px;
+        z-index: 500;
+    }
+}
+
 /** Responsive **/
 
 

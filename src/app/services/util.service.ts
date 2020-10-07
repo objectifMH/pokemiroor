@@ -28,7 +28,7 @@ export class UtilService {
     "saddlebrown": "#8b4513", "salmon": "#fa8072", "sandybrown": "#f4a460", "seagreen": "#2e8b57", "seashell": "#fff5ee", "sienna": "#a0522d", "silver": "#c0c0c0", "skyblue": "#87ceeb", "slateblue": "#6a5acd", "slategray": "#708090", "snow": "#fffafa", "springgreen": "#00ff7f", "steelblue": "#4682b4",
     "tan": "#d2b48c", "teal": "#008080", "thistle": "#d8bfd8", "tomato": "#ff6347", "turquoise": "#40e0d0",
     "violet": "#ee82ee",
-    "wheat": "#f5deb3", "white": "#ffffff", "whitesmoke": "#f5f5f5",
+    "wheat": "#f5deb3", "white": "#9fd9f6", "whitesmoke": "#f5f5f5",
     "yellow": "#ffff00", "yellowgreen": "#9acd32"
   };
 

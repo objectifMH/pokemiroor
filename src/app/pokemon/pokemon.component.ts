@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
@@ -9,7 +9,7 @@ import { UtilService } from '../services/util.service';
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.scss']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonComponent implements OnInit  {
 
 
   @Input()
@@ -31,19 +31,29 @@ export class PokemonComponent implements OnInit {
   color_abilities: any;
   prix: string;
 
-  constructor(private pokeService: PokemonService,
+  my_pokedex: any;
+  isOnCart: boolean;
+
+  constructor(
+    private pokeService: PokemonService,
     private utilService: UtilService,
-    private router: Router) { }
+    private router: Router) { 
+      this.getMyPokedex();
+    }
 
   ngOnInit(): void {
     this.getPokemon();
+  }
+
+  ngDoCheck() {
+    this.verifPokemonOnCart();
   }
 
   getPokemon() {
     this.pokeService.getPokemon(this.input_pokemon.url).subscribe(
       data => {
         this.pokemon = data;
-        this.getPokemonSpecies(this.pokemon.species.url)
+        this.getPokemonSpecies(this.pokemon.species.url);
       },
       err => {
         console.log(err);
@@ -64,6 +74,27 @@ export class PokemonComponent implements OnInit {
       err => {
         console.log(err);
       });
+  }
+
+  getMyPokedex() {
+    this.pokeService.getMyPokedex().subscribe(
+      data => {
+        this.my_pokedex = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  verifPokemonOnCart() {
+    if (this.my_pokedex.length > 0 && this.pokemon)
+    {
+      return this.isOnCart = (this.my_pokedex.filter( poke => poke.id === this.pokemon.id).length > 0 ? true : false);
+      }
+    else{
+      return this.isOnCart = false;
+    }
   }
 
 }

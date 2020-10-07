@@ -1,0 +1,82 @@
+
+<div class="container">
+    <div class="container_pokedex">
+        <div class="pokedex_title">
+            <h4>My Pokedex
+                <span class="nbr">
+                    ({{this.pokemons.length}})
+                </span>
+            </h4>
+        </div>
+        <!-- <div *ngFor="let pokemon of this.pokemons; let i = index" class="pokemon">
+            <app-pokemon    
+                            [input_pokemon]="pokemon" 
+                            [width_img_pokemon]="110" 
+                            [height_img_pokemon]="110" 
+                            [show_abilities]="true">        
+            </app-pokemon>
+        </div> -->
+        <div class="container_table" *ngIf="this.pokemons.length > 0">
+            <table >
+                <tr>
+                  <th>Id</th>
+                  <th class="text-center">Image</th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Spec</th>
+                  <th class="text-center">Prix</th>
+                  <th class="text-center">Delete</th>
+                </tr>
+                <tr *ngFor="let pokemon of this.pokemons; let i = index">
+                  <td >
+                    #{{pokemon.id}}
+                  </td>
+                  <td class="text-center">
+                    <div class="container_td_img" [ngStyle]="{'background': pokemon.background}">
+                        <a routerLink = "/pokemons-details/{{pokemon.id}}" >
+                        <img  
+                            src="{{pokemon.pokemon.sprites.other.dream_world.front_default 
+                                ? pokemon.pokemon.sprites.other.dream_world.front_default
+                                : 'assets/img/no_image.png'}}"
+                                [ngStyle]="{'max-width.px': '100'}"
+                        > 
+                        </a>
+                    </div>
+                     
+                  </td>
+                  <td class="text-center td_name">
+                    <a routerLink = "/pokemons-details/{{pokemon.id}}" >
+                        {{pokemon.name}}
+                    </a>
+                  </td>
+                  
+                  <td class="text-center">
+                    <div    *ngFor="let type of pokemon.pokemon.types"
+                            class="badge badge_types" 
+                            [ngStyle]="{'background' : pokemon.background, 'color': pokemon.color}"
+                            >
+                        <a routerLink = "/pokemons-types/{{type.type.name}}" >
+                            {{type.type.name}}
+                        </a>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    {{pokemon.prix}}$
+                  </td>
+                  <td class="text-center">
+                    <span class="material-icons close_material" (click)="toggleAddDelete(pokemon)" >
+                        close
+                    </span>
+                  </td>
+                </tr>
+            </table>
+        </div>
+        <div class="total">
+            <h5>
+                Total: 
+                <span class="prix">
+                    {{this.total}}$
+                </span>
+            </h5>
+        </div>
+    </div>   
+</div>

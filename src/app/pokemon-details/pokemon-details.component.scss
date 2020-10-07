@@ -186,6 +186,40 @@ h4 {
         justify-content: center;
         align-items: center;
         margin-top: 50px;
+        width: 100%;
+
+        .h4_bottom {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+
+            .span_evolution {
+                font-weight: bolder;
+                font-size: 24px;
+            }
+
+            .toggle_close:before {
+                content: 'cancel';
+                font-size: 1.4em;
+                font-weight: bolder;
+                cursor: pointer;
+                position: absolute;
+                right: 22px;
+                top: 16px;
+            }
+
+            .toggle_add:before {
+                content: 'add_circle';
+                font-size: 1.4em;
+                font-weight: bolder;
+                cursor: pointer;
+                position: absolute;
+                right: 22px;
+                top: 16px;
+            }
+        }
 
         .container_evolution {
             display: flex;
@@ -193,6 +227,7 @@ h4 {
             justify-content: center;
             align-items: center;
             margin-bottom: 50px;
+            margin-top: 25px;
 
             .pokemon_baby {
 
@@ -226,46 +261,66 @@ h4 {
                 content: 'arrow_forward_ios';                
             }
         }
+
+        .container_evolution.fade {
+            display: none;
+        }
     }
 
     .location_container {
         margin-bottom: 50px !important;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
         
         .h4_container {
-            display: flex;
+            justify-content: center;
             align-items: center;
+            display: flex;
             flex-direction: row;
-
-            .span_location {
-                font-size: 0.6em;
-                margin-left: 10px;
-            }
+            width: 100%;
     
             h4 {
-                display: flex;
-                align-items: center;
+                .span_location {
+                    font-size: 0.6em;
+                    margin-left: 10px;
+                }
             }
 
             .toggle_close:before {
-                content: 'close';
-                font-size: 1.3em;
+                content: 'cancel';
+                font-size: 1.4em;
                 font-weight: bolder;
                 cursor: pointer;
                 position: absolute;
                 right: 22px;
+                top: 16px;
+                transition: all .2s ease-in-out;
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
 
             .toggle_add:before {
-                content: 'add';
-                font-size: 1.3em;
+                content: 'add_circle';
+                font-size: 1.4em;
                 font-weight: bolder;
                 cursor: pointer;
                 position: absolute;
                 right: 22px;
+                top: 16px;
+                
+                transition: all .2s ease-in-out;
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
         }
+
         .fade {
-           //margin-bottom: -400px;
+           display: none;
         }
     }
 }

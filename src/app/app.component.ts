@@ -26,6 +26,8 @@ export class AppComponent {
   input_search = "";
   pokemons = [];
   search_pokemons = [];
+  myPokedex; 
+  nbrMyPokedex = 0;
   
   constructor(private fb: FormBuilder,  private router: Router, 
               private utilserv: UtilService,
@@ -39,14 +41,18 @@ export class AppComponent {
     this.getAllPokemon();
   }
 
+  ngDoCheck() {
+    this.getMyPokedex();
+  }
+
   onSubmit() {
     console.log(this.monForm.value);
   }
 
   toggleSearch() {
     this.isInputSearch = !this.isInputSearch;
-    console.log(this.isInputSearch);
   }
+
 
   allClear() {
     this.monForm = this.fb.group({
@@ -55,10 +61,14 @@ export class AppComponent {
     this.isShowSearch = false;
   }
 
+  clear() {
+    this.monForm = this.fb.group({
+      search: ['']
+    });
+  }
+
   inputSearchChange() {
     let search = this.monForm.value.search;
-    
-    console.log(this.monForm.value, search);
     let search_length = search.length;
 
     if ( search_length >= 2)
@@ -70,7 +80,6 @@ export class AppComponent {
     else{
       this.search_pokemons = [];
     }
-    console.log(this.search_pokemons);
   }
 
   getAllPokemon() {
@@ -88,5 +97,18 @@ export class AppComponent {
   // Menu mobile 
   toggleMenu() {
     this.isShowMenu = !this.isShowMenu;
+  }
+
+  getMyPokedex() {
+    this.pokeService.getMyPokedex().subscribe(
+      data => {
+        this.myPokedex = data;
+        this.nbrMyPokedex = this.myPokedex.length;
+
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

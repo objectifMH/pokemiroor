@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class PokemonService {
 
   url_base = 'https://pokeapi.co/api/v2/';
+  my_pokedex: BehaviorSubject<any>;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.my_pokedex = new BehaviorSubject([]);
+   }
 
   public getUrlBaseImg() {
     return this.url_base;
@@ -65,5 +69,15 @@ export class PokemonService {
   public getAllPokemonByAbilities(ability: string) {
     const url = ''.concat(this.url_base, "ability/",ability);
     return this.httpClient.get(url);
+  }
+
+  // My pokedex :
+
+  public setMyPokedex(resultat) {
+    this.my_pokedex.next(resultat);
+  }
+
+  public getMyPokedex() {
+    return this.my_pokedex.asObservable();
   }
 }

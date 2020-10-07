@@ -37,10 +37,17 @@
         
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
-        {{pokemon.id}} 
+        #{{pokemon.id}} 
     </span>
     <span class="badge number_prix"  [ngStyle]="{'color' : color_abilities}" >
         {{prix}}$
     </span>
+    <div class="pokeball">
+        <img  
+                        src='assets/img/pokeball.png'
+                        [ngStyle]="{'display': 'none'}" 
+                        [ngClass]="{'shopping_cart_img' : isOnCart }"
+        >   
+    </div>
 </div>
 <div class="spinner-grow text-warning" *ngIf="!pokemon"></div>

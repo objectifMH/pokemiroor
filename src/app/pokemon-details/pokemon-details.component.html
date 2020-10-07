@@ -7,7 +7,7 @@
             <img  
                         src='assets/img/pokeball.png'
                         [ngStyle]="{'display': 'none'}" 
-                        [ngClass]="{'shopping_cart_img' : !isOnCart }"
+                        [ngClass]="{'shopping_cart_img' : isOnCart }"
                 >
         </div>
         <div class="pokemon_settings middle">
@@ -56,17 +56,14 @@
                             ? pokemons_details.sprites.other.dream_world.front_default
                             : 'assets/img/no_image.png'}}"
                         [ngStyle]="{'max-width' : '400px'}" 
-                >
-                
-            </div>
-            
+                >               
+            </div>       
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
                 <div    *ngFor="let stat of this.pokemons_details.stats"
                         class="badge stats" 
                         [ngStyle]="{'background' : color_background}"
-                        >
-                    
+                        >          
                     <div class="stat_name">{{stat.stat.name}}: {{stat.base_stat}} </div>
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': stat.base_stat+'%'}" aria-valuenow="{stat.base_stat}" aria-valuemin="0" aria-valuemax="100">
@@ -83,21 +80,29 @@
                 </span>
                 <span   class="badge cart"  
                         [ngStyle]="{'background' : this.species_color }"
-                        (click)="toggleIsOnCart()"
+                        (click)="toggleOnCart(this.pokemons_details)"
                         > 
-                    <span class="material-icons" [ngClass]="{'shopping_cart' : isOnCart, 'done' : !isOnCart  }">
-                        
+                    <span class="material-icons" [ngClass]="{'shopping_cart' : !isOnCart, 'done' : isOnCart  }">                     
                     </span>
                 </span>
-
             </div>
         </div> 
         <div class="bottom" *ngIf='evolution_bool'>
-            <h4> <span class="material-icons">
-                transform
+            <div class="h4_bottom position-relative">
+                <h4 >
+                    <span class="material-icons span_evolution">
+                        transform
+                    </span>
+                    Evolution
+                </h4>
+                <span   class="material-icons toggle_evolution" 
+                            [ngStyle]="{'color' : color_abilities}"
+                            (click)='toggleEvolutionShow()'
+                            [ngClass]="{'toggle_close' : isEvolutionShow, 'toggle_add' : !isEvolutionShow  }"
+                            >  
                 </span>
-                Evolution</h4>
-            <div class="container_evolution">
+            </div>  
+            <div class="container_evolution" [ngClass]="{'show' : isEvolutionShow, 'fade' : !isEvolutionShow  }">
                 <div class="pokemon_baby">
                     <div *ngFor="let pokemon of this.baby_pokemon; let i = index">
                         <app-pokemon    
@@ -145,8 +150,7 @@
                     
                     <span class="span_location" [ngStyle]="{'color' : color_abilities}">
                         ({{location}})
-                    </span>
-                    
+                    </span>                
                 </h4>
                 <span   class="material-icons toggle_location" 
                             [ngStyle]="{'color' : color_abilities}"
@@ -154,10 +158,8 @@
                             [ngClass]="{'toggle_close' : isLocationShow, 'toggle_add' : !isLocationShow  }"
                             >  
                 </span>
-
-            </div>
-            
-            <div *ngFor="let loc of this.location; let i = index" 
+            </div>      
+            <div    *ngFor="let loc of this.location; let i = index" 
                     [ngClass]="{'show' : isLocationShow, 'fade' : !isLocationShow  }"
                     >
                 <app-map [total]="loc"></app-map>
@@ -165,6 +167,6 @@
         </div>  
     </div>
     <span class="badge number"  [ngStyle]="{'background' : color_abilities}" >
-        {{pokemons_details.id}}
+        #{{pokemons_details.id}}
     </span>
 </div>

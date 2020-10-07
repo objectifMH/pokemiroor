@@ -66,16 +66,23 @@ export class MapComponent implements OnInit, AfterViewInit {
     {
       for ( let i=0; i< this.total; i++)
       {
-        let rand1 = this.util.getRandomInt(3, -3);
-        let rand2 = this.util.getRandomInt(3, -3);
-
-        let long = (this.comedieMtp.long + rand1 * 0.01);
+        let rand1 = this.util.getRandomInt(5, -5);
+        let rand2 = this.util.getRandomInt(5, -5);
+        
         let lat = (this.comedieMtp.lat + rand2 * 0.01);
-
+        let long = (this.comedieMtp.long + rand1 * 0.01);
+        //console.log("Total : ", this.total, lat, long);
+        
         let marker = L.marker([lat, long], {icon: this.smallIcon});
         tab_marker = [...tab_marker, marker];
       }
-      tab_marker.map( mark => mark.addTo(this.map));
+      let cmpt = 0;
+      tab_marker.map( mark => {
+          mark.addTo(this.map).bindPopup(cmpt+" : "+mark._latlng.lat+" , "+mark._latlng.lng).openPopup();
+          cmpt++;
+        }
+        );
+      //console.log(tab_marker);
     }
   }
 
