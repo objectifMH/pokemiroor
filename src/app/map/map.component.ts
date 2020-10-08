@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { PokemonService } from '../services/pokemon.service';
 import { UtilService } from '../services/util.service';
 
 @Component({
@@ -7,12 +8,15 @@ import { UtilService } from '../services/util.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapComponent implements OnInit {
 
   map;
 
   @Input()
   total: number;
+
+  //@Input()
+  url_img: string;
 
   comedieMtp = {
     lat: 43.610769,
@@ -22,25 +26,45 @@ export class MapComponent implements OnInit, AfterViewInit {
   smallIcon = new L.Icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
-    iconSize:    [25, 41],
-    iconAnchor:  [12, 41],
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    shadowSize:  [41, 41]
+    shadowSize: [41, 41]
   });
 
-  constructor(private util: UtilService) { }
+  constructor(private util: UtilService, private pokeService: PokemonService) { }
+  
 
   ngOnInit(): void {
+    this.getUrlImgMap();
+    this.createMap();
+    this.mutliMarker();
+  }
+
+  ngDoCheck(): void {
+    
   }
 
   ngAfterViewInit(): void {
-    this.createMap();
+    
+    this.mutliMarker();
+  }
+
+  getUrlImgMap() {
+    this.pokeService.getUrlImgMap().subscribe(
+      data => {
+        this.url_img = data;
+        console.log(" dans map  > ", this.url_img);
+        
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   createMap() {
-    
-
     const zoomLvl = 12;
 
     this.map = L.map('id_map', {
@@ -55,34 +79,35 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
 
     mainLayer.addTo(this.map);
-    this.mutliMarker();
+    //this.mutliMarker();
   }
 
   mutliMarker() {
-    //this.total = this.util.getRandomInt(20);
     let tab_marker = [];
-  
-    if( this.total > 0)
-    {
-      for ( let i=0; i< this.total; i++)
-      {
+
+    if (this.total > 0) {
+      for (let i = 0; i < this.total; i++) {
         let rand1 = this.util.getRandomInt(5, -5);
         let rand2 = this.util.getRandomInt(5, -5);
-        
+
         let lat = (this.comedieMtp.lat + rand2 * 0.01);
         let long = (this.comedieMtp.long + rand1 * 0.01);
-        //console.log("Total : ", this.total, lat, long);
-        
-        let marker = L.marker([lat, long], {icon: this.smallIcon});
+
+        let marker = L.marker([lat, long], { icon: this.smallIcon });
         tab_marker = [...tab_marker, marker];
       }
-      let cmpt = 0;
-      tab_marker.map( mark => {
-          mark.addTo(this.map).bindPopup(cmpt+" : "+mark._latlng.lat+" , "+mark._latlng.lng).openPopup();
-          cmpt++;
-        }
-        );
-      //console.log(tab_marker);
+      let cmpt = 1;
+
+      if (this.url_img) {
+        console.log(this.url_img);
+      }
+
+      tab_marker.map(mark => {
+        // mark.addTo(this.map).bindPopup(cmpt+" : "+mark._latlng.lat+" , "+mark._latlng.lng).openPopup();
+        mark.addTo(this.map).bindPopup(cmpt+"<img src='" + this.url_img + "' style='max-width:90px; max-height:90px; ' >").openPopup();
+        cmpt++;
+      }
+      );
     }
   }
 

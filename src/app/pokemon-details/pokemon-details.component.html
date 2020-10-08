@@ -50,14 +50,18 @@
                     </div>
                 </div> 
             </div>
-            <div class="position-relative">
-                <img  
-                        src="{{pokemons_details.sprites.other.dream_world.front_default 
-                            ? pokemons_details.sprites.other.dream_world.front_default
-                            : 'assets/img/no_image.png'}}"
-                        [ngStyle]="{'max-width' : '400px'}" 
-                >               
-            </div>       
+            <div [ngStyle]="{'width' : '100%'}">
+                <div    class="position-relative container_img" 
+                        [ngStyle]="{'background' : color_abilities, 'border-radius': '50%'}">
+                    <img  
+                            src="{{pokemons_details.sprites.other.dream_world.front_default 
+                                ? pokemons_details.sprites.other.dream_world.front_default
+                                : 'assets/img/no_image.png'}}"
+                            [ngStyle]="{'max-width' : '400px'}" 
+                            
+                    >               
+                </div>  
+            </div>      
             <div class="pokemon_stats" >
                 <H5 style="text-shadow: {{color_abilities}} 1px 1px;">Stats</H5>
                 <div    *ngFor="let stat of this.pokemons_details.stats"
@@ -162,7 +166,10 @@
             <div    *ngFor="let loc of this.location; let i = index" 
                     [ngClass]="{'show' : isLocationShow, 'fade' : !isLocationShow  }"
                     >
-                <app-map [total]="loc"></app-map>
+                <app-map    [total]="loc" 
+                            
+                >
+                </app-map>
             </div>
         </div>  
     </div>

@@ -53,6 +53,11 @@ a {
                 text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8; 
             }
 
+            a.active_pokedex {  
+                background: #3761a8;
+                border-radius: 50%;
+            }
+
             a {
                 display: flex;
                 align-items: center;
@@ -65,10 +70,9 @@ a {
 
                 img {
                     max-width: 40px;
-                    text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
 
-                color: $color;
+                color: $color; 
                 font-size: 1.2em;
                 font-weight: bolder;
 
@@ -86,7 +90,13 @@ a {
                     transform: scale(1.22);
                     text-shadow: 3px 0 0 #3761a8, 3px 3px 0 #3761a8, 0 3px 0 #3761a8, -3px 3px 0 #3761a8, -3px 0 0 #3761a8, -3px -3px 0 #3761a8, 0 -3px 0 #3761a8, 3px -3px 0 #3761a8;
                 }
-            }    
+            } 
+            
+            a.a_transition_img {
+                transition: all .2s ease-in-out;
+                &:hover {
+                    transform: scale(1.22) rotate(720deg);                }
+            }   
 
             .a_search {
                 display: flex;

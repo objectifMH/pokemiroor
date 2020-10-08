@@ -45,8 +45,8 @@
                 </li>
                 
                 <li class="nav-item position-relative">
-                    <a class="nav-link link-logo a_transition" routerLink='/pokedex' title="Your pokedex"
-                        routerLinkActive="active">
+                    <a class="nav-link link-logo a_transition_img" routerLink='/pokedex' title="Your pokedex"
+                        routerLinkActive="active_pokedex">
                         <img  
                             src='assets/img/pokeball.png'
                         >
@@ -120,7 +120,7 @@
 
 <section class="router_content">
     <div class="search_container" [ngClass]="{'show': isShowSearch, 'fade': !isShowSearch}">
-        <h5> "{{this.input_search}}"" : {{this.search_pokemons.length}} {{this.search_pokemons.length > 1 ? "founds" : "found"}}
+        <h5> "{{this.input_search}}" : {{this.search_pokemons.length}} {{this.search_pokemons.length > 1 ? "founds" : "found"}}
             <span class="material-icons close_results_search" (click)="allClear()" >
                 close
             </span>

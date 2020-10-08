@@ -23,6 +23,14 @@
                         {{pokemon.abilities[1].ability.name}}
                     </a>
                 </div>
+                <!-- Fake ability -->
+                <div    class="badge badge-light badge_abilities invisible" 
+                        *ngIf="pokemon.abilities.length === 1">
+                    
+                    <a  routerLink="" >
+                        fake
+                    </a>
+                </div>
             </div>  
 
         </div>

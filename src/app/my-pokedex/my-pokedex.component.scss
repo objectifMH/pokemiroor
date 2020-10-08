@@ -34,6 +34,19 @@
             table {
                 width: 100%;
                 font-size: 1.2em;
+                font-weight: bolder;
+
+                tr {
+                    border-radius: 15px;
+                    margin: 5px;
+                }
+
+                .id_pokemon {
+                    color: white;
+                    border-radius: 50%;
+                    padding: 8px;
+                    margin-left: 5px;
+                }
 
                 .container_td_img {
                     border-radius: 50%;
@@ -101,7 +114,7 @@
         .clear_all{
             .btn-danger {
                 color: white;
-                font-size: 1.2em !important;
+                font-size: 1.2em ;
                 font-weight: bolder !important;
             }
         }
@@ -109,6 +122,14 @@
 }
 
 @media (max-width: 425px) {
+
+    .pokedex_title {
+        border-bottom: 2px solid white !important;
+        h4 {
+            font-size: 1.2em !important;
+        }
+    }
+
     .container_table {
         table {
             width: 100%;
@@ -125,6 +146,20 @@
                     max-height: 50px !important;
                 }
             }
+        }
+    }
+
+    .total {
+        border-top: 2px solid white !important;
+
+        h5 {
+            font-size: 1.2em !important;
+        }
+    }
+
+    .clear_all{
+        .btn-danger {
+            font-size: 0.8em !important;
         }
     }
 }

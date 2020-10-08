@@ -9,9 +9,11 @@ export class PokemonService {
 
   url_base = 'https://pokeapi.co/api/v2/';
   my_pokedex: BehaviorSubject<any>;
+  url_img_map: BehaviorSubject<string>;
 
   constructor(private httpClient: HttpClient) {
     this.my_pokedex = new BehaviorSubject([]);
+    this.url_img_map = new BehaviorSubject("");
    }
 
   public getUrlBaseImg() {
@@ -80,4 +82,15 @@ export class PokemonService {
   public getMyPokedex() {
     return this.my_pokedex.asObservable();
   }
+
+  // Map 
+
+  public setUrlImgMap(resultat) {
+    this.url_img_map.next(resultat);
+  }
+
+  public getUrlImgMap() {
+    return this.url_img_map.asObservable();
+  }
+
 }

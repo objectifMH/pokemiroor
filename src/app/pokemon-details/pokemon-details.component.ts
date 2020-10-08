@@ -15,6 +15,8 @@ export class PokemonDetailsComponent implements OnInit {
   id: string;
   url = 'https://pokeapi.co/api/v2/pokemon/';
 
+  //url_img: string;
+  url_pokemon: string;
   location = [];
   species: any;
   evolution: any;
@@ -46,6 +48,7 @@ export class PokemonDetailsComponent implements OnInit {
 
         this.id = this.route.snapshot.paramMap.get('id');
         let url_pokemon = ''.concat(this.url, this.id);
+        this.url_pokemon = url_pokemon;
         
         this.location = [];
         this.location = [...this.location, this.utilService.getRandomInt(8)];  
@@ -55,6 +58,10 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngDoCheck() {
+    //this.getPokemonDetails(this.url_pokemon);
   }
 
   getMyPokedex() {
@@ -74,7 +81,15 @@ export class PokemonDetailsComponent implements OnInit {
         this.pokemons_details = data;
         //console.log("getPokemon > ", this.pokemons_details);
         this.prix = this.utilService.getPrix(this.pokemons_details.id);
-        this.getPokemonSpecies(this.pokemons_details.species.url)
+        this.getPokemonSpecies(this.pokemons_details.species.url);
+        
+        let url_img =    this.pokemons_details.sprites.other.dream_world.front_default 
+                        ? this.pokemons_details.sprites.other.dream_world.front_default
+                        : 'assets/img/no_image.png';
+                        console.log("url map > " , url_img);
+                        
+        this.pokeService.setUrlImgMap(url_img);
+        
       },
       err => {
         console.log(err);
@@ -181,7 +196,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   addPokemonOnMyPokedex(pokemon) {
     let url = "https://pokeapi.co/api/v2/pokemon/"+pokemon.id;
-    this.my_pokedex = [...this.my_pokedex, {'id': pokemon.id, 'name': pokemon.name, 'url': url, 'pokemon': pokemon, 'prix': this.prix, 'color': this.color_abilities, 'background': this.color_background}];
+    this.my_pokedex = [...this.my_pokedex, {'id': pokemon.id, 'name': pokemon.name, 'url': url, 'pokemon': pokemon, 'prix': this.prix, 'color': this.color_abilities, 'background': this.color_background, 'color_base': this.species.color.name}];
     this.pokeService.setMyPokedex(this.my_pokedex);
   }
 

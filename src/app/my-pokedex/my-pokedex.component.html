@@ -20,18 +20,22 @@
             <table >
                 <tr>
                   <th>Id</th>
-                  <th class="text-center">Image</th>
+                  <th class="text-center">Profile</th>
                   <th class="text-center">Name</th>
-                  <th class="text-center">Spec</th>
+                  <th class="text-center">Types</th>
                   <th class="text-center">Prix</th>
                   <th class="text-center">Delete</th>
                 </tr>
-                <tr *ngFor="let pokemon of this.pokemons; let i = index">
+                <tr *ngFor="let pokemon of this.pokemons; let i = index"
+                    [ngStyle]="{'background': pokemon.background, 'border-radius': '20px'}"
+                >
                   <td >
-                    #{{pokemon.id}}
+                      <span class=" badge id_pokemon" [ngStyle]="{'background': pokemon.color}">
+                        #{{pokemon.id}}
+                      </span>
                   </td>
                   <td class="text-center">
-                    <div class="container_td_img" [ngStyle]="{'background': pokemon.background}">
+                    <div class="container_td_img" [ngStyle]="{'background': pokemon.color}">
                         <a routerLink = "/pokemons-details/{{pokemon.id}}" >
                         <img  
                             src="{{pokemon.pokemon.sprites.other.dream_world.front_default 
@@ -43,27 +47,29 @@
                     </div>
                      
                   </td>
-                  <td class="text-center td_name">
-                    <a routerLink = "/pokemons-details/{{pokemon.id}}" >
+                  <td class="text-center td_name" >
+                    <a  routerLink = "/pokemons-details/{{pokemon.id}}" [ngStyle]="{'color': pokemon.color}" 
+                        style="text-shadow: {{pokemon.color_base}} 2px 2px;"
+                    >
                         {{pokemon.name}}
                     </a>
                   </td>
                   
-                  <td class="text-center">
+                  <td class="text-center" >
                     <div    *ngFor="let type of pokemon.pokemon.types"
                             class="badge badge_types" 
-                            [ngStyle]="{'background' : pokemon.background, 'color': pokemon.color}"
+                            [ngStyle]="{'background' : pokemon.color}"
                             >
                         <a routerLink = "/pokemons-types/{{type.type.name}}" >
                             {{type.type.name}}
                         </a>
                     </div>
                   </td>
-                  <td class="text-center">
+                  <td class="text-center" [ngStyle]="{'color': pokemon.color}">
                     {{pokemon.prix}}$
                   </td>
                   <td class="text-center">
-                    <span class="material-icons close_material" (click)="toggleAddDelete(pokemon)" >
+                    <span class="material-icons close_material" (click)="toggleAddDelete(pokemon)" [ngStyle]="{'color': pokemon.color}">
                         close
                     </span>
                   </td>

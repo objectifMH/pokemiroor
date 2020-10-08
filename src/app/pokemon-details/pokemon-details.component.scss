@@ -174,10 +174,16 @@ h4 {
         font-weight: bold;
     }
 
-    img {
-        padding: 10px 15px;
-        margin: 5px 8px;
-        margin: 5px 0px 5px 20px;
+    .container_img {
+        max-width: 380px;
+        max-height: 380px;
+        box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75); 
+
+        img {
+            padding: 10px 15px;
+            margin: 5px 8px;
+            margin: 5px 0px 5px 20px;
+        }
     }
 
     .bottom {
@@ -342,9 +348,7 @@ h4 {
 
     .badge_types, .badge.stats, .badge_abilities {
         padding: 5px 10px !important;
-    }
-
-    
+    }  
 }
 
 @media (max-width: 768px) {
@@ -361,6 +365,7 @@ h4 {
         img { 
             order: 1;
             margin-bottom: 30px;
+
         }
 
         .pokemon_spec_types_abilities {
@@ -431,6 +436,4 @@ h4 {
 }
 
 // @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    
-
 // }

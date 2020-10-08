@@ -70,11 +70,11 @@ export class AppComponent {
   inputSearchChange() {
     let search = this.monForm.value.search;
     let search_length = search.length;
+    this.input_search = search;
 
     if ( search_length >= 2)
     {
       this.isShowSearch = true;
-      this.input_search = search;
       this.search_pokemons = this.pokemons.filter(pokemon => pokemon.name.slice(0, search_length).toLowerCase() === search.slice(0, search_length).toLowerCase());
     }
     else{
