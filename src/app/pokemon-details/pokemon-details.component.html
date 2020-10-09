@@ -167,7 +167,9 @@
                     [ngClass]="{'show' : isLocationShow, 'fade' : !isLocationShow  }"
                     >
                 <app-map    [total]="loc" 
-                            
+                            [color]="color_abilities"
+                            [url_img]="url_img"
+                            [name]="pokemons_details.species.name"
                 >
                 </app-map>
             </div>

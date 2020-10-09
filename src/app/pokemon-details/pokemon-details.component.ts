@@ -15,7 +15,7 @@ export class PokemonDetailsComponent implements OnInit {
   id: string;
   url = 'https://pokeapi.co/api/v2/pokemon/';
 
-  //url_img: string;
+  url_img: string;
   url_pokemon: string;
   location = [];
   species: any;
@@ -86,10 +86,8 @@ export class PokemonDetailsComponent implements OnInit {
         let url_img =    this.pokemons_details.sprites.other.dream_world.front_default 
                         ? this.pokemons_details.sprites.other.dream_world.front_default
                         : 'assets/img/no_image.png';
-                        console.log("url map > " , url_img);
-                        
-        this.pokeService.setUrlImgMap(url_img);
-        
+
+        this.url_img = url_img;
       },
       err => {
         console.log(err);
@@ -123,6 +121,9 @@ export class PokemonDetailsComponent implements OnInit {
       data => {
         this.evolution = data;
         //console.log("getPokemonsEvolutionChain > ", data);
+        this.baby_pokemon = [];
+        this.evolve_pokemon = [];
+        this.super_evolve_pokemon = [];
 
         if (data['chain']['species']) {
           this.baby_pokemon = [];

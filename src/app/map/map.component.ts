@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import * as L from 'leaflet';
 import { PokemonService } from '../services/pokemon.service';
 import { UtilService } from '../services/util.service';
@@ -8,15 +8,27 @@ import { UtilService } from '../services/util.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
 
   map;
 
   @Input()
   total: number;
 
-  //@Input()
+  total_map;
+
+  @Input()
   url_img: string;
+
+  url_map: string;
+
+  @Input()
+  name: string;
+
+  @Input()
+  color: any;
+
+  markers;
 
   comedieMtp = {
     lat: 43.610769,
@@ -33,40 +45,23 @@ export class MapComponent implements OnInit {
     shadowSize: [41, 41]
   });
 
-  constructor(private util: UtilService, private pokeService: PokemonService) { }
-  
-
-  ngOnInit(): void {
-    this.getUrlImgMap();
-    this.createMap();
-    this.mutliMarker();
+  constructor(private util: UtilService, private pokeService: PokemonService) {
   }
 
-  ngDoCheck(): void {
-    
+  ngAfterViewInit() {
+     this.createMap();
   }
 
-  ngAfterViewInit(): void {
-    
-    this.mutliMarker();
-  }
-
-  getUrlImgMap() {
-    this.pokeService.getUrlImgMap().subscribe(
-      data => {
-        this.url_img = data;
-        console.log(" dans map  > ", this.url_img);
-        
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.url_img && changes.url_img.currentValue !== this.url_map) {
+      this.url_map = changes.url_img.currentValue;
+      console.log("Dans ngOnChabges");
+      this.mutliMarker();
+    }
   }
 
   createMap() {
     const zoomLvl = 12;
-
     this.map = L.map('id_map', {
       center: [this.comedieMtp.lat, this.comedieMtp.long],
       zoom: zoomLvl
@@ -79,13 +74,15 @@ export class MapComponent implements OnInit {
     });
 
     mainLayer.addTo(this.map);
-    //this.mutliMarker();
+    this.mutliMarker();
   }
 
   mutliMarker() {
-    let tab_marker = [];
-
+    this.deleteMarker();
+    this.markers = [];
+    
     if (this.total > 0) {
+
       for (let i = 0; i < this.total; i++) {
         let rand1 = this.util.getRandomInt(5, -5);
         let rand2 = this.util.getRandomInt(5, -5);
@@ -94,21 +91,26 @@ export class MapComponent implements OnInit {
         let long = (this.comedieMtp.long + rand1 * 0.01);
 
         let marker = L.marker([lat, long], { icon: this.smallIcon });
-        tab_marker = [...tab_marker, marker];
-      }
-      let cmpt = 1;
-
-      if (this.url_img) {
-        console.log(this.url_img);
+        this.markers = [...this.markers, marker];
       }
 
-      tab_marker.map(mark => {
-        // mark.addTo(this.map).bindPopup(cmpt+" : "+mark._latlng.lat+" , "+mark._latlng.lng).openPopup();
-        mark.addTo(this.map).bindPopup(cmpt+"<img src='" + this.url_img + "' style='max-width:90px; max-height:90px; ' >").openPopup();
-        cmpt++;
-      }
-      );
+      let name_pokemon = this.name.charAt(0).toUpperCase() + this.name.substring(1).toLowerCase();
+      if ( this.markers.length > 0 && this.map)
+      this.markers.map((mark, index) => {
+        mark.addTo(this.map)
+          .bindPopup("<h4>" + name_pokemon + " <span style='font-size:15px'>("+(index+1)+")</span></h4><img src='" + this.url_map + "' style='max-width:90px; max-height:90px; ' >")
+          .openPopup();
+        console.log(index);
+      });
     }
   }
 
+  deleteMarker(){
+    if ( this.markers && this.markers.length > 0)
+    {
+      this.markers.map( marker => {
+        this.map.removeLayer(marker);
+      });
+    }
+  }
 }
