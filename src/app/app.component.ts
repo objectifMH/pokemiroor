@@ -26,18 +26,22 @@ export class AppComponent {
   input_search = "";
   pokemons = [];
   search_pokemons = [];
-  myPokedex; 
+  search_pokemons_aux = [];
+
+  search_begin;
+  search_end;
+  myPokedex;
   nbrMyPokedex = 0;
-  
-  constructor(private fb: FormBuilder,  private router: Router, 
-              private utilserv: UtilService,
-              private pokeService: PokemonService) {
+
+  constructor(private fb: FormBuilder, private router: Router,
+    private utilserv: UtilService,
+    private pokeService: PokemonService) {
     this.monForm = this.fb.group({
       search: ['']
     });
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getAllPokemon();
   }
 
@@ -52,7 +56,6 @@ export class AppComponent {
   toggleSearch() {
     this.isInputSearch = !this.isInputSearch;
   }
-
 
   allClear() {
     this.monForm = this.fb.group({
@@ -72,13 +75,49 @@ export class AppComponent {
     let search_length = search.length;
     this.input_search = search;
 
-    if ( search_length >= 2)
-    {
+    if (search_length > 0) {
       this.isShowSearch = true;
-      this.search_pokemons = this.pokemons.filter(pokemon => pokemon.name.slice(0, search_length).toLowerCase() === search.slice(0, search_length).toLowerCase());
+      this.search_pokemons_aux = this.pokemons.filter(pokemon =>
+        (pokemon.name.toLowerCase()).includes(search.toLowerCase())
+        ||
+        (pokemon['url'].split("/")[6]).includes(search.toLowerCase())
+      )
     }
-    else{
+    else {
       this.search_pokemons = [];
+    }
+    if (this.search_pokemons_aux && this.search_pokemons_aux.length <= 10) {
+      this.search_begin = 0;
+      this.search_end = this.search_pokemons_aux.length;
+      this.search_pokemons = this.search_pokemons_aux.slice(0, this.search_pokemons_aux.length);
+    }
+    else {
+      this.search_begin = 0;
+      this.search_end = 10;
+      this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, 10);
+    }
+  }
+
+  getSearchBegin() {
+    if (this.search_begin - 10 >= 0) {
+      this.search_begin -= 10;
+      this.search_end = this.search_begin + 10;
+      this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, this.search_end);
+    }
+  }
+
+  getSearchEnd() {
+    if (this.search_end + 10 <= this.search_pokemons_aux.length) {
+      this.search_begin += 10;
+      this.search_end += 10;
+      this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, this.search_end);
+    }
+    else {
+      if (this.search_end + 10 > this.search_pokemons_aux.length) {
+        this.search_begin += 10;
+        this.search_end = this.search_pokemons_aux.length;
+        this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, this.search_pokemons_aux.length);
+      }
     }
   }
 
@@ -104,7 +143,6 @@ export class AppComponent {
       data => {
         this.myPokedex = data;
         this.nbrMyPokedex = this.myPokedex.length;
-
       },
       err => {
         console.log(err);

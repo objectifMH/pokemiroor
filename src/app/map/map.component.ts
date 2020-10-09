@@ -55,7 +55,6 @@ export class MapComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.url_img && changes.url_img.currentValue !== this.url_map) {
       this.url_map = changes.url_img.currentValue;
-      console.log("Dans ngOnChabges");
       this.mutliMarker();
     }
   }
@@ -100,7 +99,6 @@ export class MapComponent {
         mark.addTo(this.map)
           .bindPopup("<h4>" + name_pokemon + " <span style='font-size:15px'>("+(index+1)+")</span></h4><img src='" + this.url_map + "' style='max-width:90px; max-height:90px; ' >")
           .openPopup();
-        console.log(index);
       });
     }
   }

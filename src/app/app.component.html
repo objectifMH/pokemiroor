@@ -15,7 +15,7 @@
                             title="Search"
                     >
                         <form [formGroup]="monForm" class="form_search" > 
-                                <input  type="text" placeholder="Search a pokemon ..." 
+                                <input  type="text" placeholder="Search by name or id ..." 
                                         formControlName="search" 
                                         class=" form-control search_input" 
                                         id="id_search_input"
@@ -50,7 +50,6 @@
                         <img  
                             src='assets/img/pokeball.png'
                         >
-                        
                         <span class="badge badge-success total_pokedex">
                             {{this.nbrMyPokedex}}
                         </span>
@@ -116,26 +115,32 @@
     </div>
 </header>
 
-
-
 <section class="router_content">
     <div class="search_container" [ngClass]="{'show': isShowSearch, 'fade': !isShowSearch}">
-        <h5> "{{this.input_search}}" : {{this.search_pokemons.length}} {{this.search_pokemons.length > 1 ? "founds" : "found"}}
+        <h5> "{{this.input_search}}" : {{this.search_pokemons_aux.length}} {{this.search_pokemons.length > 1 ? "founds" : "found"}} >
             <span class="material-icons close_results_search" (click)="allClear()" >
                 close
             </span>
+            <span *ngIf="search_pokemons_aux.length > 10">
+                <span *ngIf="(search_begin+1) !== search_end ">{{search_begin+1}}-</span>
+                <span >{{search_end}}</span>
+            </span>  
         </h5>
         <div class='search_result' >
-             <div *ngFor="let pokemon of this.search_pokemons; let i = index">
+            <div *ngIf='this.search_begin !== 0' (click)="getSearchBegin()">
+                <span class="material-icons chevron_left"> chevron_left </span>
+            </div>
+            <div *ngFor="let pokemon of this.search_pokemons; let i = index">
                 <app-pokemon    [input_pokemon]="pokemon" 
                         [width_img_pokemon]="120" 
                         [height_img_pokemon]="120" 
                         [show_abilities]="true">
                 </app-pokemon> 
             </div>
-
+            <div *ngIf='this.search_end !== this.search_pokemons_aux.length ' (click)="getSearchEnd()">
+                <span class="material-icons chevron_right"> chevron_right </span>
+            </div>
     </div>
-    
     </div>
     <router-outlet></router-outlet>
 </section>
@@ -154,11 +159,9 @@
                 <a href='https://pokeapi.co/' target="_blank" title="PokéApi"> <img class="card-img-top"
                         src="assets/img/papi.png" alt="PokéApi" />
                 </a>
-
             </li>
             <li><span class="about_bottom">About Us</span>
                 <div class="reseaux_bottom">
-
                     <a routerLink="/admin" title="Admin Michael Hatchi">
                         <fa-icon [icon]="faUserCircle"></fa-icon>
                     </a>
@@ -168,14 +171,9 @@
                     <a href='https://github.com/objectifMH/MirroorMedia' target="_blank" title="Github">
                         <fa-icon [icon]="faGithub"></fa-icon>
                     </a>
-
-
-
                 </div>
             </li>
-
         </ul>
-
         <div class="footer_bottom">
             <span>©2021 Copyright.fr. All right reserved.</span>
         </div>
