@@ -110,9 +110,17 @@
     h3 {
         font-size: 1.45rem;
     }
+
+    img { 
+        max-width: 440px;
+    }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 924px) {  
+    h3 {
+        font-size: 1.45rem;
+    }
+
     img { 
         max-width: 240px;
     }

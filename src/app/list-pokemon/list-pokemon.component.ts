@@ -19,7 +19,7 @@ export class ListPokemonComponent implements OnInit {
   }
 
   getAllPokemons() {
-    this.pokeService.getPokemonsByPage("97", "12").subscribe(
+    this.pokeService.getPokemonsByPage(this.utilService.getRandomInt(200).toString(), "12").subscribe(
       data => {
         this.pokemons = data['results'];
       },
@@ -30,7 +30,7 @@ export class ListPokemonComponent implements OnInit {
         this.show_abilities = true;
         this.pokemons.map(poke => {
           let random_ = this.utilService.getRandomInt(9);
-          if (poke.name === "mew" || poke.name === "krabby") {
+          if (poke.name === "mew" || poke.name === "zapdos" || poke.name === "snorlax") {
             poke.show = true;
           }
           else {
