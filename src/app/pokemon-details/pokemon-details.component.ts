@@ -93,7 +93,7 @@ export class PokemonDetailsComponent implements OnInit {
         //console.log("getPokemon > ", this.pokemons_details);
         this.prix = this.utilService.getPrix(this.pokemons_details.id);
         this.getPokemonSpecies(this.pokemons_details.species.url);
-        console.log(this.pokemons_details.sprites);
+        //console.log(this.pokemons_details.sprites);
         let url_img =    this.pokemons_details.sprites.other.dream_world.front_default 
                         ? this.pokemons_details.sprites.other.dream_world.front_default
                         : 'assets/img/no_image.png';

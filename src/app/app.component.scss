@@ -109,8 +109,8 @@ a {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-
                     position: relative;
+
                     .search_input {
                         background: $back-main;
                         margin: 0;
@@ -134,7 +134,7 @@ a {
                     input.ng-touched.ng-valid + .i_close:before {
                             content:'close';
                             color: red;
-                            right: 30px !important;
+                            right: 34px !important;
                             top: 7px;
                             position: absolute;
                             cursor: pointer;
@@ -177,7 +177,6 @@ a {
         .close_mob:before {
             content: 'close';
         }
-
     }
 }
 
