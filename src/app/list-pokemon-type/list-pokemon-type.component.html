@@ -1,10 +1,10 @@
 <div class="container types" id="types">
     <span class="badge badge-success"> Types :</span>
     <span class="badge badge-warning" *ngFor="let poke of this.pokemons_types_aux; let i = index">
-        <a [routerLink] = "['/types']"  fragment="{{poke.type}}" >{{poke.type}}</a>
+        <a [routerLink]="['/types']" fragment="{{poke.type}}">{{poke.type}}</a>
     </span>
 </div>
-<div   class="container" *ngFor="let poke of this.pokemons_types; let i = index" >
+<div class="container" *ngFor="let poke of this.pokemons_types; let i = index">
     <div id="{{poke.type}}" class="container_type">
         <h4>{{poke.type}} <span class="span_total"> ({{poke.total}})</span>
             <span class="material-icons chevron_right">
@@ -12,12 +12,13 @@
             </span>
         </h4>
         <div class="container pokemons_by_type">
-            <div  *ngFor="let pokemon of poke.list_pokemons; let i = index">
-                <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100" [show_abilities]="true"></app-pokemon>
+            <div *ngFor="let pokemon of poke.list_pokemons; let i = index">
+                <app-pokemon [input_pokemon]="pokemon.pokemon" [width_img_pokemon]="100" [height_img_pokemon]="100"
+                    [show_abilities]="true"></app-pokemon>
             </div>
         </div>
         <div class="plus_pokemons_type">
-            <a routerLink = "/pokemons-types/{{poke.type}}" class="btn btn-primary">
+            <a routerLink="/pokemons-types/{{poke.type}}" class="btn btn-primary">
                 <span class="more">
                     more
                 </span>
@@ -30,10 +31,9 @@
     <hr>
 </div>
 <div class="container-fluid vertical_align_top">
-    <a [routerLink] = "['/types']"  fragment="types" class="">
+    <a [routerLink]="['/types']" fragment="types" class="">
         <span class="material-icons">
             vertical_align_top
         </span>
     </a>
 </div>
-

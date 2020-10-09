@@ -6,8 +6,6 @@
     </a>
     <span class="badge badge-success"> Abilities :</span>
     <span class="badge badge-warning" *ngFor="let ability of this.abilities; let i = index">
-        <!-- <a [routerLink] = "['/abilities', offset, limit]"  fragment={{ability.name}} >{{ability.name}}</a>
-        routerLink = "/pokemons-ability/{{poke.ability}}" -->
         <a routerLink = "/abilities/{{offset}}/{{limit}}"  fragment={{ability.name}} >{{ability.name}}</a>
     </span>
     <a routerLink = "/abilities/{{offset_next}}/{{limit_next}}" *ngIf="next">
@@ -16,7 +14,7 @@
         </span>
     </a>
 </div>
-<div   class="container" *ngFor="let poke of this.pokemons_abilities; let i = index" >
+<div class="container" *ngFor="let poke of this.pokemons_abilities; let i = index" >
     <div id="{{poke.ability}}" class="container_ability">
         <h4> {{poke.ability}} 
             <span class="span_total">
@@ -33,7 +31,6 @@
         </div>
         <div class="plus_pokemons_ability">
             <a routerLink = "/pokemons-ability/{{poke.ability}}/{{offset}}/{{limit}}" class="btn btn-primary">
-            <!-- <a [routerLink] = "['/pokemons-ability',poke.ability, offset, limit]" class="btn btn-primary"> -->
                 <span class="more">
                     more
                 </span>

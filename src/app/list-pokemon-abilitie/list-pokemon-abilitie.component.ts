@@ -50,12 +50,12 @@ export class ListPokemonAbilitieComponent implements OnInit {
           this.abilities = data['results'];
           this.abilities.sort(function compare(a, b) {
             if (a['name'] < b['name'])
-               return -1;
+              return -1;
             if (a['name'] > b['name'])
-               return 1;
+              return 1;
             return 0;
           });
-          
+
           this.next = data['next'];
           this.previous = data['previous'];
 
@@ -76,14 +76,11 @@ export class ListPokemonAbilitieComponent implements OnInit {
           this.pokemons_abilities = [];
           this.abilities.map(ability => this.getPokemonsByAbility(ability['name']));
         }
-              // else {
-              //   console.log("on y etait déja avant", this.abilities, data['results']);
-              // }
       },
       err => {
         console.log(err);
       },
-      () => {}
+      () => { }
     );
   }
 
@@ -98,9 +95,9 @@ export class ListPokemonAbilitieComponent implements OnInit {
       () => {
         this.pokemons_abilities.sort(function compare(a, b) {
           if (a['ability'] < b['ability'])
-             return -1;
+            return -1;
           if (a['ability'] > b['ability'])
-             return 1;
+            return 1;
           return 0;
         });
       }

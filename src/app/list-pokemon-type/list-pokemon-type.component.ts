@@ -23,12 +23,11 @@ export class ListPokemonTypeComponent implements OnInit {
     this.pokeService.getTypes().subscribe(
       data => {
         this.types = data['results'];
-
         this.types.sort(function compare(a, b) {
           if (a['name'] < b['name'])
-             return -1;
+            return -1;
           if (a['name'] > b['name'])
-             return 1;
+            return 1;
           return 0;
         });
       },
