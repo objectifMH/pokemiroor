@@ -59,7 +59,13 @@
                                 : 'assets/img/no_image.png'}}"
                             [ngStyle]="{'max-width' : '400px'}" 
                             
-                    >               
+                    >
+                    <img  class="shiny" *ngIf="pokemons_details.sprites.front_shiny && toggle_shiny"
+                            src="{{pokemons_details.sprites.front_shiny 
+                                ? pokemons_details.sprites.front_shiny
+                                : 'assets/img/no_image.png'}}" 
+                            [ngStyle]="{'background' : color_background, 'border-radius': '50%'}"
+                    >                   
                 </div>  
             </div>      
             <div class="pokemon_stats" >

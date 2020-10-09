@@ -37,6 +37,9 @@ export class PokemonDetailsComponent implements OnInit {
   isEvolutionShow = true;
 
   my_pokedex = [];
+  interval;
+  timeLeft: number = 50;
+  toggle_shiny = false; 
 
   constructor(private pokeService: PokemonService, private utilService: UtilService, private route: ActivatedRoute, private router: Router,) {
     let url = "";
@@ -58,10 +61,18 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.startTimer();
   }
 
-  ngDoCheck() {
-    //this.getPokemonDetails(this.url_pokemon);
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 150;
+        this.toggle_shiny = !this.toggle_shiny;
+      }
+    },100)
   }
 
   getMyPokedex() {
@@ -82,7 +93,7 @@ export class PokemonDetailsComponent implements OnInit {
         //console.log("getPokemon > ", this.pokemons_details);
         this.prix = this.utilService.getPrix(this.pokemons_details.id);
         this.getPokemonSpecies(this.pokemons_details.species.url);
-        
+        console.log(this.pokemons_details.sprites);
         let url_img =    this.pokemons_details.sprites.other.dream_world.front_default 
                         ? this.pokemons_details.sprites.other.dream_world.front_default
                         : 'assets/img/no_image.png';

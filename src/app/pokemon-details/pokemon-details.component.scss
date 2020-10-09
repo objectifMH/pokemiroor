@@ -178,11 +178,19 @@ h4 {
         max-width: 380px;
         max-height: 380px;
         box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75); 
+        position: relative;
 
         img {
             padding: 10px 15px;
             margin: 5px 8px;
             margin: 5px 0px 5px 20px;
+        }
+
+        .shiny {
+            position: absolute;
+            bottom: -100px;
+            right: 10px;
+            box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.75); 
         }
     }
 
