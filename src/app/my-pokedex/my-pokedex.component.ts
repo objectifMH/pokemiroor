@@ -53,10 +53,10 @@ export class MyPokedexComponent implements OnInit {
     
     if( !this.isSortDownId)
     {
-      this.pokemons = this.sortAsc(this.pokemons, 'id');
+      this.pokemons = this.utilService.sortAsc(this.pokemons, 'id');
     }
     else {
-      this.pokemons = this.sortDesc(this.pokemons, 'id');
+      this.pokemons = this.utilService.sortDesc(this.pokemons, 'id');
     }
     this.isSortDownId = !this.isSortDownId;
   }
