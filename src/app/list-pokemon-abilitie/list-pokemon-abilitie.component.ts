@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-list-pokemon-abilitie',
@@ -21,7 +22,8 @@ export class ListPokemonAbilitieComponent implements OnInit {
   offset_previous: string;
   limit_previous: string;
 
-  constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router) {
+  constructor(private pokeService: PokemonService, private utilService: UtilService,
+              private route: ActivatedRoute, private router: Router) {
 
     let url = "";
     this.router.events.subscribe((val) => {
@@ -93,13 +95,7 @@ export class ListPokemonAbilitieComponent implements OnInit {
         console.log(err);
       },
       () => {
-        this.pokemons_abilities.sort(function compare(a, b) {
-          if (a['ability'] < b['ability'])
-            return -1;
-          if (a['ability'] > b['ability'])
-            return 1;
-          return 0;
-        });
+        this.pokemons_abilities = this.utilService.sortAsc(this.pokemons_abilities, 'ability');
       }
     );
   }

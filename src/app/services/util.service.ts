@@ -68,7 +68,7 @@ export class UtilService {
     let g = rgb[1] + 60 < 255 ? rgb[1] + 60 : 255;
     let b = rgb[2] + 50 < 255 ? rgb[2] + 50 : 255;
 
-     return "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
+    return "linear-gradient(to bottom, rgb(" + r + "," + g + "," + b + ") 10%, rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ") 100%)";
   }
 
   /** Math */
@@ -91,9 +91,30 @@ export class UtilService {
   }
 
   getRandomInt(max: number, min?: number) {
-    //return Math.floor(Math.random() * Math.floor(max));
-    if ( min === undefined)
-    min = 0; 
+    if (min === undefined)
+      min = 0;
     return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  /** Sort */
+
+  sortAsc(tab, attr) {
+    return tab.sort(function compare(a, b) {
+      if (a[attr] < b[attr])
+        return -1;
+      if (a[attr] > b[attr])
+        return 1;
+      return 0;
+    });
+  }
+
+  sortDesc(tab, attr) {
+    return tab.sort(function compare(a, b) {
+      if (a[attr] > b[attr])
+        return -1;
+      if (a[attr] < b[attr])
+        return 1;
+      return 0;
+    });
   }
 }

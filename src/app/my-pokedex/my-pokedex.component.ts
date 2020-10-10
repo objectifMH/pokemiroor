@@ -13,6 +13,10 @@ export class MyPokedexComponent implements OnInit {
   total: number;
   species: Object;
 
+  isSortDownId: boolean;
+  isSortDownName: boolean;
+  isSortDownPrix: boolean;
+
   constructor(private poke: PokemonService, private utilService: UtilService) { }
 
   ngOnInit(): void {
@@ -23,7 +27,6 @@ export class MyPokedexComponent implements OnInit {
     this.poke.getMyPokedex().subscribe(
       data => {
         this.pokemons = data;
-        console.log(this.pokemons);
         this.getTotal();
       },
       err => {
@@ -46,4 +49,39 @@ export class MyPokedexComponent implements OnInit {
     this.poke.setMyPokedex([]);
   }
 
+  sortId() {
+    
+    if( !this.isSortDownId)
+    {
+      this.pokemons = this.sortAsc(this.pokemons, 'id');
+    }
+    else {
+      this.pokemons = this.sortDesc(this.pokemons, 'id');
+    }
+    this.isSortDownId = !this.isSortDownId;
+  }
+
+  sortName() {
+
+    if( !this.isSortDownName)
+    {
+      this.pokemons = this.utilService.sortAsc(this.pokemons, 'name');
+    }
+    else {
+      this.pokemons = this.utilService.sortDesc(this.pokemons, 'name');
+    }
+    this.isSortDownName = !this.isSortDownName;
+  }
+
+  sortPrix() {
+
+    if( !this.isSortDownPrix)
+    {
+      this.pokemons = this.utilService.sortAsc(this.pokemons, 'prix');
+    }
+    else {
+      this.pokemons = this.utilService.sortDesc(this.pokemons, 'prix');
+    }
+    this.isSortDownPrix = !this.isSortDownPrix;
+  }
 }

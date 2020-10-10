@@ -19,11 +19,32 @@
         <div class="container_table" *ngIf="this.pokemons.length > 0">
             <table >
                 <tr>
-                  <th>Id</th>
+                  <th class="text-center d-flex align-items-center">Id 
+                    <span   class="material-icons" 
+                            [ngClass]="{'arrow_drop_down' : !isSortDownId, 'arrow_drop_up' : isSortDownId  }"
+                            (click)='sortId()'
+                            >
+                        
+                    </span>
+                  </th>
                   <th class="text-center">Profile</th>
-                  <th class="text-center">Name</th>
+                  <th class="justify-content-center d-flex align-items-center">Name
+                    <span   class="material-icons" 
+                            [ngClass]="{'arrow_drop_down' : !isSortDownName, 'arrow_drop_up' : isSortDownName  }"
+                            (click)='sortName()'
+                            >
+                        
+                    </span>
+                  </th>
                   <th class="text-center">Types</th>
-                  <th class="text-center">Prix</th>
+                  <th class="justify-content-center d-flex align-items-center">Prix
+                    <span   class="material-icons" 
+                            [ngClass]="{'arrow_drop_down' : !isSortDownPrix, 'arrow_drop_up' : isSortDownPrix  }"
+                            (click)='sortPrix()'
+                            >
+                        
+                    </span>
+                  </th>
                   <th class="text-center">Delete</th>
                 </tr>
                 <tr *ngFor="let pokemon of this.pokemons; let i = index"

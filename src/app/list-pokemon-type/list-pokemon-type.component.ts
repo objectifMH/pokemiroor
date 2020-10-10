@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-list-pokemon-type',
@@ -13,23 +14,21 @@ export class ListPokemonTypeComponent implements OnInit {
   pokemons_types = [];
   pokemons_types_aux = [];
 
-  constructor(private pokeService: PokemonService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private pokeService: PokemonService, private utilService: UtilService,
+              private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getTypesPokemon();
+  }
+
+  ngOnChanges() {
+   this.types =  this.utilService.sortAsc(this.types, 'name');
   }
 
   getTypesPokemon() {
     this.pokeService.getTypes().subscribe(
       data => {
         this.types = data['results'];
-        this.types.sort(function compare(a, b) {
-          if (a['name'] < b['name'])
-            return -1;
-          if (a['name'] > b['name'])
-            return 1;
-          return 0;
-        });
       },
       err => {
         console.log(err);
@@ -49,6 +48,7 @@ export class ListPokemonTypeComponent implements OnInit {
         console.log(err);
       },
       () => {
+        this.pokemons_types_aux = this.utilService.sortAsc(this.pokemons_types_aux, 'type');
         this.pokemons_types = this.pokemons_types_aux;
       }
     );

@@ -39,6 +39,23 @@
                 tr {
                     border-radius: 15px;
                     margin: 5px;
+
+                    .material-icons.arrow_drop_up, .material-icons.material-icons.arrow_drop_down {
+                        transition: 0.3s ease-in-out;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
+
+                    .material-icons.arrow_drop_down:before {
+                        content:'arrow_drop_down';
+                    }
+
+                    .material-icons.arrow_drop_up:before {
+                        content:'arrow_drop_up';
+                    }
                 }
 
                 .id_pokemon {
