@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { ListPokemonAbilitieComponent } from './list-pokemon-abilitie/list-pokemon-abilitie.component';
 import { ListPokemonTypeComponent } from './list-pokemon-type/list-pokemon-type.component';
 import { ListPokemonComponent } from './list-pokemon/list-pokemon.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'map', component: MapComponent},
   {path: 'pokedex', component: MyPokedexComponent},
+  {path: 'admin', component: AdminComponent},
   {path: '**', redirectTo: '/main' },
 ];
 

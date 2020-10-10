@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MapComponent } from './map/map.component';
 import { MyPokedexComponent } from './my-pokedex/my-pokedex.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MyPokedexComponent } from './my-pokedex/my-pokedex.component';
     ListPokemonAbilitieComponent,
     SearchComponent,
     MapComponent,
-    MyPokedexComponent
+    MyPokedexComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

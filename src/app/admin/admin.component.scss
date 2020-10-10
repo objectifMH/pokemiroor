@@ -1,0 +1,92 @@
+@import '../../styles.scss';
+
+section {
+    width: 90vw;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: $back;
+
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+    h4 {
+      color: white;
+    }
+    
+    .top {
+      padding: 5px 15px;
+      position: relative;
+      background: $back;
+
+      & .material-icons {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.25);
+          border: 2px solid $color ;
+          color: $color;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      background: $back;
+      border: 1px solid white;
+      border-bottom: 2px solid white;
+      border-right: 2px solid white;
+
+      .right {
+        margin-top: 20px;
+        padding: 15px 20px;
+
+        .btn {
+            transition: all .2s ease-in-out;
+
+            &:hover {
+            transform: scale(1.25);
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            }
+        }
+
+
+      }
+
+      .left {
+        display: flex;
+        padding: 80px 15px!important
+      }
+    }
+
+    img {
+      padding: 10px 15px;
+      max-width: 500px;
+      max-height: 500px;
+      border-radius: 50%;
+      box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+    
+  }
+
+@media (max-width: 768px) {
+  .bottom {
+    flex-direction: column;
+  } 
+
+  .left {
+    img {
+      max-width: 100%;
+    }
+  }
+}
