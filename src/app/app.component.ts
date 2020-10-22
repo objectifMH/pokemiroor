@@ -81,21 +81,30 @@ export class AppComponent {
         (pokemon.name.toLowerCase()).includes(search.toLowerCase())
         ||
         (pokemon['url'].split("/")[6]).includes(search.toLowerCase())
-      )
+      );
+
+
+      if (this.search_pokemons_aux && this.search_pokemons_aux.length <= 10) {
+        this.search_begin = 0;
+        this.search_end = this.search_pokemons_aux.length;
+        this.search_pokemons = this.search_pokemons_aux.slice(0, this.search_pokemons_aux.length);
+        console.log("laliste est vide mais je suis aussi dans ce if");
+      }
+      else {
+        this.search_begin = 0;
+        this.search_end = 10;
+        this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, 10);
+        console.log("laliste est vide mais je passe aussi dans ce else  ");
+      }
     }
     else {
+      console.log("laliste est vide");
       this.search_pokemons = [];
-    }
-    if (this.search_pokemons_aux && this.search_pokemons_aux.length <= 10) {
       this.search_begin = 0;
-      this.search_end = this.search_pokemons_aux.length;
-      this.search_pokemons = this.search_pokemons_aux.slice(0, this.search_pokemons_aux.length);
+      this.search_end = 0;
+      this.search_pokemons_aux = [];
     }
-    else {
-      this.search_begin = 0;
-      this.search_end = 10;
-      this.search_pokemons = this.search_pokemons_aux.slice(this.search_begin, 10);
-    }
+   
   }
 
   getSearchBegin() {
