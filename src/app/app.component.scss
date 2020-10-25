@@ -192,6 +192,7 @@ section {
         margin: auto;
         margin-top: 10px;
         padding: 45px;
+        transition: 2.3s ease-in-out;
 
         h5 {
             color: white;
@@ -239,10 +240,12 @@ section {
 
     .search_container.fade {
         display: none;
+        left: -100%;
         transition: opacity 1.4s ease-in-out;
     }
     .search_container.show {
         transition: opacity .85s linear;
+        left: 0;
         background: $border;
     }
 }

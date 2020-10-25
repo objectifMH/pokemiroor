@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   }
 
   getAllPokemon() {
-    this.pokeService.getPokemonsByPage("0", "20").subscribe(
+    this.pokeService.getPokemonsByPage("0", "1").subscribe(
       data => {
         this.pokemons = data['results'];
       },

@@ -118,11 +118,32 @@ section {
 
                 img {
                     max-width: 170px;
+                    transition: .3s ease-in-out;
                 }
 
                 a {
                     margin: 20px 0px 12px;
                 }
+
+                .btn_movie_title {
+                    display: none;
+                    transition: .3s ease-in-out;
+                    
+                }
+
+                    &:hover {
+                        .btn_movie_title {
+                            display: block;
+                            position: absolute;
+                            bottom: 5px;
+                            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+                        }
+
+                        img {
+                            transform: scale(1.05);
+                            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+                        }
+                    }
             }
         }
     }
